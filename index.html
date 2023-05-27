@@ -1,22 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#000000" />
-  <meta
-    name="description"
-    content="Web site created using create-react-app"
-  />
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-
-  <title>Akash Chandra Baidya - Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Akash Chandra Baidya - Resume</title>
 </head>
 <body>
-  <noscript>You need to enable JavaScript to run this app.</noscript>
-  <div id="root"></div>
+  <header>
+    <h1>Akash Chandra Baidya</h1>
+    <h2>Resume</h2>
+  </header>
+  
+  <nav>
+    <ul>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#language">Language</a></li>
+      <li><a href="#certification">Online Certification</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <section id="education">
+      <h3>Education</h3>
+      <ul>
+        <li>
+          <span>2020-2024</span>
+          <h4>Master of Science in Data Science</h4>
+          <p>Technische Universität Dortmund, Dortmund, Germany</p>
+          <p>GPA: 2.4</p>
+          <p>Case Study: Time series processing, anomaly detection, and explanation with focus on energy consumption data</p>
+        </li>
+        <li>
+          <span>2012-2017</span>
+          <h4>Bachelor of Science in Computer Science & Engineering</h4>
+          <p>Khulna University of Engineering & Technology, Khulna, Bangladesh</p>
+          <p>GPA: 2.48</p>
+          <p>Thesis: Distributed MAC protocols for VANET (Criticalities for RR-Aloha, MS-Aloha, RR-Aloha+, and proposed a new distributed Aloha MAC protocol for VANET)</p>
+        </li>
+      </ul>
+    </section>
+    
+    <section id="experience">
+      <h3>Experience</h3>
+      <ul>
+        <li>
+          <span>2023-Present</span>
+          <h4>Research Assistant (WHF)</h4>
+          <p>Technische Universität Dortmund, Dortmund, Germany</p>
+          <ul>
+            <li>Implement the simulation study using R and Deseq2 packages.</li>
+            <li>Generate and analyze simulation results, including statistical measures and visualizations.</li>
+          </ul>
+        </li>
+        <li>
+          <span>2021-2023</span>
+          <h4>Teaching Assistant (WHF)</h4>
+          <p>Technische Universität Dortmund, Dortmund, Germany</p>
+          <ul>
+            <li>Courses: Big Data Analysis, Advanced Statistical Learning, Statistical Learning for Big Data, and Probabilistic Reasoning & Machine Learning</li>
+            <li>Assist in managing help desks, grade exam papers, and check exercises.</li>
+          </ul>
+        </li>
+        <!-- Add more experience entries -->
+      </ul>
+    </section>
+    
+    <section id="skills">
+      <h3>Skills</h3>
+      <ul>
+        <li>Programming Languages: Python, R, PHP, SQL, JAVA</li>
+        <li>Python Libraries: Pandas, Numpy, Pytorch, FastAPI, Requests, Django</li>
+        <li>Other: Git, Docker, AWS, Agile Methodologies</li>
+      </ul>
+    </section>
+    
+    <section id="language">
+      <h3>Language</h3>
+      <ul>
+        <li>Bengali: Native Speaker</li>
+        <li>English: Fluent</li>
+        <li>German: Beginner</li>
+      </ul>
+    </section>
+    
+    <section id="certification">
+      <h3>Online Certification</h3>
+      <ul>
+        <li>
+          <h4>Cluster Analysis in R</h4>
+          <p>Datacamp</p>
+        </li>
+        <li>
+          <h4>Cluster Analysis in Data Mining</h4>
+          <p>Coursera (Issued by University of Illinois at Urbana-Champaign)</p>
+        </li>
+        <li>
+          <h4>SQL for Data Science</h4>
+          <p>Edx (Issued by University of California, Davis)</p>
+        </li>
+        <li>
+          <h4>Applied Scrum for Project Management</h4>
+          <p>Edx (Issued by University of Maryland, College Park)</p>
+        </li>
+      </ul>
+    </section>
+  </main>
+  
+  <footer>
+    <p>Passionate data scientist with experience in research and project management. Currently pursuing a Master's degree in Data Science at TU Dortmund, with a strong focus on machine learning. Seeking opportunities to apply my skills in a challenging work environment.</p>
+  </footer>
+  
+  <script src="main.js"></script>
 </body>
 </html>
