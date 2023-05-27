@@ -3,116 +3,195 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Akash Chandra Baidya - Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <title>Akash Chandra Baidya - Resume</title>
+  <link rel="icon" href="favicon.ico">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header>
-    <h1>Akash Chandra Baidya</h1>
-    <h2>Resume</h2>
+    <nav>
+      <div class="logo">
+        <h4>Akash Chandra Baidya</h4>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#portfolio">My Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#certification">Certification</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="burger">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
   </header>
-  
-  <nav>
-    <ul>
-      <li><a href="#education">Education</a></li>
-      <li><a href="#experience">Experience</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#language">Language</a></li>
-      <li><a href="#certification">Online Certification</a></li>
-    </ul>
-  </nav>
-  
-  <main>
-    <section id="education">
-      <h3>Education</h3>
-      <ul>
-        <li>
-          <span>2020-2024</span>
-          <h4>Master of Science in Data Science</h4>
-          <p>Technische Universität Dortmund, Dortmund, Germany</p>
-          <p>GPA: 2.4</p>
-          <p>Case Study: Time series processing, anomaly detection, and explanation with focus on energy consumption data</p>
-        </li>
-        <li>
-          <span>2012-2017</span>
-          <h4>Bachelor of Science in Computer Science & Engineering</h4>
-          <p>Khulna University of Engineering & Technology, Khulna, Bangladesh</p>
-          <p>GPA: 2.48</p>
-          <p>Thesis: Distributed MAC protocols for VANET (Criticalities for RR-Aloha, MS-Aloha, RR-Aloha+, and proposed a new distributed Aloha MAC protocol for VANET)</p>
-        </li>
-      </ul>
-    </section>
-    
-    <section id="experience">
-      <h3>Experience</h3>
-      <ul>
-        <li>
-          <span>2023-Present</span>
-          <h4>Research Assistant (WHF)</h4>
-          <p>Technische Universität Dortmund, Dortmund, Germany</p>
-          <ul>
-            <li>Implement the simulation study using R and Deseq2 packages.</li>
-            <li>Generate and analyze simulation results, including statistical measures and visualizations.</li>
-          </ul>
-        </li>
-        <li>
-          <span>2021-2023</span>
-          <h4>Teaching Assistant (WHF)</h4>
-          <p>Technische Universität Dortmund, Dortmund, Germany</p>
-          <ul>
-            <li>Courses: Big Data Analysis, Advanced Statistical Learning, Statistical Learning for Big Data, and Probabilistic Reasoning & Machine Learning</li>
-            <li>Assist in managing help desks, grade exam papers, and check exercises.</li>
-          </ul>
-        </li>
-        <!-- Add more experience entries -->
-      </ul>
-    </section>
-    
-    <section id="skills">
-      <h3>Skills</h3>
-      <ul>
-        <li>Programming Languages: Python, R, PHP, SQL, JAVA</li>
-        <li>Python Libraries: Pandas, Numpy, Pytorch, FastAPI, Requests, Django</li>
-        <li>Other: Git, Docker, AWS, Agile Methodologies</li>
-      </ul>
-    </section>
-    
-    <section id="language">
-      <h3>Language</h3>
-      <ul>
-        <li>Bengali: Native Speaker</li>
-        <li>English: Fluent</li>
-        <li>German: Beginner</li>
-      </ul>
-    </section>
-    
-    <section id="certification">
-      <h3>Online Certification</h3>
-      <ul>
-        <li>
-          <h4>Cluster Analysis in R</h4>
-          <p>Datacamp</p>
-        </li>
-        <li>
-          <h4>Cluster Analysis in Data Mining</h4>
-          <p>Coursera (Issued by University of Illinois at Urbana-Champaign)</p>
-        </li>
-        <li>
-          <h4>SQL for Data Science</h4>
-          <p>Edx (Issued by University of California, Davis)</p>
-        </li>
-        <li>
-          <h4>Applied Scrum for Project Management</h4>
-          <p>Edx (Issued by University of Maryland, College Park)</p>
-        </li>
-      </ul>
-    </section>
-  </main>
-  
-  <footer>
-    <p>Passionate data scientist with experience in research and project management. Currently pursuing a Master's degree in Data Science at TU Dortmund, with a strong focus on machine learning. Seeking opportunities to apply my skills in a challenging work environment.</p>
-  </footer>
-  
-  <script src="main.js"></script>
+
+  <section id="home">
+    <div class="hero">
+      <h1>Hi, I'm Akash Chandra Baidya</h1>
+      <p>I'm a passionate data scientist</p>
+      <a href="#portfolio" class="btn">View My Work</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="about-container">
+      <h2>About Me</h2>
+      <p>I am a data scientist with a strong passion for analyzing and deriving insights from data. I have expertise in machine learning, data visualization, and statistical analysis. I enjoy working on challenging projects that involve solving complex problems using data-driven approaches. I am constantly expanding my knowledge and skills in the field of data science to stay up-to-date with the latest advancements.</p>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <div class="portfolio-container">
+      <h2>My Work</h2>
+      <div class="project">
+        <img src="project1.png" alt="Project 1">
+        <h3>Project 1</h3>
+        <p>This is a description of project 1. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id arcu in mi lacinia molestie. Integer sit amet nisl ultricies, lacinia lectus vel, scelerisque nisl.</p>
+      </div>
+      <div class="project">
+        <img src="project2.png" alt="Project 2">
+        <h3>Project 2</h3>
+        <p>This is a description of project 2. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id arcu in mi lacinia molestie. Integer sit amet nisl ultricies, lacinia lectus vel, scelerisque nisl.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="experience-container">
+      <h2>Experience</h2>
+      <div class="job">
+        <h3>Research Assistant</h3>
+        <h4>Technische Universität Dortmund, Dortmund</h4>
+        <p>2023 - Present</p>
+        <ul>
+          <li>Implemented simulation study using R and Deseq2 packages.</li>
+          <li>Generated and analyzed simulation results, including statistical measures and visualizations.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Teaching Assistant</h3>
+        <h4>Technische Universität Dortmund, Dortmund</h4>
+        <p>2021 - 2023</p>
+        <ul>
+          <li>Assisted in managing help desks, grade exam papers, and check exercises.</li>
+          <li>Courses: Big Data Analysis, Advanced Statistical Learning, Statistical Learning for Big Data and Probabilistic Reasoning & Machine Learning.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Research Assistant</h3>
+        <h4>E.ON RWTH Energy Research Center-Aachen, Aachen</h4>
+        <p>2021 - 2022</p>
+        <ul>
+          <li>Designed and implemented web applications using Python and Django framework, along with containerization using Docker.</li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Assistant Project Manager</h3>
+        <h4>ITM System LLC., USA</h4>
+        <p>2018 - 2021 (Remote)</p>
+        <ul>
+          <li>Developed and managed web apps & projects.</li>
+          <li>Projects:
+            <ul>
+              <li>Appointment System (Manager and Developer): Developing a Django-based project to provide patients with alerts, reminders, and confirmation.</li>
+              <li>Demo Screening (Manager and Developer): Designing and implementing Django-based surveys for client assistance.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>IT Officer, In-Charge (Software)</h3>
+        <h4>SINGER Bangladesh Ltd., Bangladesh</h4>
+        <p>2018 - 2021</p>
+        <ul>
+          <li>Designed, developed, and tested web & Android apps.</li>
+          <li>Projects:
+            <ul>
+              <li>One Time Password (OTP) APP (Developer): Designing and implementing an Android and Django-based project to track managers' location.</li>
+              <li>Rent Management System (Developer): Designing and implementing a Django-based project to facilitate rent calculations and IFRS 16 compliance for organizations.</li>
+              <li>Merchandising Checklist (Developer): Implementing a PHP-based system that enables managers to record and track the current condition of their branches.</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="job">
+        <h3>Software Engineer (Android)</h3>
+        <h4>Ubitrix BD Ltd., Bangladesh</h4>
+        <p>2017 - 2018</p>
+        <ul>
+          <li>Designed, developed, and tested web & Android apps.</li>
+          <li>Projects: Speech Therapy Online, Ag Palliative Care, and Natural Family Planning.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="education-container">
+      <h2>Education</h2>
+      <div class="degree">
+        <h3>Master of Science in Data Science</h3>
+        <h4>Technische Universität Dortmund, Dortmund, Germany</h4>
+        <p>2020 - 2024</p>
+        <p>GPA: 2.4</p>
+        <p>Case Study: Time series processing, anomaly detection, and explanation with focus on energy consumption data</p>
+      </div>
+      <div class="degree">
+        <h3>Bachelor of Science in Computer Science & Engineering</h3>
+        <h4>Khulna University of Engineering & Technology, Khulna, Bangladesh</h4>
+        <p>2012 - 2017</p>
+        <p>GPA: 2.48</p>
+        <p>Thesis: Distributed MAC protocols for VANET (Criticalities for RR-Aloha, MS-Aloha, RR-Aloha+ and proposed a new distributed Aloha MAC protocol for VANET)</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="certification">
+    <div class="certification-container">
+      <h2>Online Certification</h2>
+      <div class="certificate">
+        <h3>Cluster Analysis in R</h3>
+        <p>Datacamp</p>
+        <p>2021</p>
+      </div>
+      <div class="certificate">
+        <h3>Cluster Analysis in Data Mining</h3>
+        <p>Coursera</p>
+        <p>Issued by University of Illinois at Urbana-Champaign</p>
+        <p>2021</p>
+      </div>
+      <div class="certificate">
+        <h3>SQL for Data Science</h3>
+        <p>Edx</p>
+        <p>Issued by University of California, Davis</p>
+        <p>2019</p>
+      </div>
+      <div class="certificate">
+        <h3>Applied Scrum for Project Management</h3>
+        <p>Edx</p>
+        <p>Issued by University of Maryland, College Park</p>
+        <p>2019</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-container">
+      <h2>Contact Me</h2>
+      <p>If you would like to discuss a project or job opportunity, feel free to reach out to me.</p>
+      <div class="social-icons">
+        <a href="mailto:akashbaidya2@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://linkedin.com/in/akashbaidya" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/AkashBaidya" target="_blank"><i class="fab fa-github"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <script src="app.js"></script>
 </body>
 </html>
