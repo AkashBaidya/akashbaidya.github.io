@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Akash Baidya | Data Scientist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap & Font Awesome -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Kaushan+Script" rel="stylesheet">
+
+  <!-- Leaflet CSS -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    crossorigin=""
+  />
+
+  <!-- particles.js, Typed.js & Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <style>
+    /* Base font */
+    body, h1, h2, h3, h4, h5, p, li, a {
+      font-family: 'Montserrat', sans-serif;
+    }
+    /* Fullscreen green particles behind everything */
+    #particles-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0;
+    }
+    /* All content sits above the canvas */
+    body > *:not(#particles-bg) {
+      position: relative;
+      z-index: 1;
+    }
+    /* Navbar */
+    .navbar {
+      background: rgba(255,255,255,0.9);
+      padding: 1rem 2rem;
+    }
+    .navbar-brand {
+      font-family: 'Kaushan Script', cursive;
+      color: #69b3a2;
+      font-size: 1.75rem;
+    }
+    .navbar-nav .nav-link {
+      color: #333;
+      margin: 0 1rem;
+      font-weight: 500;
+      position: relative;
+    }
+    .navbar-nav .nav-link.active,
+    .navbar-nav .nav-link:hover {
+      color: #69b3a2;
+    }
+    .navbar-nav .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -6px; left: 0;
+      width: 100%; height: 3px;
+      background: #69b3a2;
+    }
+    /* Hero */
+    header.masthead {
+      padding: 180px 0;
+      text-align: center;
+      background: transparent;
+    }
+    header.masthead h1 {
+      display: inline-block;
+      margin: 0 1rem;
+      font-size: 3rem;
+      font-weight: 700;
+      color: #000;
+    }
+    header.masthead .logo-icon {
+      width: 80px; height: 80px;
+      display: inline-block; vertical-align: middle;
+    }
+    header.masthead .logo-icon img {
+      width: 100%; height: auto;
+    }
+    header.masthead p.lead {
+      margin-top: 1rem;
+      font-size: 1.25rem;
+      color: #333;
+    }
+    /* Accent tab headings */
+    .accent-tab {
+      color: #69b3a2;
+      border-bottom: 2px solid #69b3a2;
+      display: inline-block;
+      padding-bottom: 0.25em;
+      margin-bottom: 1rem;
+    }
+    /* About Me */
+    section#description {
+      padding: 100px 0;
+      background: rgba(255,255,255,0.9);
+    }
+    .profile-img {
+      width: 200px; height: 200px;
+      object-fit: cover; object-position: 50% 30%;
+      border-radius: 50%;
+      border: 4px solid #69b3a2;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      transition: transform .3s;
+    }
+    .profile-img:hover { transform: scale(1.05); }
+    /* Section anchor offset */
+    section { scroll-margin-top: 80px; }
+    /* Experience cards accent */
+    .card.experience {
+      border-left: 4px solid #69b3a2;
+    }
+    /* Project links */
+    .project-link {
+      margin-left: 0.5em;
+      color: #333;
+      transition: color .2s;
+    }
+    .project-link:hover { color: #69b3a2; }
+    /* Charts */
+    #langChart, #repoChart { max-height: 300px; }
+    /* Map */
+    #map {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 300px;
+    }
+    /* Footer transparent to show particles */
+/* Footer: white background so particles don’t show through */
+/* Footer transparent, black text */
+  footer {
+    background: transparent !important;
+    color: #000 !important;
+  }
+  footer a {
+    color: #000;
+  }
+  footer a:hover {
+    color: #69b3a2;
+  }
+  </style>
+</head>
+<body>
+  <!-- Green particles.js canvas -->
+  <div id="particles-bg"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <a class="navbar-brand js-scroll-trigger" href="#page-top">HOME</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMenu">
+      <i class="fa fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ml-auto text-uppercase">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger active" href="#page-top">INTRO</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#description">ABOUT</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">EXPERIENCE</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">PROJECTS</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#testimonial">TESTIMONIALS</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">CONTACT</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+<header class="masthead">
+    <div id="particles-js"></div>
+    <div class="textlanding">
+      <p style="display:inline; font-size: 35px; padding-left: 30px">Akash</p>
+      <img width="90px" style="display:inline; margin-bottom: 20px; margin-right: 10px; margin-left: 10px"
+        src="img/logo/Home_single_big.png">
+      <p style="display:inline; font-size: 35px">Chandra Baidya</p>
+      <hr style="width: 100px; height: 1px; border:none;color:#333;background-color:#333;">
+      <br>
+      <ul class="list-inline social-buttons">
+        <!-- <li class="list-inline-item">
+          <a href="https://twitter.com/R_Graph_Gallery">
+            <i class="fa fa-twitter"></i>
+          </a>
+        </li> -->
+        <li class="list-inline-item social-buttons">
+          <a href="https://github.com/akashbaidya">
+            <i class="fa fa-github" style="color: white"></i>
+          </a>
+        </li>
+        <li class="list-inline-item social-buttons">
+          <a href="https://www.linkedin.com/in/akashbaidya">
+            <i class="fa fa-linkedin"></i>
+          </a>
+        </li>
+      </ul>
+      <br><br>
+      <p>Welcome to Akash Baidya's <u>homepage</u>.<br>I'm a master's student in Data Science at <a href="https://www.tu-dortmund.de/">Technische Universität Dortmund</a> and currently
+        working as working student-data science at IMSP - Institut für Marktforschung, Statistik und Prognose - Leistungsbereich: Health Economic / Data Analytics / Data Science. I have over 5 years of experience in software engineering with python  and 3 year of experience with data science and data analysis. I am looking for a data scientist or data engineering or data analyst position.</p>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#description">Visit</a>
+      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#contact">Contact</a>
+    </div>
+    <div class="arrowlanding">
+      <a class="js-scroll-trigger" href="#description">
+        <p style="font-size: 80px; color: #69b3a2">&#xfe40;</p>
+      </a>
+    </div>
+  </header>
+
+
+  <!-- ABOUT ME -->
+  <section id="description">
+    <div class="container">
+      <div class="row align-items-center">
+        <div class="col-md-4 text-center mb-4">
+          <img class="profile-img" src="img/team/YH_pic_square.png" alt="Profile of Akash">
+        </div>
+        <div class="col-md-8">
+          <h2>About Me</h2>
+          <span id="typed" class="lead"></span>
+          <ul>
+            <li><strong>Generative AI &amp; LLMs:</strong> Fine-tuning &amp; deploying models.</li>
+            <li><strong>Anomaly Detection:</strong> LSTM-based time-series scoring.</li>
+            <li><strong>Data Engineering:</strong> Automated ETL &amp; dashboards.</li>
+            <li><strong>Collaboration:</strong> TA at TU Dortmund.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES (Experience & Projects) -->
+  <section id="services" class="py-5 bg-light">
+    <div class="container">
+
+      <!-- EXPERIENCE -->
+      <h3 class="accent-tab">Experience</h3>
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm experience">
+            <div class="card-body">
+              <h5>Consultant Software Engineer</h5>
+              <p class="text-muted">Ubitrix BD Ltd.<br><small>2017–2018</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm experience">
+            <div class="card-body">
+              <h5>Assistant Project Manager</h5>
+              <p class="text-muted">ITM System LLC<br><small>2018–2021</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm experience">
+            <div class="card-body">
+              <h5>Research Assistant</h5>
+              <p class="text-muted">E.ON RWTH Energy Research Center<br><small>2021–2022</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm experience">
+            <div class="card-body">
+              <h5>Research Assistant (Data Viz)</h5>
+              <p class="text-muted">FZB Borstel<br><small>2023–2024</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm experience">
+            <div class="card-body">
+              <h5>Data Scientist</h5>
+              <p class="text-muted">IMSP, Munich<br><small>2024–2025</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mb-4">
+          <div class="card h-100 shadow-sm experience">
+            <div class="card-body">
+              <h5>Portfolio &amp; Quantitative Analyst</h5>
+              <p class="text-muted">RWE Supply &amp; Trading GmbH<br><small>2025–Present</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- PROJECTS -->
+      <h3 class="accent-tab">Projects</h3>
+      <div class="row">
+        <div class="col-lg-4 mb-4">
+          <h5>
+            MALDIX NLP &amp; LLM Pipeline
+            <a href="https://github.com/AkashBaidya/maldix-nlp-pipeline" target="_blank" class="project-link">
+              <i class="fa fa-github"></i>
+            </a>
+          </h5>
+          <p>Python • spaCy • NLTK • PyMongo. Fine-tuned LLMs with Mistral AI.</p>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h5>
+            Anomaly Detection
+            <a href="https://github.com/AkashBaidya/Time-Series-Anomaly-Detection" target="_blank" class="project-link">
+              <i class="fa fa-github"></i>
+            </a>
+          </h5>
+          <p>PyTorch LSTM for energy usage anomalies.</p>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h5>
+            AutoML Cashflow Optimization
+            <a href="https://github.com/AkashBaidya/AutoML-Cashflow-Optimization-for-Insurance-Company" target="_blank" class="project-link">
+              <i class="fa fa-github"></i>
+            </a>
+          </h5>
+          <p>AutoML &amp; Power BI dashboards optimizing cashflow.</p>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h5>
+            Credit Card Fraud Detection
+            <a href="https://github.com/AkashBaidya/Credit-Card-Fraud-Detection" target="_blank" class="project-link">
+              <i class="fa fa-github"></i>
+            </a>
+          </h5>
+          <p>SMOTE • Logistic Regression &amp; GBM with Plotly &amp; Power BI.</p>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h5>
+            Germany Weather Data Engineering
+            <a href="https://github.com/AkashBaidya/germanyweatheranalysis" target="_blank" class="project-link">
+              <i class="fa fa-github"></i>
+            </a>
+          </h5>
+          <p>Python • SQL • REST APIs ETL pipeline for German weather data.</p>
+        </div>
+        <div class="col-lg-4 mb-4">
+          <h5>
+            Inventory Management System
+            <a href="https://github.com/AkashBaidya/inventory-otp-system" target="_blank" class="project-link">
+              <i class="fa fa-github"></i>
+            </a>
+          </h5>
+          <p>Django • Android • PostgreSQL • OTP-based location control.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- GITHUB SUMMARY -->
+      <h3 class="accent-tab">GitHub Summary</h3>
+      <p id="repo-count">Loading repos…</p>
+      <div class="row">
+        <div class="col-md-6 mb-4"><canvas id="langChart"></canvas></div>
+        <div class="col-md-6 mb-4"><canvas id="repoChart"></canvas></div>
+      </div>
+    </div>
+  </section>
+
+<!-- =========================== REFERENCE SECTION ============================ -->
+
+
+  <section id="testimonial">
+    <div class="container">
+
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
+                <img src="img/reference/chingu.jpg" style="border-radius: 50%" width="170px">
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
+                <br>
+                <p style="color: grey; font-size: 8"><i>"Akash was my assistant project manager for many healthcare technology projects including AI-powered text messaging engine, telehealth mobile application, and COVID-19 testing platform. He was always enthusiastic about technologies and willing to explore new solutions to enhance the products. 
+                  Akash is a professional, driven, and dedicated individual that will contribute tremendously to any projects he's given. Definitely recommended!"</i></p>
+                <p><a href="https://www.linkedin.com/in/chinguyencapm">Chi Nguyen</a> - <span
+                    style="font-size: 12px; display: inline;"><i>IT Project Manager at <a
+                        href="https://www.linkedin.com/company/shnaz">MD24 House Call, Inc</a></i></span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
+                <img src="img/reference/miftah.jpeg" style="border-radius: 50%" width="170px">
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
+                <br>
+                <p style="color: grey; font-size: 8"><i>"Akash has worked in my team at his early stage of his career for some cutting edge research based application development. During his short period of career he really amazed me with his quick learning, and can do type attitude. He was very devoted to his work and good team player because of his communication skills. "</i></p>
+                <p><a href="https://www.linkedin.com/in/miftahckr">Md Miftah Uddin</a> - <span
+                    style="font-size: 12px; display: inline;"><i> Head of Strategic Business Unit at <a
+                        href="https://brainstation-23.com/">Brain Station 23</a></i></span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
+                <img src="img/reference/yousuf.jpeg" style="border-radius: 50%" width="170px">
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
+                <br>
+                <p style="color: grey; font-size: 8"><i>"Akash was an amazing person to work with, and is not only a multi-skilled colleague, but also an inspiring individual. He showed tremendous expertise on Django, Android and PHP while working in Ubitrix Inc. I highly recommend him. I wish him very good success in his career."</i></p>
+                <p><a href="https://bd.linkedin.com/in/abuusuf">Abu Yousuf</a> - <span
+                    style="font-size: 12px; display: inline;"><i>Lead Engineer at <a
+                        href="Samsung R &D Institute Bangladesh">Samsung R &D Institute Bangladesh</a></i></span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="row">
+              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
+                <img src="img/reference/kaiser.jpeg" style="border-radius: 50%;" width="170px">
+              </div>
+              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
+                <br>
+                <p style="color: grey; font-size: 8"><i>"Both Akash and I joined our hands on several projects in Singer Bangladesh Ltd. These projects include technologies like Python, Django, REST API, Jasper Report, and Android App development. As a team member, he is very helpful, dedicated and a good team player.<br>His depth knowledge in Django & Android development helped us to solve some key challenges and deliver on time several times. His ability to take challenges and tackle pressure is remarkable. As a person, he is nice and polite. We still discuss our professional and personal issues. I highly recommend him as a true professional.</p>
+                <p><a href="https://www.linkedin.com/in/abu-kaiser-mohammad-hashem-277b3699/">Abu Kaiser Mohammad Hashem
+                  </a> - <span
+                    style="font-size: 12px; display: inline;"><i>Database Developer at the <a
+                        href="https://singerbd.com/about-singerbd">Singer BD LTD. </a></i></span></p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ======================================================================= -->
+
+
+  <!-- MAP -->
+  <div id="map"></div>
+
+  <!-- FOOTER -->
+  <footer class="text-center py-4">
+    <small>© Akash Chandra Baidya 2025</small>
+  </footer>
+
+  <!-- Core scripts -->
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script
+    src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    crossorigin=""
+  ></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Green particles.js
+      particlesJS('particles-bg', {
+        particles: {
+          number:    { value: 60 },
+          size:      { value: 3 },
+          color:     { value: '#69b3a2' },
+          line_linked: {
+            enable:   true,
+            distance: 120,
+            color:    '#69b3a2',
+            opacity:  0.3,
+            width:    1
+          },
+          move: { speed: 2 }
+        },
+        interactivity: {
+          events: {
+            onhover: { enable: true, mode: 'grab' },
+            onclick: { enable: true, mode: 'push' }
+          }
+        }
+      });
+
+      // Typed.js
+      new Typed('#typed', {
+        strings: [
+          "I’m a results-driven Data Scientist with 3+ years in ML & Gen-AI.",
+          "I leverage Python, Databricks & Dremio at RWE to optimize portfolios.",
+          "With a strong engineering background, I craft impactful data solutions."
+        ],
+        typeSpeed: 50,
+        backSpeed: 25,
+        backDelay: 2000,
+        loop: true
+      });
+
+      // GitHub summary + charts
+      fetch('https://api.github.com/users/AkashBaidya/repos?per_page=100')
+        .then(r => r.json())
+        .then(repos => {
+          const total = repos.length;
+          document.getElementById('repo-count').textContent = `Public repos: ${total}`;
+          const langCounts = {};
+          repos.forEach(r => {
+            const l = r.language || 'Other';
+            langCounts[l] = (langCounts[l]||0) + 1;
+          });
+          const sorted = Object.entries(langCounts).sort((a,b)=>b[1]-a[1]);
+          const top5   = sorted.slice(0,5);
+          const others = total - top5.reduce((s,[,c])=>s+c,0);
+          const labels = top5.map(([l])=>l).concat(others?['Other']:[]);
+          const data   = top5.map(([,c])=>c).concat(others?[others]:[]);
+          const palette=['#69b3a2','#4dc9f6','#f67019','#f53794','#537bc4','#acc236'];
+
+          new Chart(document.getElementById('langChart'), {
+            type: 'bar',
+            data: { labels, datasets: [{ label:'Repos by Language', data, backgroundColor:palette }] },
+            options: { responsive:true, maintainAspectRatio:false }
+          });
+          new Chart(document.getElementById('repoChart'), {
+            type: 'pie',
+            data: { labels, datasets: [{ data, backgroundColor:palette }] },
+            options: { responsive:true, maintainAspectRatio:false }
+          });
+        })
+        .catch(() => {
+          document.getElementById('repo-count').textContent = 'Failed to load GitHub data.';
+        });
+
+      // Leaflet map
+      const map = L.map('map').setView([51.5136,7.4653],13);
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        attribution:'© OpenStreetMap'
+      }).addTo(map);
+      L.marker([51.5136,7.4653]).addTo(map);
+    });
+  </script>
+</body>
+</html>
