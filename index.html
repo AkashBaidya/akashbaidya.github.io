@@ -65,110 +65,76 @@
 
 
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
-    <div class="container">
-      <a class="js-scroll-trigger" href="#page-top">
-        HOME
-      </a>
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-        data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
-        aria-label="Toggle navigation">
-        Menu
-        <i class="fa fa-bars"></i>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav text-uppercase ml-auto">
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#description">Intro</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#services">Services</a>
-          </li>
+<!-- =======================  NAVIGATION  ======================= -->
+<nav class="navbar navbar-expand-lg fixed-top bg-white" id="mainNav">
+  <div class="container">
+    <button class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive"
+            aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#projects">Projects</a>
-          </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" href="blog.html">Blog</a>
-          </li> -->
-           <!--
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#website">Websites</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
-          </li>-->
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#testimonial">Testimonials</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- =======================  LANDING SECTION ======================= -->
-
-
-  <header class="masthead">
-    <div id="particles-js"></div>
-    <div class="textlanding">
-      <p style="display:inline; font-size: 35px; padding-left: 30px">Akash</p>
-      <img width="90px" style="display:inline; margin-bottom: 20px; margin-right: 10px; margin-left: 10px"
-        src="img/logo/Home_single_big.png">
-      <p style="display:inline; font-size: 35px">Chandra Baidya</p>
-      <hr style="width: 100px; height: 1px; border:none;color:#333;background-color:#333;">
-      <br>
-      <ul class="list-inline social-buttons">
-        <!-- <li class="list-inline-item">
-          <a href="https://twitter.com/R_Graph_Gallery">
-            <i class="fa fa-twitter"></i>
-          </a>
-        </li> -->
-        <li class="list-inline-item social-buttons">
-          <a href="https://github.com/akashbaidya">
-            <i class="fa fa-github" style="color: white"></i>
-          </a>
-        </li>
-        <li class="list-inline-item social-buttons">
-          <a href="https://www.linkedin.com/in/akashbaidya">
-            <i class="fa fa-linkedin"></i>
-          </a>
-        </li>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase">
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#description">Intro</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#testimonial">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
       </ul>
-      <br><br>
-      <p>Welcome to Akash Baidya's <u>homepage</u>.<br>
-      I'm a master's student in Data Science at 
-      <a href="https://www.tu-dortmund.de/">Technische Universität Dortmund</a> 
-      and currently working as a Portfolio & Quantitative Analyst at RWE Supply & Trading GmbH . I worked as Data Scientist at IMSP – Institut für Marktforschung, Statistik und Prognose 
-      (Energy Economics / Data Analytics / Data Science).  With over 5 years of software engineering experience in Python and 3 years in data science & analytics, I am seeking 
-      opportunities as a Data Scientist, Data Engineer, Software Engineer or Data Analyst.
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#description">Visit</a>
-      <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#contact">Contact</a>
-</div>
-    <div class="arrowlanding">
-      <a class="js-scroll-trigger" href="#description">
-        <p style="font-size: 80px; color: #69b3a2">&#xfe40;</p>
-      </a>
     </div>
-  </header>
+  </div>
+</nav>
+
+
+
+<!-- =======================  LANDING SECTION ======================= -->
+<header class="masthead">
+  <div id="particles-js"></div>
+
+  <div class="textlanding text-center">
+
+    <!-- Name + Logo in one flex row -->
+    <div class="d-flex justify-content-center align-items-center flex-wrap landing-header">
+      <span class="landing-name">Akash</span>
+      <img src="img/logo/Home_single_big.png" alt="logo" class="landing-logo mx-3">
+      <span class="landing-name">Chandra Baidya</span>
+    </div>
+
+    <!-- small underline -->
+    <hr class="landing-underline">
+
+    <!-- social icons -->
+    <div class="social-buttons my-3">
+      <a href="https://github.com/akashbaidya" class="mx-2"><i class="fa fa-github fa-2x"></i></a>
+      <a href="https://www.linkedin.com/in/akashbaidya" class="mx-2"><i class="fa fa-linkedin fa-2x"></i></a>
+    </div>
+
+    <!-- Intro paragraph -->
+    <p class="landing-intro">
+      Welcome to my homepage. I’m a master’s student in Data Science at Technische Universität Dortmund
+      and currently a Portfolio & Quantitative Analyst at RWE. With 5+ years in Python & full-stack
+      and 3+ years in data science, I’m seeking roles as a Data Scientist, Engineer or Software Engineer.
+    </p>
+
+    <!-- Visit / Contact buttons -->
+    <div class="d-flex justify-content-center mt-4">
+      <a href="#description" class="btn btn-primary btn-xl text-uppercase mx-2">Visit</a>
+      <a href="#contact"     class="btn btn-primary btn-xl text-uppercase mx-2">Contact</a>
+    </div>
+
+  </div>
+
+  <!-- down-arrow -->
+  <div class="arrowlanding">
+    <a class="js-scroll-trigger" href="#description">
+      <p class="down-arrow">&#xfe40;</p>
+    </a>
+  </div>
+</header>
+
 
 
   <!-- scripts -->
@@ -380,6 +346,51 @@
       </div>
     </div>
   </section>
+
+<!-- =======================  SKILLS SECTION ======================= -->
+<!-- =======================  SKILLS SECTION ======================= -->
+<section id="skills" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Skills &amp; Languages</h2>
+    <div class="row">
+
+      <!-- Languages -->
+      <div class="col-md-6 mb-4">
+        <h4>Languages</h4>
+        <div id="bengali-bar" class="skill-bar" data-perc="1.00" data-color="#6c757d">
+          <span>Bengali (Native)</span>
+        </div>
+        <div id="english-bar" class="skill-bar" data-perc="0.90" data-color="#007bff">
+          <span>English (Fluent, C1)</span>
+        </div>
+        <div id="german-bar" class="skill-bar" data-perc="0.60" data-color="#28a745">
+          <span>German (Beginner, A2)</span>
+        </div>
+      </div>
+
+      <!-- Technical Skills -->
+      <div class="col-md-6 mb-4">
+        <h4>Technical Skills</h4>
+        <div id="python-bar" class="skill-bar" data-perc="0.95" data-color="#ff6384">
+          <span>Python (NumPy, Pandas, Scikit-learn, Keras, PyTorch, PySpark, FastAPI, Django)</span>
+        </div>
+        <div id="viz-bar" class="skill-bar" data-perc="0.85" data-color="#36a2eb">
+          <span>Visualization (Power BI, Tableau, Plotly, Dash, RShiny)</span>
+        </div>
+        <div id="db-bar" class="skill-bar" data-perc="0.80" data-color="#fbc02d">
+          <span>Databases &amp; Big Data (PostgreSQL, MySQL, MongoDB, Airflow, MLflow, Snowflake, Databricks)</span>
+        </div>
+        <div id="cloud-bar" class="skill-bar" data-perc="0.75" data-color="#9c27b0">
+          <span>Cloud &amp; DevOps (Git, Docker, Azure, AWS, CI/CD)</span>
+        </div>
+        <div id="stats-bar" class="skill-bar" data-perc="0.80" data-color="#20c997">
+          <span>Statistics &amp; ML Ops (SciPy, StatsModels, SAS, LLM fine-tuning)</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
 
 
 
@@ -1429,6 +1440,39 @@
     });
 
   </script>
+
+<!-- ProgressBar.js CDN -->
+<!-- ProgressBar.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const bars = document.querySelectorAll('#skills .skill-bar');
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const pct = parseFloat(el.dataset.perc);
+      const color = el.dataset.color;
+
+      // create and animate the line
+      new ProgressBar.Line(el, {
+        strokeWidth: 4,
+        easing: 'easeInOut',
+        duration: 1400,
+        color: color,
+        trailColor: '#e9ecef',
+        trailWidth: 1,
+        svgStyle: { width: '100%', height: '100%' }
+      }).animate(pct);
+
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  bars.forEach(bar => observer.observe(bar));
+});
+</script>
+
 
 
 
