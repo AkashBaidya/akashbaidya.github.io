@@ -1,0 +1,70 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["hi", "hello", "hey", "good morning", "good evening", "howdy", "what's up", "hola"],
+      "responses": ["Hello! I'm Akash's AI assistant. How can I help you today? You can ask about his skills, experience, projects, or services!", "Hi there! Welcome! I can tell you about Akash's expertise in AI, Data Science, and more. What would you like to know?"]
+    },
+    {
+      "tag": "skills",
+      "patterns": ["skills", "technologies", "tech stack", "what can he do", "programming", "languages", "tools", "expertise", "competencies"],
+      "responses": ["Akash is highly skilled in:\n\n**Programming:** Python (95%), R (85%), SQL (90%)\n\n**AI/ML:** PyTorch, TensorFlow, Scikit-learn, LangChain, RAG systems, LLMs (GPT-4, Claude, Mistral)\n\n**Data Engineering:** Databricks, Dremio, Airflow, Spark, Snowflake\n\n**Visualization:** Power BI, Tableau, Plotly, Matplotlib\n\n**Cloud & MLOps:** Azure, AWS, Docker, Kubernetes, MLflow"]
+    },
+    {
+      "tag": "experience",
+      "patterns": ["experience", "work history", "jobs", "career", "employment", "where does he work", "current job", "rwe", "professional background"],
+      "responses": ["Akash has impressive experience:\n\n**Current:** Solution Architect (AI) at RWE Renewables (Oct 2025 - Present)\n- Building RAG systems and LLM models\n- API integrations and AI solutions\n\n**Previous:**\n- Portfolio & Quantitative Analyst at RWEST (2025)\n- Data Scientist at IMSP, Munich (2024-2025)\n- Research Assistant at Forschungszentrum Borstel (2023-2024)\n- Research Assistant at E.ON RWTH Energy Research Center\n- 5+ years as Software Engineer"]
+    },
+    {
+      "tag": "education",
+      "patterns": ["education", "degree", "university", "study", "academic", "qualification", "school", "tu dortmund"],
+      "responses": ["Akash holds a **Master's degree in Data Science from TU Dortmund**, Germany. During his studies, he served as a Teaching Assistant for courses including Advanced Statistical Learning, Big Data Analytics, and Probabilistic Reasoning for Machine Learning."]
+    },
+    {
+      "tag": "services",
+      "patterns": ["services", "what do you offer", "help with", "can you build", "consulting", "freelance", "hire"],
+      "responses": ["Akash offers professional services in:\n\n**1. RAG Systems Development**\n- Document intelligence & vector databases\n- Custom embeddings & semantic search\n\n**2. LLM Development & Fine-tuning**\n- Prompt engineering & AI agents\n- Model selection & evaluation\n\n**3. Data Engineering**\n- ETL pipelines with Databricks/Dremio\n- Cloud architecture (Azure, AWS)\n\n**4. ML & Analytics**\n- Predictive models & anomaly detection\n- Power BI/Tableau dashboards"]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["contact", "email", "reach", "connect", "linkedin", "get in touch", "how to contact"],
+      "responses": ["You can reach Akash through:\n\n**Email:** akashbaidya2@gmail.com\n**LinkedIn:** linkedin.com/in/akashbaidya\n**GitHub:** github.com/AkashBaidya\n\nHe's always happy to discuss new projects and opportunities!"]
+    },
+    {
+      "tag": "projects",
+      "patterns": ["projects", "portfolio", "work samples", "what has he built", "examples", "github projects"],
+      "responses": ["Akash has worked on exciting projects:\n\n**1. MALDIX NLP & LLM Pipeline** - End-to-end NLP with Mistral AI\n\n**2. Time-Series Anomaly Detection** - LSTM-based energy anomaly detection\n\n**3. AutoML Cashflow Optimization** - ML solution for insurance forecasting\n\n**4. Credit Card Fraud Detection** - Imbalanced data classification\n\n**5. Germany Weather Data Engineering** - Scalable ETL pipeline\n\nCheck out more at: github.com/AkashBaidya"]
+    },
+    {
+      "tag": "location",
+      "patterns": ["location", "where", "based", "live", "city", "country", "germany", "dortmund"],
+      "responses": ["Akash is based in **Dortmund, Germany**. He's open to remote work and relocation within Germany and the EU."]
+    },
+    {
+      "tag": "rag",
+      "patterns": ["rag", "retrieval augmented", "vector database", "langchain", "llama index", "document qa"],
+      "responses": ["Akash specializes in **RAG (Retrieval-Augmented Generation)** systems:\n\n- **Tools:** LangChain, LlamaIndex, n8n\n- **Vector DBs:** ChromaDB, Pinecone, Weaviate\n- **Features:** Document processing, semantic search, custom embeddings, conversational AI\n\nHe builds intelligent Q&A systems that leverage your organization's knowledge base."]
+    },
+    {
+      "tag": "llm",
+      "patterns": ["llm", "large language model", "gpt", "chatgpt", "claude", "mistral", "fine-tuning", "prompt engineering"],
+      "responses": ["Akash works extensively with **LLMs**:\n\n- **Models:** OpenAI GPT-4, Anthropic Claude, Mistral AI, Hugging Face models\n- **Capabilities:** Fine-tuning (LoRA, QLoRA), prompt engineering, AI agents\n- **Tools:** Transformers, PyTorch, OpenAI API\n\nHe can help you choose the right model and build custom AI solutions."]
+    },
+    {
+      "tag": "hiring",
+      "patterns": ["hire", "job", "position", "looking for work", "available", "open to opportunities", "job search"],
+      "responses": ["Yes! Akash is actively looking for opportunities as:\n\n- **AI Engineer**\n- **Data Scientist**\n- **Data Engineer**\n- **Software Engineer**\n\nHe's open to positions in Germany and the EU, including remote work. Contact him at akashbaidya2@gmail.com to discuss!"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["thanks", "thank you", "appreciate", "helpful", "great"],
+      "responses": ["You're welcome! Feel free to ask if you have more questions about Akash's work or how he can help with your project!"]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye", "goodbye", "see you", "take care", "later"],
+      "responses": ["Goodbye! Don't hesitate to come back if you have more questions. Have a great day!"]
+    }
+  ],
+  "fallback": "I can help you learn about Akash's skills, experience, projects, services, and how to contact him. Try asking about his AI expertise, current role at RWE, or available services!"
+}

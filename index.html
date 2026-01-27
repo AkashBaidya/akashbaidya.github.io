@@ -19,7 +19,7 @@
 <title>Akash Baidya | Data Scientist & Quantitative Analyst</title>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description"
-  content="Data Scientist & Quantitative Analyst at RWE Supply & Trading GmbH. Master’s student in Data Science, visualization enthusiast, and former software engineer with expertise in NLP, Gen-AI, ML, and data engineering.">
+  content="Solution Architect (AI) at RWE Renewables. Data Science professional from TU Dortmund with expertise in RAG systems, LLMs, NLP, Gen-AI, ML, and data engineering.">
 <meta name="keywords"
   content="Data Scientist, Quantitative Analyst, NLP, Generative AI, LLM, Anomaly Detection, Data Engineering, Python, Databricks, Dremio, Portfolio Analysis, Data Visualization">
 <meta name="author" content="Akash Chandra Baidya">
@@ -43,16 +43,26 @@
   <!-- Bootstrap core CSS -->
   <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-  <!-- Custom fonts for this template -->
+  <!-- Fluent UI Fonts - Segoe UI -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Fluent UI Icons -->
+  <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/assets/icons/fabricmdl2icons.css">
+  <link rel="stylesheet" href="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/css/fabric.min.css">
+
+  <!-- Font Awesome 6 (Latest) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Legacy Font Awesome for compatibility -->
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
-    type='text/css'>
-  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
   <!-- Custom styles for this template -->
   <link href="css/agency.css" rel="stylesheet">
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
@@ -71,7 +81,7 @@
 
 
 <!-- =======================  NAVIGATION  ======================= -->
-<nav class="navbar navbar-expand-lg fixed-top bg-white" id="mainNav">
+<nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
   <div class="container">
     <button class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -81,14 +91,29 @@
 
     <div class="collapse navbar-collapse justify-content-center" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase">
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#description">Intro</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills">Skills</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience">Experience</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services">Services</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#testimonial">Testimonials</a></li>
-        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact">Contact</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#description" data-en="Intro" data-de="Einführung">Intro</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#skills" data-en="Skills" data-de="Fähigkeiten">Skills</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#experience" data-en="Experience" data-de="Erfahrung">Experience</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#services" data-en="Services" data-de="Dienste">Services</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects" data-en="Projects" data-de="Projekte">Projects</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#testimonial" data-en="Testimonials" data-de="Referenzen">Testimonials</a></li>
+        <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#contact" data-en="Contact" data-de="Kontakt">Contact</a></li>
       </ul>
+      <!-- Theme & Language Controls -->
+      <div class="nav-controls ml-3">
+        <button id="themeToggle" class="btn btn-sm btn-outline-secondary mr-2 fluent-btn" title="Toggle Dark Mode">
+          <i class="fas fa-moon"></i>
+        </button>
+        <div class="dropdown d-inline-block">
+          <button class="btn btn-sm btn-outline-secondary dropdown-toggle fluent-btn" type="button" id="langDropdown" data-toggle="dropdown">
+            <i class="fas fa-globe"></i> EN
+          </button>
+          <div class="dropdown-menu dropdown-menu-right fluent-dropdown">
+            <a class="dropdown-item" href="#" data-lang="en">🇬🇧 English</a>
+            <a class="dropdown-item" href="#" data-lang="de">🇩🇪 Deutsch</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </nav>
@@ -118,13 +143,14 @@
     </div>
 
     <!-- Intro paragraph -->
-    <p class="landing-intro">
-     Welcome to my homepage. I’m Akash Chandra Baidya, a Data Science professional from TU Dortmund and currently a Solution Architect (AI) at RWE. With 5+ years of experience in Python & full-stack development and 3+ years in data science, I build end-to-end data and AI solutions (automation, analytics, and RAG/LLM applications). I’m actively looking for AI Engineer, Data Scientist, Data Engineer, and Software Engineer positions.
+    <p class="landing-intro" data-i18n="landing.welcome">
+     Welcome to my homepage. I'm Akash Chandra Baidya, a Data Science professional from TU Dortmund and currently a Solution Architect (AI) at RWE Renewables. With 5+ years of experience in Python & full-stack development and 3+ years in data science, I build end-to-end data and AI solutions (automation, analytics, and RAG/LLM applications). I'm actively looking for AI Engineer, Data Scientist, Data Engineer, and Software Engineer positions.
+    </p>
 
     <!-- Visit / Contact buttons -->
     <div class="d-flex justify-content-center mt-4">
-      <a href="#description" class="btn btn-primary btn-xl text-uppercase mx-2">Visit</a>
-      <a href="#contact"     class="btn btn-primary btn-xl text-uppercase mx-2">Contact</a>
+      <a href="#description" class="btn btn-primary btn-xl text-uppercase mx-2" data-i18n="landing.visit">Visit</a>
+      <a href="#contact" class="btn btn-primary btn-xl text-uppercase mx-2" data-i18n="landing.contactBtn">Contact</a>
     </div>
 
   </div>
@@ -204,28 +230,45 @@ Across roles and projects, I’ve worked in diverse industries and research area
 <!-- Experience -->
   <section id="experience" class="py-5 bg-light">
     <div class="container">
-      <h2 class="mb-4 text-center">Experience</h2>
+      <h2 class="mb-4 text-center" data-aos="fade-up" data-i18n="experience.title">Experience</h2>
       <div class="row">
-        <!-- RWE -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <!-- RWE Renewables - Solution Architect AI -->
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+          <div class="card h-100 shadow-sm experience-card">
+            <div class="card-header d-flex align-items-center bg-white">
+              <i class="fas fa-robot fa-2x mr-3 text-success"></i>
+              <h5 class="mb-0">Solution Architect - AI</h5>
+            </div>
+            <div class="card-body">
+              <p class="text-muted mb-2">RWE Renewables, Essen<br><small>Oct 2025 &ndash; Present</small></p>
+              <ul class="pl-3 mb-0">
+                <li>Enhancing user experience by creating RAG systems (Retrieval-Augmented Generation) and LLM models.</li>
+                <li>Optimizing API integrations and answering domain-specific questions using AI.</li>
+                <li>Skills: Artificial Intelligence (AI), n8n, LLM, RAG.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- RWEST - Portfolio & Quantitative Analyst -->
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+          <div class="card h-100 shadow-sm experience-card">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-chart-line fa-2x mr-3 text-primary"></i>
               <h5 class="mb-0">Portfolio &amp; Quantitative Analyst</h5>
             </div>
             <div class="card-body">
-              <p class="text-muted mb-2">RWE Supply &amp; Trading GmbH, Essen<br><small>Jan 2025 &ndash; Present</small></p>
+              <p class="text-muted mb-2">RWE Supply &amp; Trading GmbH (RWEST), Essen<br><small>Jan 2025 &ndash; Nov 2025</small></p>
               <ul class="pl-3 mb-0">
-                <li>Implemented quantitative models and portfolio analyses to support trading &amp; risk management.</li>
-                <li>Built Databricks &amp; Python ETL pipelines (SQL, Dremio).</li>
-                <li>Created Power BI &amp; Tableau dashboards for P&amp;L and risk metrics.</li>
+                <li>Developed quantitative models and conducted portfolio analysis to support trading &amp; risk management.</li>
+                <li>Designed and optimized data workflows using Databricks, Dremio, SQL, and Python.</li>
+                <li>Ensured seamless data integration and analysis for trading decisions.</li>
               </ul>
             </div>
           </div>
         </div>
         <!-- IMSP -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+          <div class="card h-100 shadow-sm experience-card">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-database fa-2x mr-3 text-success"></i>
               <h5 class="mb-0">Data Scientist</h5>
@@ -241,8 +284,8 @@ Across roles and projects, I’ve worked in diverse industries and research area
           </div>
         </div>
         <!-- Borstel -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+          <div class="card h-100 shadow-sm experience-card">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-chart-pie fa-2x mr-3 text-info"></i>
               <h5 class="mb-0">Research Assistant (Data Viz)</h5>
@@ -257,8 +300,8 @@ Across roles and projects, I’ve worked in diverse industries and research area
           </div>
         </div>
         <!-- E.ON RWTH -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+          <div class="card h-100 shadow-sm experience-card">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-flask fa-2x mr-3 text-warning"></i>
               <h5 class="mb-0">Research Assistant</h5>
@@ -273,8 +316,8 @@ Across roles and projects, I’ve worked in diverse industries and research area
           </div>
         </div>
         <!-- ITM System -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+          <div class="card h-100 shadow-sm experience-card">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-tasks fa-2x mr-3 text-danger"></i>
               <h5 class="mb-0">Assistant Project Manager</h5>
@@ -289,8 +332,8 @@ Across roles and projects, I’ve worked in diverse industries and research area
           </div>
         </div>
         <!-- Ubitrix BD -->
-        <div class="col-md-6 col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+          <div class="card h-100 shadow-sm experience-card">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-code fa-2x mr-3 text-secondary"></i>
               <h5 class="mb-0">Consultant Software Engineer</h5>
@@ -310,113 +353,119 @@ Across roles and projects, I’ve worked in diverse industries and research area
    <!-- Projects -->
   <section id="projects" class="py-5 bg-white">
     <div class="container">
-      <h2 class="mb-4 text-center">Projects</h2>
+      <h2 class="mb-4 text-center" data-aos="fade-up" data-i18n="projects.title">Projects</h2>
       <div class="row">
         <!-- MALDIX NLP & LLM Pipeline -->
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 shadow-sm project-card">
             <div class="card-body">
               <h5>
-                <i class="fas fa-project-diagram mr-2"></i>
+                <i class="fas fa-project-diagram mr-2 text-primary"></i>
                 MALDIX NLP &amp; LLM Pipeline
                 <a href="https://github.com/AkashBaidya/maldix-nlp-pipeline" target="_blank" class="float-right text-dark">
                   <i class="fab fa-github fa-lg"></i>
                 </a>
               </h5>
-              <p>Python • spaCy • NLTK • PyMongo. Fine-tuned LLMs with Mistral AI.</p>
+              <p class="text-muted small mb-2">Python • spaCy • NLTK • PyMongo • Mistral AI</p>
+              <p>End-to-end NLP pipeline for document processing and information extraction. Features fine-tuned LLMs using Mistral AI for domain-specific text understanding, entity recognition, and intelligent query answering.</p>
             </div>
           </div>
         </div>
         <!-- Anomaly Detection -->
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 shadow-sm project-card">
             <div class="card-body">
               <h5>
-                <i class="fas fa-bug mr-2"></i>
-                Anomaly Detection
+                <i class="fas fa-bug mr-2 text-danger"></i>
+                Time-Series Anomaly Detection
                 <a href="https://github.com/AkashBaidya/Time-Series-Anomaly-Detection" target="_blank" class="float-right text-dark">
                   <i class="fab fa-github fa-lg"></i>
                 </a>
               </h5>
-              <p>PyTorch LSTM for energy usage anomalies.</p>
+              <p class="text-muted small mb-2">PyTorch • LSTM • Pandas • Matplotlib</p>
+              <p>Deep learning system for detecting anomalies in energy consumption data. Uses LSTM neural networks to learn normal patterns and flag unusual usage, helping identify equipment failures or energy theft.</p>
             </div>
           </div>
         </div>
         <!-- AutoML Cashflow Optimization -->
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 shadow-sm project-card">
             <div class="card-body">
               <h5>
-                <i class="fas fa-cash-register mr-2"></i>
+                <i class="fas fa-cash-register mr-2 text-success"></i>
                 AutoML Cashflow Optimization
                 <a href="https://github.com/AkashBaidya/AutoML-Cashflow-Optimization-for-Insurance-Company" target="_blank" class="float-right text-dark">
                   <i class="fab fa-github fa-lg"></i>
                 </a>
               </h5>
-              <p>AutoML &amp; Power BI dashboards optimizing cashflow.</p>
+              <p class="text-muted small mb-2">AutoML • Power BI • Python • Scikit-learn</p>
+              <p>Automated ML solution for insurance cashflow prediction. Combines AutoML model selection with interactive Power BI dashboards, enabling data-driven financial planning and risk assessment.</p>
             </div>
           </div>
         </div>
         <!-- Credit Card Fraud Detection -->
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 shadow-sm project-card">
             <div class="card-body">
               <h5>
-                <i class="fas fa-credit-card mr-2"></i>
+                <i class="fas fa-credit-card mr-2 text-warning"></i>
                 Credit Card Fraud Detection
                 <a href="https://github.com/AkashBaidya/Credit-Card-Fraud-Detection" target="_blank" class="float-right text-dark">
                   <i class="fab fa-github fa-lg"></i>
                 </a>
               </h5>
-              <p>SMOTE • Logistic Regression &amp; GBM with Plotly &amp; Power BI.</p>
+              <p class="text-muted small mb-2">SMOTE • Logistic Regression • GBM • Plotly</p>
+              <p>Machine learning system to detect fraudulent transactions using imbalanced data techniques. Implements SMOTE oversampling with ensemble methods, achieving high precision while minimizing false positives.</p>
             </div>
           </div>
         </div>
         <!-- Germany Weather Data Engineering -->
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 shadow-sm project-card">
             <div class="card-body">
               <h5>
-                <i class="fas fa-cloud-sun mr-2"></i>
+                <i class="fas fa-cloud-sun mr-2 text-info"></i>
                 Germany Weather Data Engineering
                 <a href="https://github.com/AkashBaidya/germanyweatheranalysis" target="_blank" class="float-right text-dark">
                   <i class="fab fa-github fa-lg"></i>
                 </a>
               </h5>
-              <p>Python • SQL • REST APIs ETL pipeline for German weather data.</p>
+              <p class="text-muted small mb-2">Python • SQL • REST APIs • ETL • Data Pipeline</p>
+              <p>Scalable data engineering pipeline that ingests weather data from multiple German stations via REST APIs. Implements automated ETL workflows for data cleaning, transformation, and storage in SQL databases.</p>
             </div>
           </div>
         </div>
         <!-- Inventory Management System -->
-        <div class="col-lg-4 mb-4">
-          <div class="card h-100 shadow-sm">
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+          <div class="card h-100 shadow-sm project-card">
             <div class="card-body">
               <h5>
-                <i class="fas fa-boxes mr-2"></i>
+                <i class="fas fa-boxes mr-2 text-secondary"></i>
                 Inventory Management System
                 <a href="https://github.com/AkashBaidya/inventory-otp-system" target="_blank" class="float-right text-dark">
                   <i class="fab fa-github fa-lg"></i>
                 </a>
               </h5>
-              <p>Django • Android • PostgreSQL • OTP-based location control.</p>
+              <p class="text-muted small mb-2">Django • Android • PostgreSQL • REST API</p>
+              <p>Full-stack inventory tracking solution with OTP-based location verification. Features a Django backend, Android mobile app, and PostgreSQL database for real-time stock management across multiple warehouses.</p>
             </div>
           </div>
         </div>
       </div>
       <div class="text-center mt-4">
         <a href="https://github.com/AkashBaidya" target="_blank" class="btn btn-outline-dark">
-          <i class="fab fa-github mr-2"></i>More Projects
+          <i class="fab fa-github mr-2"></i><span data-i18n="projects.moreProjects">More Projects</span>
         </a>
       </div>
     </div>
   </section>
 <section id="github-summary" class="py-5 bg-white">
   <div class="container">
-     <h3 class="accent-tab">GitHub Summary</h3>
-      <p id="repo-count">Loading repos…</p>
+     <h3 class="accent-tab text-center" data-aos="fade-up" data-i18n="github.title">GitHub Summary</h3>
+      <p id="repo-count" class="text-center text-muted" data-aos="fade-up" data-aos-delay="100" data-i18n="github.loading">Loading repos...</p>
       <div class="row">
-        <div class="col-md-6 mb-4"><canvas id="langChart"></canvas></div>
-        <div class="col-md-6 mb-4"><canvas id="repoChart"></canvas></div>
+        <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="200"><canvas id="langChart"></canvas></div>
+        <div class="col-md-6 mb-4" data-aos="zoom-in" data-aos-delay="300"><canvas id="repoChart"></canvas></div>
       </div>
     </div>
 
@@ -425,7 +474,7 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
 <section id="skills" class="py-5 bg-light">
   <div class="container">
-    <h2 class="text-center mb-4">Skills &amp; Tools</h2>
+    <h2 class="text-center mb-4" data-i18n="skills.title">Skills &amp; Tools</h2>
     <div class="row">
       <!-- Programming Languages -->
       <div class="col-md-6 col-lg-3 mb-4">
@@ -550,34 +599,867 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
 
 
+  <!-- =======================  FLUENT UI GLOBAL STYLES ======================= -->
+  <style>
+    /* ========== Fluent UI Design Variables ========== */
+    :root {
+      /* Fluent Primary colors */
+      --fluent-primary: #0078d4;
+      --fluent-primary-dark: #106ebe;
+      --fluent-primary-light: #2b88d8;
+      --fluent-accent: #69b3a2;
+      --fluent-accent-dark: #4a9a8a;
+      --fluent-on-primary: #ffffff;
+
+      /* Fluent Surface colors - Light mode */
+      --fluent-bg: #faf9f8;
+      --fluent-surface: #ffffff;
+      --fluent-surface-secondary: #f3f2f1;
+      --fluent-surface-tertiary: #edebe9;
+      --fluent-text-primary: #323130;
+      --fluent-text-secondary: #605e5c;
+      --fluent-text-disabled: #a19f9d;
+      --fluent-border: #8a8886;
+      --fluent-border-light: #edebe9;
+      --fluent-divider: #e1dfdd;
+
+      /* Fluent Fonts */
+      --fluent-font: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+
+      /* Fluent Shadows (Depth) */
+      --fluent-shadow-4: 0 1.6px 3.6px 0 rgba(0,0,0,0.132), 0 0.3px 0.9px 0 rgba(0,0,0,0.108);
+      --fluent-shadow-8: 0 3.2px 7.2px 0 rgba(0,0,0,0.132), 0 0.6px 1.8px 0 rgba(0,0,0,0.108);
+      --fluent-shadow-16: 0 6.4px 14.4px 0 rgba(0,0,0,0.132), 0 1.2px 3.6px 0 rgba(0,0,0,0.108);
+      --fluent-shadow-64: 0 25.6px 57.6px 0 rgba(0,0,0,0.22), 0 4.8px 14.4px 0 rgba(0,0,0,0.18);
+
+      /* Fluent Border radius */
+      --fluent-radius-sm: 2px;
+      --fluent-radius-md: 4px;
+      --fluent-radius-lg: 8px;
+      --fluent-radius-xl: 12px;
+
+      /* Fluent Animation timing */
+      --fluent-duration-fast: 100ms;
+      --fluent-duration-normal: 200ms;
+      --fluent-duration-slow: 300ms;
+      --fluent-easing: cubic-bezier(0.1, 0.9, 0.2, 1);
+
+      /* Animation color for particles */
+      --particle-color: #69b3a2;
+    }
+
+    /* Fluent Dark mode variables */
+    body.dark-mode {
+      --fluent-bg: #1b1a19;
+      --fluent-surface: #292827;
+      --fluent-surface-secondary: #323130;
+      --fluent-surface-tertiary: #3b3a39;
+      --fluent-text-primary: #f3f2f1;
+      --fluent-text-secondary: #d2d0ce;
+      --fluent-text-disabled: #8a8886;
+      --fluent-border: #605e5c;
+      --fluent-border-light: #484644;
+      --fluent-divider: #484644;
+      --fluent-primary: #2899f5;
+      --fluent-primary-light: #6cb8f6;
+      --particle-color: #8ecec0;
+    }
+
+    /* ========== Global Fluent UI Styles ========== */
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--fluent-font) !important;
+      background-color: var(--fluent-bg);
+      color: var(--fluent-text-primary);
+      line-height: 1.5;
+      font-size: 14px;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color var(--fluent-duration-normal) var(--fluent-easing),
+                  color var(--fluent-duration-normal) var(--fluent-easing);
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--fluent-font) !important;
+      font-weight: 600;
+      color: var(--fluent-text-primary);
+      margin-bottom: 0.5em;
+    }
+
+    h1 { font-size: 42px; font-weight: 700; }
+    h2 { font-size: 28px; font-weight: 600; }
+    h3 { font-size: 20px; font-weight: 600; }
+    h4 { font-size: 16px; font-weight: 600; }
+    h5 { font-size: 14px; font-weight: 600; }
+
+    p {
+      font-weight: 400;
+      color: var(--fluent-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Fluent Cards */
+    .card {
+      background: var(--fluent-surface) !important;
+      border: 1px solid var(--fluent-border-light) !important;
+      border-radius: var(--fluent-radius-lg) !important;
+      box-shadow: var(--fluent-shadow-4);
+      transition: all var(--fluent-duration-normal) var(--fluent-easing);
+      overflow: hidden;
+    }
+
+    .card:hover {
+      box-shadow: var(--fluent-shadow-16);
+      transform: translateY(-2px);
+      border-color: var(--fluent-accent) !important;
+    }
+
+    .card-header {
+      background: var(--fluent-surface-secondary) !important;
+      border-bottom: 1px solid var(--fluent-divider) !important;
+      padding: 16px 20px;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    /* Fluent Buttons */
+    .btn, .fluent-btn {
+      font-family: var(--fluent-font);
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: var(--fluent-radius-md);
+      padding: 8px 20px;
+      min-height: 32px;
+      transition: all var(--fluent-duration-fast) var(--fluent-easing);
+      text-transform: none;
+      border: 1px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--fluent-accent) !important;
+      border-color: var(--fluent-accent) !important;
+      color: var(--fluent-on-primary) !important;
+    }
+
+    .btn-primary:hover {
+      background: var(--fluent-accent-dark) !important;
+      border-color: var(--fluent-accent-dark) !important;
+    }
+
+    .btn-secondary {
+      background: var(--fluent-surface) !important;
+      border: 1px solid var(--fluent-border) !important;
+      color: var(--fluent-text-primary) !important;
+    }
+
+    .btn-secondary:hover {
+      background: var(--fluent-surface-secondary) !important;
+    }
+
+    .btn-outline-secondary {
+      background: transparent !important;
+      border: 1px solid var(--fluent-border) !important;
+      color: var(--fluent-text-primary) !important;
+    }
+
+    .btn-outline-secondary:hover {
+      background: var(--fluent-surface-secondary) !important;
+      border-color: var(--fluent-accent) !important;
+      color: var(--fluent-accent) !important;
+    }
+
+    .btn-outline-dark {
+      border: 1px solid var(--fluent-text-primary) !important;
+      color: var(--fluent-text-primary) !important;
+      background: transparent !important;
+    }
+
+    .btn-outline-dark:hover {
+      background: var(--fluent-text-primary) !important;
+      color: var(--fluent-surface) !important;
+    }
+
+    /* Fluent Sections */
+    section {
+      background: var(--fluent-bg);
+      transition: background-color var(--fluent-duration-normal) var(--fluent-easing);
+    }
+
+    section.bg-light {
+      background: var(--fluent-surface-secondary) !important;
+    }
+
+    section.bg-white, section.bg {
+      background: var(--fluent-surface) !important;
+    }
+
+    /* Fluent Navigation */
+    #mainNav {
+      background: var(--fluent-surface) !important;
+      box-shadow: var(--fluent-shadow-4);
+      transition: all var(--fluent-duration-normal) var(--fluent-easing);
+      border-bottom: 1px solid var(--fluent-divider);
+    }
+
+    .nav-link {
+      font-family: var(--fluent-font) !important;
+      font-weight: 600 !important;
+      font-size: 14px !important;
+      color: var(--fluent-text-primary) !important;
+      padding: 8px 12px !important;
+      border-radius: var(--fluent-radius-md);
+      transition: all var(--fluent-duration-fast) var(--fluent-easing);
+    }
+
+    .nav-link:hover {
+      background: var(--fluent-surface-secondary);
+      color: var(--fluent-accent) !important;
+    }
+
+    /* Fluent Progress bars */
+    .progress {
+      height: 4px;
+      border-radius: var(--fluent-radius-sm);
+      background: var(--fluent-divider);
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      border-radius: var(--fluent-radius-sm);
+      transition: width var(--fluent-duration-slow) var(--fluent-easing);
+    }
+
+    /* Section headings - Fluent style */
+    section h2 {
+      font-size: 32px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      position: relative;
+      color: var(--fluent-text-primary);
+    }
+
+    section h2::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 3px;
+      background: var(--fluent-accent);
+      margin: 12px auto 0;
+      border-radius: var(--fluent-radius-sm);
+    }
+
+    /* Text utilities */
+    .text-muted {
+      color: var(--fluent-text-secondary) !important;
+    }
+
+    /* Links - Fluent style */
+    a {
+      color: var(--fluent-accent);
+      text-decoration: none;
+      transition: color var(--fluent-duration-fast) var(--fluent-easing);
+    }
+
+    a:hover {
+      color: var(--fluent-accent-dark);
+      text-decoration: underline;
+    }
+
+    /* Fluent Dropdown */
+    .dropdown-menu, .fluent-dropdown {
+      background: var(--fluent-surface);
+      border: 1px solid var(--fluent-border-light);
+      border-radius: var(--fluent-radius-md);
+      box-shadow: var(--fluent-shadow-16);
+      padding: 0.5rem;
+    }
+
+    .dropdown-item {
+      border-radius: var(--md-radius-sm);
+      padding: 0.5rem 1rem;
+      color: var(--md-on-surface);
+      transition: all var(--md-transition-fast);
+    }
+
+    .dropdown-item:hover {
+      background: var(--md-surface-variant);
+      color: var(--md-primary);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        opacity: 0;
+        transform: scale(0.9);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* Material Icon Button */
+    .icon-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--md-radius-full);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: none;
+      color: var(--md-on-surface);
+      cursor: pointer;
+      transition: all var(--md-transition-fast);
+    }
+
+    .icon-btn:hover {
+      background: var(--md-surface-variant);
+    }
+
+    /* Footer Material Style */
+    footer {
+      background: var(--md-surface-container-high) !important;
+      color: var(--md-on-surface);
+      border-top: 1px solid var(--md-outline-variant);
+    }
+
+    footer a {
+      color: var(--md-on-surface-variant);
+    }
+
+    footer a:hover {
+      color: var(--md-primary);
+    }
+
+    /* Carousel Material Style */
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: var(--md-primary);
+      border-radius: var(--md-radius-full);
+      padding: 1.5rem;
+    }
+  </style>
+
   <!-- =======================  SERVICES SECTION ======================= -->
   <style>
     .services-logo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
       margin: 15px;
-      color: #69b3a2;
-      font-size: 45px;
-      padding: 30px;
-      border-radius: 50%;
-      border-color: black;
-      border-width: 5px;
-      border: solid;
+      color: var(--md-primary);
+      width: 110px;
+      height: 110px;
+      border-radius: var(--md-radius-full);
+      border: 3px solid var(--md-primary);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+      background: transparent;
+    }
+
+    .services-logo::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: var(--md-primary);
+      border-radius: var(--md-radius-full);
+      transform: translate(-50%, -50%);
+      transition: all 0.4s ease;
+      z-index: 0;
+    }
+
+    .services-logo .material-icons-round {
+      position: relative;
+      z-index: 1;
     }
 
     .services-logo:hover {
       color: white;
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: var(--md-shadow-4);
+    }
+
+    .services-logo:hover::before {
+      width: 150%;
+      height: 150%;
+    }
+
+    .service-item {
+      transition: all 0.3s ease;
+      padding: 20px;
+      border-radius: 15px;
+    }
+
+    .service-item:hover {
+      transform: translateY(-10px);
+      background: rgba(105, 179, 162, 0.05);
+    }
+
+    body.dark-mode .service-item:hover {
+      background: rgba(105, 179, 162, 0.1);
+    }
+
+    .service-item h4 {
+      transition: all 0.3s ease;
+    }
+
+    .service-item:hover h4 {
+      color: #69b3a2;
+    }
+
+    /* Service floating animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .service-item:hover .services-logo {
+      animation: float 1s ease-in-out infinite;
+    }
+
+    /* Service plus button animation */
+    .service-plus {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--md-radius-full);
+      background: var(--md-surface-container-high);
+      color: var(--md-primary);
+      font-size: 20px;
+      font-weight: bold;
+      transition: all var(--md-transition-normal);
+      text-decoration: none;
+    }
+
+    .service-plus .material-icons {
+      font-size: 24px;
+    }
+
+    .service-item:hover .service-plus {
+      background: var(--md-primary);
+      color: white;
+      transform: rotate(90deg);
+    }
+
+    body.dark-mode .service-plus {
+      background: var(--md-surface-container);
+    }
+
+    /* Card hover animations */
+    .project-card, .experience-card {
+      transition: all 0.3s ease-in-out;
+    }
+
+    .project-card:hover, .experience-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15) !important;
+    }
+
+    .project-card:hover h5 i, .experience-card:hover .card-header i {
+      animation: bounce 0.5s ease-in-out;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+
+    /* GitHub Summary section styling */
+    #github-summary canvas {
+      max-height: 300px;
+      min-height: 250px;
+    }
+
+    #github-summary .row {
+      min-height: 300px;
+    }
+
+    /* Theme Toggle & Language Selector */
+    .nav-controls {
+      display: flex;
+      align-items: center;
+    }
+
+    #mainNav {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    /* Dark Mode Styles */
+    body.dark-mode {
+      background-color: #1a1a2e !important;
+      color: #eaeaea !important;
+    }
+
+    body.dark-mode .bg-light {
+      background-color: #16213e !important;
+    }
+
+    body.dark-mode .bg-white {
+      background-color: #1a1a2e !important;
+    }
+
+    body.dark-mode .card {
+      background-color: #16213e !important;
+      border-color: #0f3460 !important;
+    }
+
+    body.dark-mode .card-header {
+      background-color: #0f3460 !important;
+      border-color: #0f3460 !important;
+    }
+
+    body.dark-mode h1, body.dark-mode h2, body.dark-mode h3,
+    body.dark-mode h4, body.dark-mode h5, body.dark-mode h6 {
+      color: #eaeaea !important;
+    }
+
+    body.dark-mode p, body.dark-mode li {
+      color: #b8b8b8 !important;
+    }
+
+    body.dark-mode .text-muted {
+      color: #8a8a8a !important;
+    }
+
+    body.dark-mode #mainNav {
+      background-color: #0f3460 !important;
+    }
+
+    body.dark-mode .nav-link {
+      color: #eaeaea !important;
+    }
+
+    body.dark-mode footer {
+      background-color: #0f3460 !important;
+    }
+
+    body.dark-mode .services-logo {
+      color: #69b3a2;
+      border-color: #69b3a2;
+    }
+
+    body.dark-mode #map {
+      filter: invert(90%) hue-rotate(180deg);
+    }
+
+    /* Additional dark mode styles for full coverage */
+    body.dark-mode .masthead {
+      background-color: #0a0a1a;
+    }
+
+    body.dark-mode .landing-name {
+      color: #eaeaea;
+    }
+
+    body.dark-mode .landing-intro {
+      color: #b8b8b8;
+    }
+
+    body.dark-mode .btn-outline-secondary {
+      color: #eaeaea;
+      border-color: #69b3a2;
+    }
+
+    body.dark-mode .btn-outline-secondary:hover {
       background-color: #69b3a2;
+      color: white;
+    }
+
+    body.dark-mode .dropdown-menu {
+      background-color: #16213e;
+      border-color: #0f3460;
+    }
+
+    body.dark-mode .dropdown-item {
+      color: #eaeaea;
+    }
+
+    body.dark-mode .dropdown-item:hover {
+      background-color: #0f3460;
+    }
+
+    body.dark-mode .modal-content {
+      background-color: #16213e;
+      color: #eaeaea;
+    }
+
+    body.dark-mode .modal-body p,
+    body.dark-mode .modal-body li {
+      color: #b8b8b8;
+    }
+
+    body.dark-mode .progress {
+      background-color: #0f3460;
+    }
+
+    body.dark-mode a {
+      color: #69b3a2;
+    }
+
+    body.dark-mode .carousel-control-prev-icon,
+    body.dark-mode .carousel-control-next-icon {
+      filter: invert(1);
+    }
+
+    body.dark-mode code {
+      background-color: #0f3460;
+      color: #69b3a2;
+    }
+
+    body.dark-mode hr {
+      border-color: #0f3460;
+    }
+
+    body.dark-mode .btn-secondary {
+      background-color: #0f3460;
+      border-color: #0f3460;
+    }
+
+    body.dark-mode .btn-primary {
+      background-color: #69b3a2;
+      border-color: #69b3a2;
+    }
+
+    body.dark-mode .section-heading,
+    body.dark-mode .accent-tab {
+      color: #eaeaea !important;
+    }
+
+    /* Chatbot Styles */
+    .chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 9999;
+    }
+
+    .chatbot-toggle {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%);
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(105, 179, 162, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .chatbot-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(105, 179, 162, 0.6);
+    }
+
+    .chatbot-toggle i {
+      font-size: 24px;
+      color: white;
+    }
+
+    .chatbot-window {
+      display: none;
+      position: absolute;
+      bottom: 70px;
+      right: 0;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    .chatbot-window.active {
+      display: flex;
+    }
+
+    body.dark-mode .chatbot-window {
+      background: #16213e;
+    }
+
+    .chatbot-header {
+      background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%);
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chatbot-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+
+    .chat-message {
+      margin-bottom: 10px;
+      padding: 10px 15px;
+      border-radius: 15px;
+      max-width: 80%;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-message.bot {
+      background: #f0f0f0;
+      margin-right: auto;
+    }
+
+    body.dark-mode .chat-message.bot {
+      background: #0f3460;
+      color: #eaeaea;
+    }
+
+    .chat-message.user {
+      background: #69b3a2;
+      color: white;
+      margin-left: auto;
+    }
+
+    .chatbot-input {
+      padding: 15px;
+      border-top: 1px solid #eee;
+      display: flex;
+      gap: 10px;
+    }
+
+    body.dark-mode .chatbot-input {
+      border-color: #0f3460;
+    }
+
+    .chatbot-input input {
+      flex: 1;
+      padding: 10px 15px;
+      border: 1px solid #ddd;
+      border-radius: 25px;
+      outline: none;
+    }
+
+    body.dark-mode .chatbot-input input {
+      background: #0f3460;
+      border-color: #0f3460;
+      color: #eaeaea;
+    }
+
+    .chatbot-input button {
+      background: #69b3a2;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 10px 15px;
+    }
+
+    .typing-indicator span {
+      width: 8px;
+      height: 8px;
+      background: #69b3a2;
+      border-radius: 50%;
+      animation: typing 1s infinite;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-5px); }
+    }
+
+    /* Quick suggestions in chatbot */
+    .quick-suggestions {
+      padding: 10px;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .quick-suggestions .btn {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 15px;
+      transition: all 0.2s ease;
+    }
+
+    .quick-suggestions .btn:hover {
+      background: #69b3a2;
+      color: white;
+      border-color: #69b3a2;
+    }
+
+    body.dark-mode .quick-suggestions .btn {
+      border-color: #69b3a2;
+      color: #69b3a2;
+    }
+
+    /* Smooth transitions for theme */
+    body, .card, .navbar, footer, section, .chatbot-window, .chat-message {
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
   </style>
 
-  <section id="services" class="bg">
+  <section id="services" class="bg py-5">
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center" style="padding-bottom: 3%">
-          <p style="display:inline; font-size: 35px">Services</p>
+          <h2 style="display:inline; font-size: 35px" data-aos="fade-up" data-i18n="services.title">Services</h2>
           <hr style="width: 100px; height: 1px; border:none;color:#333;background-color:#333;">
           <center>
-            <h3 style="max-width: 500px;  line-height: 27px;" class="section-subheading text-muted">Let me help make
-              better use of your data. My expertise can be used to clean, analyse, interpret and visualize your data.
+            <h3 style="max-width: 600px; line-height: 27px;" class="section-subheading text-muted" data-aos="fade-up" data-i18n="services.subtitle">
+              Transform your business with AI-powered solutions. From RAG systems to custom LLM applications, I deliver end-to-end AI and data engineering solutions.
             </h3>
           </center>
         </div>
@@ -585,40 +1467,56 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
       <div class="row">
 
-        <div class="col-lg-3 text-center">
-          <a data-toggle="modal" href="#dataManagement"><i class="fa fa-wrench services-logo"></i></a>
-          <a data-toggle="modal" href="#dataManagement">
-            <h4>Data Analysis</h4>
-          </a>
-          <p>Data harvesting, cleaning and reshaping. Development of automated workflows.</p>
-          <a data-toggle="modal" href="#dataManagement" style="font-size: 23px">+</a>
+        <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="100">
+          <div class="service-item">
+            <a data-toggle="modal" href="#ragService">
+              <span class="services-logo"><span class="material-icons-round" style="font-size: 45px; line-height: 1;">psychology</span></span>
+            </a>
+            <a data-toggle="modal" href="#ragService">
+              <h4 data-i18n="services.rag.title">RAG Systems</h4>
+            </a>
+            <p data-i18n="services.rag.desc">Build intelligent RAG (Retrieval-Augmented Generation) systems for domain-specific Q&A and document understanding.</p>
+            <a data-toggle="modal" href="#ragService" class="service-plus"><span class="material-icons">add</span></a>
+          </div>
         </div>
 
-        <div class="col-lg-3 text-center">
-          <a data-toggle="modal" href="#dataMining"><i class="fa fa-search services-logo"></i></a>
-          <a data-toggle="modal" href="#dataMining">
-            <h4>Data Mining</h4>
-          </a>
-          <p>Data exploration, application of statistical methods, reproducible data analysis.</p>
-          <a data-toggle="modal" href="#dataMining" style="font-size: 23px">+</a>
+        <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="200">
+          <div class="service-item">
+            <a data-toggle="modal" href="#llmService">
+              <span class="services-logo"><span class="material-icons-round" style="font-size: 45px; line-height: 1;">smart_toy</span></span>
+            </a>
+            <a data-toggle="modal" href="#llmService">
+              <h4 data-i18n="services.llm.title">LLM Development</h4>
+            </a>
+            <p data-i18n="services.llm.desc">Custom LLM fine-tuning, prompt engineering, and AI agent development for your specific use cases.</p>
+            <a data-toggle="modal" href="#llmService" class="service-plus"><span class="material-icons">add</span></a>
+          </div>
         </div>
 
-        <div class="col-lg-3 text-center">
-          <a data-toggle="modal" href="#dataViz"><i class="fa fa-bar-chart services-logo"></i></a>
-          <a data-toggle="modal" href="#dataViz">
-            <h4>Dataviz</h4>
-          </a>
-          <p>Creation of static and interactive data visualization and dashboards, review of scientific figures.</p>
-          <a data-toggle="modal" href="#dataViz" style="font-size: 23px">+</a>
+        <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="300">
+          <div class="service-item">
+            <a data-toggle="modal" href="#dataEngService">
+              <span class="services-logo"><span class="material-icons-round" style="font-size: 45px; line-height: 1;">storage</span></span>
+            </a>
+            <a data-toggle="modal" href="#dataEngService">
+              <h4 data-i18n="services.data.title">Data Engineering</h4>
+            </a>
+            <p data-i18n="services.data.desc">Scalable ETL pipelines, data warehousing with Databricks, Dremio, and cloud platforms (Azure, AWS).</p>
+            <a data-toggle="modal" href="#dataEngService" class="service-plus"><span class="material-icons">add</span></a>
+          </div>
         </div>
 
-        <div class="col-lg-3 text-center">
-          <a href="teaching.html"><i class="fa fa-university services-logo"></i></a>
-          <a href="teaching.html">
-            <h4>Teaching & Training</h4>
-          </a>
-          <p>Short talks or multi-day courses on data science, data engineering, Power BI, Tableau, data visualization, Python, matplotlib, dash, R, ggplot2, data analytics and more. </p>
-          <a href="teaching.html" style="font-size: 23px">+</a>
+        <div class="col-lg-3 col-md-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="400">
+          <div class="service-item">
+            <a data-toggle="modal" href="#mlService">
+              <span class="services-logo"><span class="material-icons-round" style="font-size: 45px; line-height: 1;">insights</span></span>
+            </a>
+            <a data-toggle="modal" href="#mlService">
+              <h4 data-i18n="services.ml.title">ML & Analytics</h4>
+            </a>
+            <p data-i18n="services.ml.desc">Machine learning models, predictive analytics, anomaly detection, and interactive dashboards with Power BI/Tableau.</p>
+            <a data-toggle="modal" href="#mlService" class="service-plus"><span class="material-icons">add</span></a>
+          </div>
         </div>
 
       </div>
@@ -627,73 +1525,163 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
 
  
-  <!-- =========================== REFERENCE SECTION ============================ -->
+  <!-- =========================== TESTIMONIALS SECTION ============================ -->
+  <style>
+    #testimonial {
+      background: var(--md-surface-container-high);
+      padding: 80px 0;
+    }
 
+    .testimonial-card {
+      background: var(--md-surface-container);
+      border-radius: var(--md-radius-xl);
+      padding: 2rem;
+      box-shadow: var(--md-shadow-2);
+      margin: 0 1rem;
+      transition: all var(--md-transition-normal);
+    }
+
+    .testimonial-card:hover {
+      box-shadow: var(--md-shadow-4);
+    }
+
+    .testimonial-img {
+      width: 120px;
+      height: 120px;
+      border-radius: var(--md-radius-full);
+      object-fit: cover;
+      border: 4px solid var(--md-primary);
+      box-shadow: var(--md-shadow-2);
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      color: var(--md-on-surface-variant);
+      line-height: 1.8;
+      position: relative;
+      padding: 1rem 0;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      font-size: 4rem;
+      color: var(--md-primary);
+      opacity: 0.3;
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      font-family: Georgia, serif;
+    }
+
+    .testimonial-author {
+      font-weight: 600;
+      color: var(--md-on-surface);
+      margin-bottom: 0.25rem;
+    }
+
+    .testimonial-role {
+      font-size: 0.875rem;
+      color: var(--md-on-surface-variant);
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 50px;
+      height: 50px;
+      background: var(--md-primary);
+      border-radius: var(--md-radius-full);
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 1;
+    }
+
+    .carousel-control-prev { left: -25px; }
+    .carousel-control-next { right: -25px; }
+
+    .carousel-control-prev:hover,
+    .carousel-control-next:hover {
+      background: var(--md-primary-dark);
+    }
+
+    @media (max-width: 768px) {
+      .carousel-control-prev,
+      .carousel-control-next {
+        display: none;
+      }
+    }
+  </style>
 
   <section id="testimonial">
     <div class="container">
+      <h2 class="text-center mb-5" data-aos="fade-up" data-i18n="testimonials.title">Testimonials</h2>
 
-      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="6000">
         <div class="carousel-inner" role="listbox">
 
-          <div class="carousel-item active">
-            <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
-                <img src="img/reference/chingu.jpg" style="border-radius: 50%" width="170px">
-              </div>
-              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
-                <br>
-                <p style="color: grey; font-size: 8"><i>"Akash was my assistant project manager for many healthcare technology projects including AI-powered text messaging engine, telehealth mobile application, and COVID-19 testing platform. He was always enthusiastic about technologies and willing to explore new solutions to enhance the products. 
-                  Akash is a professional, driven, and dedicated individual that will contribute tremendously to any projects he's given. Definitely recommended!"</i></p>
-                <p><a href="https://www.linkedin.com/in/chinguyencapm">Chi Nguyen</a> - <span
-                    style="font-size: 12px; display: inline;"><i>IT Project Manager at <a
-                        href="https://www.linkedin.com/company/shnaz">MD24 House Call, Inc</a></i></span></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="carousel-item">
-            <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
-                <img src="img/reference/miftah.jpeg" style="border-radius: 50%" width="170px">
-              </div>
-              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
-                <br>
-                <p style="color: grey; font-size: 8"><i>"Akash has worked in my team at his early stage of his career for some cutting edge research based application development. During his short period of career he really amazed me with his quick learning, and can do type attitude. He was very devoted to his work and good team player because of his communication skills. "</i></p>
-                <p><a href="https://www.linkedin.com/in/miftahckr">Md Miftah Uddin</a> - <span
-                    style="font-size: 12px; display: inline;"><i> Head of Strategic Business Unit at <a
-                        href="https://brainstation-23.com/">Brain Station 23</a></i></span></p>
+          <div class="carousel-item active" data-aos="fade-up">
+            <div class="testimonial-card mx-auto" style="max-width: 800px;">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                  <img src="img/reference/chingu.jpg" class="testimonial-img" alt="Chi Nguyen">
+                </div>
+                <div class="col-md-8">
+                  <p class="testimonial-quote">"Akash was my assistant project manager for many healthcare technology projects including AI-powered text messaging engine, telehealth mobile application, and COVID-19 testing platform. He was always enthusiastic about technologies and willing to explore new solutions to enhance the products. Akash is a professional, driven, and dedicated individual that will contribute tremendously to any projects he's given. Definitely recommended!"</p>
+                  <p class="testimonial-author">
+                    <a href="https://www.linkedin.com/in/chinguyencapm" target="_blank">Chi Nguyen</a>
+                  </p>
+                  <p class="testimonial-role">IT Project Manager at MD24 House Call, Inc</p>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="carousel-item">
-            <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
-                <img src="img/reference/yousuf.jpeg" style="border-radius: 50%" width="170px">
-              </div>
-              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
-                <br>
-                <p style="color: grey; font-size: 8"><i>"Akash was an amazing person to work with, and is not only a multi-skilled colleague, but also an inspiring individual. He showed tremendous expertise on Django, Android and PHP while working in Ubitrix Inc. I highly recommend him. I wish him very good success in his career."</i></p>
-                <p><a href="https://bd.linkedin.com/in/abuusuf">Abu Yousuf</a> - <span
-                    style="font-size: 12px; display: inline;"><i>Lead Engineer at <a
-                        href="Samsung R &D Institute Bangladesh">Samsung R &D Institute Bangladesh</a></i></span></p>
+            <div class="testimonial-card mx-auto" style="max-width: 800px;">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                  <img src="img/reference/miftah.jpeg" class="testimonial-img" alt="Md Miftah Uddin">
+                </div>
+                <div class="col-md-8">
+                  <p class="testimonial-quote">"Akash has worked in my team at his early stage of his career for some cutting edge research based application development. During his short period of career he really amazed me with his quick learning, and can do type attitude. He was very devoted to his work and good team player because of his communication skills."</p>
+                  <p class="testimonial-author">
+                    <a href="https://www.linkedin.com/in/miftahckr" target="_blank">Md Miftah Uddin</a>
+                  </p>
+                  <p class="testimonial-role">Head of Strategic Business Unit at Brain Station 23</p>
+                </div>
               </div>
             </div>
           </div>
 
           <div class="carousel-item">
-            <div class="row">
-              <div class="col-lg-4 col-md-6 col-sm-6" style="text-align: center">
-                <img src="img/reference/kaiser.jpeg" style="border-radius: 50%;" width="170px">
+            <div class="testimonial-card mx-auto" style="max-width: 800px;">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                  <img src="img/reference/yousuf.jpeg" class="testimonial-img" alt="Abu Yousuf">
+                </div>
+                <div class="col-md-8">
+                  <p class="testimonial-quote">"Akash was an amazing person to work with, and is not only a multi-skilled colleague, but also an inspiring individual. He showed tremendous expertise on Django, Android and PHP while working in Ubitrix Inc. I highly recommend him. I wish him very good success in his career."</p>
+                  <p class="testimonial-author">
+                    <a href="https://bd.linkedin.com/in/abuusuf" target="_blank">Abu Yousuf</a>
+                  </p>
+                  <p class="testimonial-role">Lead Engineer at Samsung R&D Institute Bangladesh</p>
+                </div>
               </div>
-              <div class="col-lg-8 col-md-6 col-sm-6 text-center text-md-left">
-                <br>
-                <p style="color: grey; font-size: 8"><i>"Both Akash and I joined our hands on several projects in Singer Bangladesh Ltd. These projects include technologies like Python, Django, REST API, Jasper Report, and Android App development. As a team member, he is very helpful, dedicated and a good team player.<br>His depth knowledge in Django & Android development helped us to solve some key challenges and deliver on time several times. His ability to take challenges and tackle pressure is remarkable. As a person, he is nice and polite. We still discuss our professional and personal issues. I highly recommend him as a true professional.</p>
-                <p><a href="https://www.linkedin.com/in/abu-kaiser-mohammad-hashem-277b3699/">Abu Kaiser Mohammad Hashem
-                  </a> - <span
-                    style="font-size: 12px; display: inline;"><i>Database Developer at the <a
-                        href="https://singerbd.com/about-singerbd">Singer BD LTD. </a></i></span></p>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="testimonial-card mx-auto" style="max-width: 800px;">
+              <div class="row align-items-center">
+                <div class="col-md-4 text-center mb-3 mb-md-0">
+                  <img src="img/reference/kaiser.jpeg" class="testimonial-img" alt="Abu Kaiser Mohammad Hashem">
+                </div>
+                <div class="col-md-8">
+                  <p class="testimonial-quote">"Both Akash and I joined our hands on several projects in Singer Bangladesh Ltd. These projects include technologies like Python, Django, REST API, Jasper Report, and Android App development. As a team member, he is very helpful, dedicated and a good team player. His depth knowledge in Django & Android development helped us to solve some key challenges. I highly recommend him as a true professional."</p>
+                  <p class="testimonial-author">
+                    <a href="https://www.linkedin.com/in/abu-kaiser-mohammad-hashem-277b3699/" target="_blank">Abu Kaiser Mohammad Hashem</a>
+                  </p>
+                  <p class="testimonial-role">Database Developer at Singer BD LTD</p>
+                </div>
               </div>
             </div>
           </div>
@@ -701,11 +1689,11 @@ Across roles and projects, I’ve worked in diverse industries and research area
         </div>
 
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="material-icons" style="color: white;">chevron_left</span>
           <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="material-icons" style="color: white;">chevron_right</span>
           <span class="sr-only">Next</span>
         </a>
       </div>
@@ -730,27 +1718,189 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
 
   <!-- ======================= CONTACT SECTION =============================== -->
+  <style>
+    /* Contact Section Styles */
+    #contact {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 80px 0;
+    }
 
-  <section id="contact" class="bg-light">
+    body.dark-mode #contact {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    body.dark-mode .contact-card {
+      background: #16213e;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+
+    .contact-icon-box {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      transition: all 0.3s ease;
+    }
+
+    .contact-icon-box i {
+      font-size: 32px;
+      color: white;
+    }
+
+    .contact-icon-box.email { background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%); }
+    .contact-icon-box.linkedin { background: linear-gradient(135deg, #0077b5 0%, #005885 100%); }
+    .contact-icon-box.github { background: linear-gradient(135deg, #333 0%, #1a1a1a 100%); }
+    .contact-icon-box.location { background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); }
+
+    .contact-item {
+      text-align: center;
+      padding: 30px 20px;
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-10px);
+      background: rgba(105, 179, 162, 0.1);
+    }
+
+    .contact-item:hover .contact-icon-box {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .contact-item h5 {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+    .contact-item p {
+      margin-bottom: 0;
+      color: #6c757d;
+    }
+
+    body.dark-mode .contact-item p {
+      color: #aaa;
+    }
+
+    .contact-header {
+      margin-bottom: 50px;
+    }
+
+    .contact-header h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .contact-header .subtitle {
+      font-size: 1.2rem;
+      color: #69b3a2;
+      margin-bottom: 20px;
+    }
+
+    .contact-cta {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid #eee;
+    }
+
+    body.dark-mode .contact-cta {
+      border-color: #0f3460;
+    }
+
+    .contact-cta .btn-contact {
+      padding: 15px 40px;
+      font-size: 1.1rem;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%);
+      border: none;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .contact-cta .btn-contact:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(105, 179, 162, 0.4);
+    }
+  </style>
+
+  <section id="contact">
     <div class="container">
-      <div class="row">
-        <div class="col-lg-2 text-center"></div>
-        <div class="col-lg-8 text-center">
-          <br><br><br>
-          <h2 class="section-heading text-uppercase" style="color: black">Contact</h2>
-          <p>Feel free to contact me for any question. For open source projects, please open an issue or pull request on
-            <a href="https://github.com/akashbaidya/">Github</a>. If you want to follow my work, reach me on <a
-              href="https://twitter.com/R_Graph_Gallery">Twitter</a>. Otherwise, send me an email at <a
-              href="mailto:akashbaidya2@gmail.com">akashbaidya2@gmail.com</a>.</p>
-          <div style="text-align:center">
-            <!-- <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-              href="https://github.com/holtzy/data_to_viz">Github</a>
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-              href="https://twitter.com/R_Graph_Gallery">Twitter</a> -->
-            <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger"
-              href="mailto:akashbaidya2@gmail.com">Mail</a>
-          </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="contact-card" data-aos="fade-up">
+            <div class="contact-header text-center">
+              <h2 class="text-uppercase" data-i18n="contact.title">Contact</h2>
+              <p class="subtitle" data-i18n="contact.subtitle">Let's work together</p>
+              <p class="text-muted" data-i18n="contact.description">I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!</p>
+            </div>
 
+            <div class="row">
+              <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="100">
+                <a href="mailto:akashbaidya2@gmail.com" class="text-decoration-none">
+                  <div class="contact-item">
+                    <div class="contact-icon-box email">
+                      <i class="fas fa-envelope"></i>
+                    </div>
+                    <h5 data-i18n="contact.email">Email Me</h5>
+                    <p>akashbaidya2@gmail.com</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="200">
+                <a href="https://www.linkedin.com/in/akashbaidya" target="_blank" class="text-decoration-none">
+                  <div class="contact-item">
+                    <div class="contact-icon-box linkedin">
+                      <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <h5 data-i18n="contact.linkedin">LinkedIn</h5>
+                    <p>/in/akashbaidya</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="300">
+                <a href="https://github.com/akashbaidya" target="_blank" class="text-decoration-none">
+                  <div class="contact-item">
+                    <div class="contact-icon-box github">
+                      <i class="fab fa-github"></i>
+                    </div>
+                    <h5 data-i18n="contact.github">GitHub</h5>
+                    <p>/AkashBaidya</p>
+                  </div>
+                </a>
+              </div>
+
+              <div class="col-md-6 col-lg-3" data-aos="zoom-in" data-aos-delay="400">
+                <div class="contact-item">
+                  <div class="contact-icon-box location">
+                    <i class="fas fa-map-marker-alt"></i>
+                  </div>
+                  <h5 data-i18n="contact.location">Location</h5>
+                  <p data-i18n="contact.locationValue">Dortmund, Germany</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-cta text-center">
+              <a href="mailto:akashbaidya2@gmail.com" class="btn btn-contact">
+                <i class="fas fa-paper-plane mr-2"></i>
+                <span data-i18n="contact.email">Send Message</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -765,45 +1915,126 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
   <!-- ======================== MAP SECTION ============================ -->
 
+  <section id="location" class="py-4">
+    <div class="container-fluid px-0">
+      <div class="text-center mb-4">
+        <h3 data-aos="fade-up"><i class="fas fa-map-marker-alt text-danger mr-2"></i><span data-i18n="location.title">Based in Dortmund, Germany</span></h3>
+        <p class="text-muted" data-aos="fade-up" data-i18n="location.subtitle">Open to remote work and relocation within Germany & EU</p>
+      </div>
+      <style>
+        #map {
+          height: 350px;
+          width: 100%;
+          border-radius: 0;
+          box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+        }
+        .leaflet-popup-content-wrapper {
+          border-radius: 10px;
+        }
+        .map-popup {
+          text-align: center;
+          padding: 5px;
+        }
+        .map-popup img {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          margin-bottom: 10px;
+        }
+      </style>
+      <div id="map"></div>
+    </div>
+  </section>
+
+  <script>
+    // Initialize map with Dortmund coordinates
+    var mymap = L.map('map', {
+      scrollWheelZoom: false
+    }).setView([51.5136, 7.4653], 12);
+
+    // Use CartoDB Voyager tiles (clean, modern look)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      maxZoom: 19
+    }).addTo(mymap);
+
+    // Custom marker icon with pulse animation
+    var customIcon = L.divIcon({
+      className: 'custom-marker',
+      html: '<div class="marker-pin"><div class="marker-pulse"></div></div>',
+      iconSize: [30, 30],
+      iconAnchor: [15, 15]
+    });
+
+    // Add marker with popup
+    var marker = L.marker([51.5136, 7.4653], {icon: customIcon}).addTo(mymap);
+    marker.bindPopup('<div class="map-popup"><img src="img/team/YH_pic_square.png" alt="Akash"><br><strong>Akash Baidya</strong><br>Dortmund, Germany</div>');
+  </script>
+
   <style>
-    /* Set the size of the div element that contains the map */
-    #map {
-      height: 300px;
-      /* The height is 400 pixels */
-      width: 100%;
-      /* The width is the width of the web page */
-      background-color: grey;
-      opacity: 1
+    .marker-pin {
+      background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      border: 3px solid white;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      position: relative;
+    }
+    .marker-pulse {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: rgba(105, 179, 162, 0.4);
+      animation: pulse 2s infinite;
+      top: -3px;
+      left: -3px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(2.5); opacity: 0; }
     }
   </style>
-  <!-- center: { lat: 43.61092, lng: 3.87723 } -->
-
-  <!--The div element for the map -->
-  <div id="map"></div>
-  <script>
-    var mymap = L.map('map').setView([51.5136, 7.4653], 13); // Update the coordinates to Dortmund
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 18,
-      id: 'mapbox/streets-v11',
-      tileSize: 512,
-      zoomOffset: -1,
-      accessToken: 'pk.eyJ1IjoiaG9sdHp5YW4iLCJhIjoiY2tmczBrd3BrMGJodDJ0bXQ5aW9sZXJ6eCJ9.8zTEkfZ54u4TvDGNjNh-Cg'
-    }).addTo(mymap);
-    var marker = L.marker([51.5136, 7.4653]).addTo(mymap); // Update the coordinates to Dortmund
-  </script>
   
 
 
 
 
 
+  <!-- ======================= CHATBOT WIDGET ================================ -->
+  <div class="chatbot-container">
+    <div class="chatbot-window" id="chatbotWindow">
+      <div class="chatbot-header">
+        <div>
+          <i class="fas fa-robot mr-2"></i>
+          <strong>Ask Akash AI</strong>
+        </div>
+        <button onclick="toggleChatbot()" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="chatbot-messages" id="chatMessages">
+        <div class="chat-message bot">
+          Hi! I'm Akash's AI assistant. Ask me anything about his skills, experience, projects, or how he can help you!
+        </div>
+      </div>
+      <div class="chatbot-input">
+        <input type="text" id="chatInput" placeholder="Type your question..." onkeypress="if(event.key==='Enter')sendMessage()">
+        <button onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+    <button class="chatbot-toggle" onclick="toggleChatbot()" title="Chat with Akash AI">
+      <i class="fas fa-comments"></i>
+    </button>
+  </div>
+
   <!-- ======================= FOOTER SECTION ================================ -->
   <footer>
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <span class="copyright">Copyright &copy; Akash Chandra Baidya 2023</span>
+          <span class="copyright">Copyright &copy; Akash Chandra Baidya 2025</span>
         </div>
         <div class="col-md-4">
           <ul class="list-inline social-buttons">
@@ -854,198 +2085,125 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
   <!-- =================== MODAL SECTION ===================================== -->
 
-
-  <!-- Data management -->
-  <center>
-    <div class="portfolio-modal modal fade" id="dataManagement" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog h-100">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-10 mx-auto">
-                <div class="modal-body">
-                  <i class="fa fa-wrench services-logo"></i>
-                  <h4>Data Management</h4>
-                  <p style="max-width: 600px">A data project always start with a data enginering step. You need to
-                    harvest data and store it in an adequate format to be able to use it.</p>
-                  <div style="text-align: left">
-                    <h6>I can help you to..</h6>
-                    <hr>
-                    <ul>
-                      <li><u>Harvest</u> data from different sources like <code>APIs</code>, <code>SQL</code>
-                        databases or messy <code>Excel</code> spreadsheets.</li>
-                      <li><u>Reformat</u> and reshape data to make further analyses easier.</li>
-                      <li><u>Clean</u> datasets removing outliers and abberant data.</li>
-                      <li>Create reproducible data preparation <u>workflows</u></li>
-                      <li><u>Automatize</u> the creation of data related reports</li>
-                    </ul>
-                    <br>
-<!--                     <h6>Example:</h6>
-                    <hr>
-                    <ul>
-                      <li>I collected tweets containing the <code>#surf</code> for 9 months to study how surfers use
-                        social media. I used the <code>twitter API</code> and made the data collection automatic
-                        thanks to a personnal <code>webserver</code> and a custom <code>R script</code>.</li>
-                      <li>I created a <code>dashboard</code> for a company called Terres Inovia. It is directly
-                        plugged on their <code>SQL database</code> and allows to access its information in real time.
-                      </li>
-                    </ul>
-                    <br> -->
-                    <h6>Contact me</h6>
-                    <hr>
-                    <span>Tell me more about your project at <a
-                        href="mailto:akashbaidya2@gmail.com">akashbaidya2@gmail.com</a> to see if we can work
-                      together.</span>
-                    <div style="margin-top: 15px;">
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="https://github.com/akashbaidya">Github</a>
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="https://twitter.com/akashbaidya">Twitter</a>
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="mailto:akashbaidya2@gmail.com">Mail</a>
-                    </div>
-                    <br><br><br>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <!-- RAG Systems Service Modal -->
+  <div class="portfolio-modal modal fade" id="ragService" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%); color: white;">
+          <h5 class="modal-title"><i class="fas fa-brain mr-2"></i>RAG Systems Development</h5>
+          <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="lead">Build intelligent question-answering systems that leverage your organization's knowledge base.</p>
+          <h6><i class="fas fa-check-circle text-success mr-2"></i>What I Offer:</h6>
+          <ul>
+            <li><strong>Document Intelligence:</strong> Process PDFs, Word docs, and web content into searchable knowledge bases</li>
+            <li><strong>Vector Database Setup:</strong> Implement ChromaDB, Pinecone, or Weaviate for semantic search</li>
+            <li><strong>Custom Embeddings:</strong> Fine-tune embedding models for domain-specific terminology</li>
+            <li><strong>API Integration:</strong> Connect with n8n, Make, or custom REST APIs</li>
+            <li><strong>Conversational AI:</strong> Build chat interfaces with context-aware responses</li>
+          </ul>
+          <h6><i class="fas fa-tools text-primary mr-2"></i>Tech Stack:</h6>
+          <p><code>LangChain</code> <code>LlamaIndex</code> <code>OpenAI</code> <code>Mistral AI</code> <code>ChromaDB</code> <code>n8n</code> <code>FastAPI</code></p>
+          <hr>
+          <div class="text-center">
+            <a href="mailto:akashbaidya2@gmail.com" class="btn btn-primary"><i class="fas fa-envelope mr-2"></i>Discuss Your Project</a>
+            <a href="https://github.com/AkashBaidya/maldix-nlp-pipeline" target="_blank" class="btn btn-outline-dark"><i class="fab fa-github mr-2"></i>See Example</a>
           </div>
         </div>
       </div>
-  </center>
+    </div>
+  </div>
 
-
-  <!-- Data mining -->
-  <center>
-    <div class="portfolio-modal modal fade" id="dataMining" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog h-100">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-10 mx-auto">
-                <div class="modal-body">
-                  <i class="fa fa-search services-logo"></i>
-                  <h4>Data Mining</h4>
-                  <p style="max-width: 600px">Crunch the data to get answer to your question. Give insight to the
-                    information.</p>
-                  <div style="text-align: left">
-                    <h6>I can help you for</h6>
-                    <hr>
-                    <ul>
-                      <li><u>Exploratory analysis</u> of a dataset.</li>
-                      <li>Creation of clean and reproducible <u>reports</u> using <code>R Markdown</code>.</li>
-                      <li>Application of <u>statistical methods</u> on your dataset.</li>
-                      <li>Creation of <u>custom scripts</u> for analysing your data automatically</li>
-                    </ul>
-                    <br>
-<!--                     <h6>Example:</h6>
-                    <hr>
-                    <ul>
-                      <li>I'm the author of several <a href="https://github.com/holtzy/Publication">scientific
-                          publications</a> where I was in charge to explore and understand complex dataset in order to
-                        answer scientific questions.</li>
-                      <li>I recovered information about crypto currency prices on different exchanges and explored the
-                        data looking for <a target="_blank" href="https://holtzy.github.io/Crypto-Arbitrage/">arbitrage
-                          opportunities</a>.</li>
-                    </ul>
-                    <br> -->
-                    <h6>Contact me</h6>
-                    <hr>
-                    <span>Tell me more about your project at <a
-                        href="mailto:akashbaidya2@gmail.com">akashbaidya2@gmail.com</a> to see if we can work
-                      together.</span>
-                    <div style="margin-top: 15px;">
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="https://github.com/akashbaidya">Github</a>
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="https://twitter.com/akashbaidya">Twitter</a>
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="mailto:akashbaidya2@gmail.com">Mail</a>
-                    </div>
-                    <br><br><br>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <!-- LLM Development Service Modal -->
+  <div class="portfolio-modal modal fade" id="llmService" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%); color: white;">
+          <h5 class="modal-title"><i class="fas fa-robot mr-2"></i>LLM Development & Fine-Tuning</h5>
+          <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="lead">Custom AI solutions tailored to your business needs using state-of-the-art language models.</p>
+          <h6><i class="fas fa-check-circle text-success mr-2"></i>What I Offer:</h6>
+          <ul>
+            <li><strong>Prompt Engineering:</strong> Optimize prompts for accuracy, consistency, and cost efficiency</li>
+            <li><strong>Fine-Tuning:</strong> Adapt models to your domain using LoRA, QLoRA, or full fine-tuning</li>
+            <li><strong>AI Agents:</strong> Build autonomous agents that can execute multi-step tasks</li>
+            <li><strong>Model Selection:</strong> Choose the right model (GPT-4, Claude, Mistral, Llama) for your use case</li>
+            <li><strong>Evaluation & Testing:</strong> Implement robust testing frameworks for LLM outputs</li>
+          </ul>
+          <h6><i class="fas fa-tools text-primary mr-2"></i>Tech Stack:</h6>
+          <p><code>OpenAI API</code> <code>Anthropic Claude</code> <code>Mistral</code> <code>Hugging Face</code> <code>PyTorch</code> <code>Transformers</code></p>
+          <hr>
+          <div class="text-center">
+            <a href="mailto:akashbaidya2@gmail.com" class="btn btn-primary"><i class="fas fa-envelope mr-2"></i>Discuss Your Project</a>
+            <a href="https://www.linkedin.com/in/akashbaidya" target="_blank" class="btn btn-outline-dark"><i class="fab fa-linkedin mr-2"></i>Connect</a>
           </div>
         </div>
       </div>
-  </center>
+    </div>
+  </div>
 
-
-
-  <!-- Data viz -->
-  <center>
-    <div class="portfolio-modal modal fade" id="dataViz" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog h-100">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-10 mx-auto">
-                <div class="modal-body">
-                  <i class="fa fa-bar-chart services-logo"></i>
-                  <h4>Data Visualization</h4>
-                  <p style="max-width: 600px">I'm a recognized expert in the field of dataviz. I've created several <a
-                      href="#website" target="_blank">websites</a>.</p>
-                  <div style="text-align: left">
-                    <h6>I can help you with:</h6>
-                    <hr>
-                    <ul>
-                      <li>Creation and review of graphs for <u>scientific publication</u>.</li>
-                      <li>Development of <u>data application</u> using <code>R</code> and <code>Shiny</code>.</li>
-<!--                       <li>Creation of custom <u>data visualization for the web</u> using <code>d3.js</code>.</li> -->
-                      <li><u>Dashboard</u> creation for real time data analysis.</li>
-                      <li>Visualization of <u>geospatial</u> data.</li>
-                    </ul>
-                    <br>
-<!--                     <h6>Example:</h6>
-                    <hr>
-                    <ul>
-                      <li>A <a href="https://holtzyan.shinyapps.io/the-nb-como-project/">website</a> describing
-                        research results on mental disorders comorbidity.</li>
-                      <li><a href="https://www.data-to-viz.com">Data to viz</a>: a decision tree leading to the most
-                        appropriate chart type for your data.</li>
-                      <li>See many more examples in the <a href="#portofolio" target="_blank">portfolio</a> section of
-                        this website.</li>
-                    </ul>
-                    <br> -->
-                    <h6>Contact me</h6>
-                    <hr>
-                    <span>Tell me more about your project at <a
-                        href="mailto:akashbaidya2@gmail.com">akashbaidya2@gmail.com</a> to see if we can work
-                      together.</span>
-                    <div style="margin-top: 15px;">
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="https://github.com/akashbaidya">Github</a>
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="https://twitter.com/akashbaidya">Twitter</a>
-                      <a class="btn btn-secondary btn text-uppercase js-scroll-trigger"
-                        href="mailto:akashbaidya2@gmail.com">Mail</a>
-                    </div>
-                    <br><br><br>
-                  </div>
-                </div>
-              </div>
-            </div>
+  <!-- Data Engineering Service Modal -->
+  <div class="portfolio-modal modal fade" id="dataEngService" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%); color: white;">
+          <h5 class="modal-title"><i class="fas fa-database mr-2"></i>Data Engineering Solutions</h5>
+          <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="lead">Build scalable data pipelines and infrastructure to power your analytics and AI initiatives.</p>
+          <h6><i class="fas fa-check-circle text-success mr-2"></i>What I Offer:</h6>
+          <ul>
+            <li><strong>ETL Pipelines:</strong> Design and implement robust data extraction, transformation, and loading workflows</li>
+            <li><strong>Data Warehousing:</strong> Set up modern data warehouses with Databricks, Snowflake, or Dremio</li>
+            <li><strong>Cloud Architecture:</strong> Deploy solutions on Azure, AWS, or GCP with best practices</li>
+            <li><strong>Real-time Streaming:</strong> Implement Kafka, Spark Streaming for real-time data processing</li>
+            <li><strong>Data Quality:</strong> Establish data validation, monitoring, and governance frameworks</li>
+          </ul>
+          <h6><i class="fas fa-tools text-primary mr-2"></i>Tech Stack:</h6>
+          <p><code>Databricks</code> <code>Dremio</code> <code>Apache Spark</code> <code>Airflow</code> <code>Azure</code> <code>SQL</code> <code>Python</code></p>
+          <hr>
+          <div class="text-center">
+            <a href="mailto:akashbaidya2@gmail.com" class="btn btn-primary"><i class="fas fa-envelope mr-2"></i>Discuss Your Project</a>
+            <a href="https://github.com/AkashBaidya/germanyweatheranalysis" target="_blank" class="btn btn-outline-dark"><i class="fab fa-github mr-2"></i>See Example</a>
           </div>
         </div>
       </div>
-  </center>
+    </div>
+  </div>
+
+  <!-- ML & Analytics Service Modal -->
+  <div class="portfolio-modal modal fade" id="mlService" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header" style="background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%); color: white;">
+          <h5 class="modal-title"><i class="fas fa-chart-line mr-2"></i>Machine Learning & Analytics</h5>
+          <button type="button" class="close text-white" data-dismiss="modal"><span>&times;</span></button>
+        </div>
+        <div class="modal-body">
+          <p class="lead">Transform your data into actionable insights with custom ML models and interactive dashboards.</p>
+          <h6><i class="fas fa-check-circle text-success mr-2"></i>What I Offer:</h6>
+          <ul>
+            <li><strong>Predictive Models:</strong> Build forecasting, classification, and regression models</li>
+            <li><strong>Anomaly Detection:</strong> Identify outliers and unusual patterns in time-series data</li>
+            <li><strong>Dashboard Development:</strong> Create interactive Power BI, Tableau, or Plotly dashboards</li>
+            <li><strong>AutoML Solutions:</strong> Implement automated model selection and hyperparameter tuning</li>
+            <li><strong>MLOps:</strong> Deploy models with proper versioning, monitoring, and CI/CD pipelines</li>
+          </ul>
+          <h6><i class="fas fa-tools text-primary mr-2"></i>Tech Stack:</h6>
+          <p><code>Scikit-learn</code> <code>PyTorch</code> <code>TensorFlow</code> <code>Power BI</code> <code>Tableau</code> <code>MLflow</code> <code>Plotly</code></p>
+          <hr>
+          <div class="text-center">
+            <a href="mailto:akashbaidya2@gmail.com" class="btn btn-primary"><i class="fas fa-envelope mr-2"></i>Discuss Your Project</a>
+            <a href="https://github.com/AkashBaidya/Time-Series-Anomaly-Detection" target="_blank" class="btn btn-outline-dark"><i class="fab fa-github mr-2"></i>See Example</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- UKB geo application -->
   <center>
@@ -1503,6 +2661,15 @@ Across roles and projects, I’ve worked in diverse industries and research area
   <!-- Load d3.js -->
   <script src="https://d3js.org/d3.v4.min.js"></script>
 
+  <!-- Chart.js for GitHub Summary -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Typed.js for typing animation -->
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+
+  <!-- AOS Animation Library -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-79254642-3"></script>
   <script>
@@ -1516,7 +2683,7 @@ Across roles and projects, I’ve worked in diverse industries and research area
       new Typed('#typed', {
         strings: [
           "Hi, I'm Akash. I’m a results-driven Data Scientist with 3+ years in ML & Gen-AI and 5+ years of Full Stack Developer experience.",
-          "I leverage Python, Databricks & Dremio at RWE to perform Quantative Analysis.",
+          "I leverage Python, RAG systems & LLMs at RWE Renewables to build AI solutions.",
           "With a strong  data science and software engineering background, I craft for impactful data solutions."
         ],
         typeSpeed: 50,
@@ -1531,27 +2698,45 @@ Across roles and projects, I’ve worked in diverse industries and research area
         .then(repos => {
           const total = repos.length;
           document.getElementById('repo-count').textContent = `Public repos: ${total}`;
+
+          // Count languages (exclude null/undefined)
           const langCounts = {};
+          let nullCount = 0;
           repos.forEach(r => {
-            const l = r.language || 'Other';
-            langCounts[l] = (langCounts[l]||0) + 1;
+            if (r.language) {
+              langCounts[r.language] = (langCounts[r.language]||0) + 1;
+            } else {
+              nullCount++;
+            }
           });
+
+          // Sort and get top 5 actual languages
           const sorted = Object.entries(langCounts).sort((a,b)=>b[1]-a[1]);
-          const top5   = sorted.slice(0,5);
-          const others = total - top5.reduce((s,[,c])=>s+c,0);
-          const labels = top5.map(([l])=>l).concat(others?['Other']:[]);
-          const data   = top5.map(([,c])=>c).concat(others?[others]:[]);
+          const top5 = sorted.slice(0,5);
+          const remainingLangs = sorted.slice(5).reduce((s,[,c])=>s+c, 0);
+          const othersTotal = remainingLangs + nullCount;
+
+          const labels = top5.map(([l])=>l).concat(othersTotal > 0 ? ['Other'] : []);
+          const data = top5.map(([,c])=>c).concat(othersTotal > 0 ? [othersTotal] : []);
           const palette=['#69b3a2','#4dc9f6','#f67019','#f53794','#537bc4','#acc236'];
 
           new Chart(document.getElementById('langChart'), {
             type: 'bar',
             data: { labels, datasets: [{ label:'Repos by Language', data, backgroundColor:palette }] },
-            options: { responsive:true, maintainAspectRatio:false }
+            options: {
+              responsive:true,
+              maintainAspectRatio:false,
+              animation: { duration: 2000, easing: 'easeOutBounce' }
+            }
           });
           new Chart(document.getElementById('repoChart'), {
-            type: 'pie',
-            data: { labels, datasets: [{ data, backgroundColor:palette }] },
-            options: { responsive:true, maintainAspectRatio:false }
+            type: 'doughnut',
+            data: { labels, datasets: [{ data, backgroundColor:palette, borderWidth: 2 }] },
+            options: {
+              responsive:true,
+              maintainAspectRatio:false,
+              animation: { animateRotate: true, animateScale: true, duration: 1500 }
+            }
           });
         })
         .catch(() => {
@@ -1559,6 +2744,14 @@ Across roles and projects, I’ve worked in diverse industries and research area
         });
 
   document.addEventListener('DOMContentLoaded', () => {
+      // Initialize AOS animations
+      AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        offset: 100
+      });
+
       // Green particles.js
       particlesJS('particles-bg', {
         particles: {
@@ -1584,14 +2777,327 @@ Across roles and projects, I’ve worked in diverse industries and research area
 
       
 
-      // Leaflet map
-      const map = L.map('map').setView([51.5136,7.4653],13);
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
-        attribution:'© OpenStreetMap'
-      }).addTo(map);
-      L.marker([51.5136,7.4653]).addTo(map);
     });
 
+  </script>
+
+  <!-- Theme Toggle, Language Selector & Chatbot Scripts -->
+  <script>
+    // ==================== TRANSLATIONS ====================
+    let translations = null;
+
+    // Load translations from JSON
+    async function loadTranslations() {
+      try {
+        const response = await fetch('data/translations.json');
+        translations = await response.json();
+        const savedLang = localStorage.getItem('lang') || 'en';
+        applyTranslations(savedLang);
+      } catch (error) {
+        console.log('Using inline translations');
+      }
+    }
+
+    // Apply translations to all elements with data-i18n attribute
+    function applyTranslations(lang) {
+      if (!translations || !translations[lang]) return;
+
+      const t = translations[lang];
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        const keys = key.split('.');
+        let value = t;
+
+        for (const k of keys) {
+          if (value && value[k]) {
+            value = value[k];
+          } else {
+            value = null;
+            break;
+          }
+        }
+
+        if (value && typeof value === 'string') {
+          el.textContent = value;
+        }
+      });
+
+      // Update navigation items
+      document.querySelectorAll('.nav-link[data-en]').forEach(el => {
+        const text = el.getAttribute('data-' + lang);
+        if (text) el.textContent = text;
+      });
+
+      // Update chatbot
+      updateChatbotLanguage(lang);
+    }
+
+    function updateChatbotLanguage(lang) {
+      if (!translations || !translations[lang]) return;
+      const t = translations[lang];
+
+      const chatTitle = document.querySelector('.chatbot-header strong');
+      if (chatTitle && t.chatbot) chatTitle.textContent = t.chatbot.title;
+
+      const chatInput = document.getElementById('chatInput');
+      if (chatInput && t.chatbot) chatInput.placeholder = t.chatbot.placeholder;
+    }
+
+    // Initialize translations
+    loadTranslations();
+
+    // ==================== THEME TOGGLE ====================
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+
+    function updateThemeIcon(isDark) {
+      themeToggle.innerHTML = isDark
+        ? '<span class="material-icons-round">light_mode</span>'
+        : '<span class="material-icons-round">dark_mode</span>';
+    }
+
+    // Check for saved theme preference
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      updateThemeIcon(true);
+    } else {
+      updateThemeIcon(false);
+    }
+
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark-mode');
+      const isDark = body.classList.contains('dark-mode');
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+      updateThemeIcon(isDark);
+
+      // Smooth transition for all elements
+      document.querySelectorAll('*').forEach(el => {
+        el.style.transition = 'background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease';
+      });
+    });
+
+    // ==================== LANGUAGE SELECTOR ====================
+    const langItems = document.querySelectorAll('.dropdown-item[data-lang]');
+    const langBtn = document.getElementById('langDropdown');
+    const langFlags = { en: 'EN', de: 'DE', bn: 'BN' };
+
+    langItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        const lang = item.getAttribute('data-lang');
+        localStorage.setItem('lang', lang);
+        langBtn.innerHTML = `<span class="material-icons-round" style="font-size: 18px;">language</span> ${langFlags[lang]}`;
+
+        // Apply translations
+        applyTranslations(lang);
+
+        // Update nav items with old data attributes
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          if (el.hasAttribute('data-' + lang)) {
+            el.textContent = el.getAttribute('data-' + lang);
+          }
+        });
+      });
+    });
+
+    // Load saved language on page load
+    const savedLang = localStorage.getItem('lang') || 'en';
+    langBtn.innerHTML = `<span class="material-icons-round" style="font-size: 18px;">language</span> ${langFlags[savedLang]}`;
+
+    // Apply saved language on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      const lang = localStorage.getItem('lang') || 'en';
+      if (translations) {
+        applyTranslations(lang);
+      }
+      // Apply to nav items with data attributes
+      document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+        if (el.hasAttribute('data-' + lang)) {
+          el.textContent = el.getAttribute('data-' + lang);
+        }
+      });
+    });
+
+    // ==================== SMART CHATBOT ====================
+    let chatbotKnowledge = null;
+
+    // Load chatbot knowledge from JSON
+    async function loadChatbotKnowledge() {
+      try {
+        const response = await fetch('data/chatbot-knowledge.json');
+        chatbotKnowledge = await response.json();
+      } catch (error) {
+        console.log('Using inline chatbot knowledge');
+      }
+    }
+    loadChatbotKnowledge();
+
+    function toggleChatbot() {
+      const chatWindow = document.getElementById('chatbotWindow');
+      chatWindow.classList.toggle('active');
+      if (chatWindow.classList.contains('active')) {
+        document.getElementById('chatInput').focus();
+      }
+    }
+
+    // NLP-based intent matching
+    function calculateSimilarity(str1, str2) {
+      const words1 = str1.toLowerCase().split(/\s+/);
+      const words2 = str2.toLowerCase().split(/\s+/);
+      let matches = 0;
+
+      words1.forEach(word => {
+        if (words2.some(w => w.includes(word) || word.includes(w))) {
+          matches++;
+        }
+      });
+
+      return matches / Math.max(words1.length, 1);
+    }
+
+    function findBestIntent(question) {
+      if (!chatbotKnowledge || !chatbotKnowledge.intents) {
+        return findAnswerFallback(question);
+      }
+
+      const q = question.toLowerCase();
+      let bestMatch = null;
+      let bestScore = 0;
+
+      for (const intent of chatbotKnowledge.intents) {
+        for (const pattern of intent.patterns) {
+          // Exact word match
+          if (q.includes(pattern.toLowerCase())) {
+            const score = pattern.length / q.length + 0.5;
+            if (score > bestScore) {
+              bestScore = score;
+              bestMatch = intent;
+            }
+          }
+
+          // Similarity match
+          const similarity = calculateSimilarity(q, pattern);
+          if (similarity > bestScore) {
+            bestScore = similarity;
+            bestMatch = intent;
+          }
+        }
+      }
+
+      if (bestMatch && bestScore > 0.2) {
+        const responses = bestMatch.responses;
+        return responses[Math.floor(Math.random() * responses.length)];
+      }
+
+      return chatbotKnowledge.fallback || findAnswerFallback(question);
+    }
+
+    // Fallback answer function (inline knowledge)
+    function findAnswerFallback(question) {
+      const q = question.toLowerCase();
+
+      const knowledge = {
+        skills: "Akash is highly skilled in:\n\n**Programming:** Python (95%), R (85%), SQL (90%)\n\n**AI/ML:** PyTorch, TensorFlow, Scikit-learn, LangChain, RAG systems, LLMs\n\n**Data Engineering:** Databricks, Dremio, Airflow, Spark\n\n**Visualization:** Power BI, Tableau, Plotly",
+        experience: "**Current:** Solution Architect (AI) at RWE Renewables (Oct 2025 - Present)\n\n**Previous:**\n- Portfolio & Quantitative Analyst at RWEST (2025)\n- Data Scientist at IMSP, Munich (2024-2025)\n- 5+ years Software Engineering experience",
+        education: "Akash holds a **Master's degree in Data Science from TU Dortmund**, Germany.",
+        services: "Akash offers:\n\n1. **RAG Systems Development**\n2. **LLM Development & Fine-tuning**\n3. **Data Engineering** (Databricks/Dremio)\n4. **ML & Analytics** dashboards",
+        contact: "**Email:** akashbaidya2@gmail.com\n**LinkedIn:** linkedin.com/in/akashbaidya\n**GitHub:** github.com/AkashBaidya",
+        projects: "Key projects:\n\n1. MALDIX NLP & LLM Pipeline\n2. Time-Series Anomaly Detection\n3. AutoML Cashflow Optimization\n4. Credit Card Fraud Detection\n5. Germany Weather Data Engineering",
+        location: "Akash is based in **Dortmund, Germany**. Open to remote work and relocation within Germany & EU.",
+        rag: "Akash specializes in **RAG systems** using LangChain, LlamaIndex, ChromaDB, Pinecone, and n8n integration.",
+        llm: "Akash works with **LLMs** including GPT-4, Claude, Mistral AI, and Hugging Face models.",
+        hire: "Akash is actively looking for **AI Engineer, Data Scientist, Data Engineer, and Software Engineer** positions."
+      };
+
+      if (q.includes('skill') || q.includes('tech') || q.includes('know') || q.includes('stack')) return knowledge.skills;
+      if (q.includes('experience') || q.includes('work') || q.includes('rwe') || q.includes('current')) return knowledge.experience;
+      if (q.includes('education') || q.includes('degree') || q.includes('study') || q.includes('university')) return knowledge.education;
+      if (q.includes('service') || q.includes('offer') || q.includes('help')) return knowledge.services;
+      if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin')) return knowledge.contact;
+      if (q.includes('project') || q.includes('portfolio') || q.includes('built')) return knowledge.projects;
+      if (q.includes('location') || q.includes('where') || q.includes('based') || q.includes('live') || q.includes('dortmund')) return knowledge.location;
+      if (q.includes('rag') || q.includes('retrieval') || q.includes('vector')) return knowledge.rag;
+      if (q.includes('llm') || q.includes('gpt') || q.includes('language model')) return knowledge.llm;
+      if (q.includes('hire') || q.includes('job') || q.includes('position') || q.includes('available')) return knowledge.hire;
+      if (q.includes('hello') || q.includes('hi') || q.includes('hey')) return "Hello! I'm Akash's AI assistant. How can I help you? Ask about skills, experience, projects, or services!";
+      if (q.includes('thank') || q.includes('appreciate')) return "You're welcome! Feel free to ask more questions!";
+      if (q.includes('bye') || q.includes('goodbye')) return "Goodbye! Have a great day!";
+
+      // Admit when we don't know
+      return "**I don't have information about that specific topic.**\n\nHere's what I can help you with:\n\n- **Skills** - Programming, AI/ML, Data Engineering\n- **Experience** - Work history at RWE, RWEST, IMSP\n- **Projects** - NLP pipelines, Anomaly Detection, etc.\n- **Services** - RAG Systems, LLM Development\n- **Contact** - Email, LinkedIn, GitHub\n- **Location** - Based in Dortmund, Germany\n\nTry asking about one of these topics!";
+    }
+
+    // Format message with markdown-like syntax
+    function formatMessage(text) {
+      return text
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>');
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const messages = document.getElementById('chatMessages');
+      const question = input.value.trim();
+
+      if (!question) return;
+
+      // Add user message
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-message user';
+      userMsg.textContent = question;
+      messages.appendChild(userMsg);
+      input.value = '';
+
+      // Add typing indicator
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'typing-indicator';
+      typingDiv.id = 'typing';
+      typingDiv.innerHTML = '<span></span><span></span><span></span>';
+      messages.appendChild(typingDiv);
+      messages.scrollTop = messages.scrollHeight;
+
+      // Variable delay based on response length (simulates thinking)
+      const delay = 600 + Math.random() * 600;
+
+      setTimeout(() => {
+        const typing = document.getElementById('typing');
+        if (typing) typing.remove();
+
+        const answer = findBestIntent(question);
+        const botMsg = document.createElement('div');
+        botMsg.className = 'chat-message bot';
+        botMsg.innerHTML = formatMessage(answer);
+        messages.appendChild(botMsg);
+        messages.scrollTop = messages.scrollHeight;
+      }, delay);
+    }
+
+    // Quick question suggestions
+    function addQuickQuestions() {
+      const messages = document.getElementById('chatMessages');
+      const suggestions = ['Skills', 'Experience', 'Projects', 'Contact'];
+
+      const suggestDiv = document.createElement('div');
+      suggestDiv.className = 'quick-suggestions';
+      suggestDiv.innerHTML = '<small class="text-muted">Quick questions:</small><br>';
+
+      suggestions.forEach(s => {
+        const btn = document.createElement('button');
+        btn.className = 'btn btn-sm btn-outline-secondary m-1';
+        btn.textContent = s;
+        btn.onclick = () => {
+          document.getElementById('chatInput').value = `Tell me about ${s.toLowerCase()}`;
+          sendMessage();
+        };
+        suggestDiv.appendChild(btn);
+      });
+
+      messages.appendChild(suggestDiv);
+    }
+
+    // Add quick questions on load
+    document.addEventListener('DOMContentLoaded', addQuickQuestions);
   </script>
 
 <!-- ProgressBar.js CDN -->

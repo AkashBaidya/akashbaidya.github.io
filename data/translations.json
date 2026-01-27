@@ -1,0 +1,335 @@
+{
+  "en": {
+    "nav": {
+      "intro": "Intro",
+      "skills": "Skills",
+      "experience": "Experience",
+      "services": "Services",
+      "projects": "Projects",
+      "testimonials": "Testimonials",
+      "contact": "Contact"
+    },
+    "landing": {
+      "welcome": "Welcome to my homepage. I'm Akash Chandra Baidya, a Data Science professional from TU Dortmund and currently a Solution Architect (AI) at RWE Renewables. With 5+ years of experience in Python & full-stack development and 3+ years in data science, I build end-to-end data and AI solutions (automation, analytics, and RAG/LLM applications). I'm actively looking for AI Engineer, Data Scientist, Data Engineer, and Software Engineer positions.",
+      "visit": "Visit",
+      "contactBtn": "Contact"
+    },
+    "description": {
+      "title": "About Me",
+      "para1": "During my academic journey, I served as a Teaching Assistant for several advanced data science and machine learning courses, including Advanced Statistical Learning, Big Data Analytics, Statistical Learning for Big Data, and Probabilistic Reasoning for Machine Learning. In this role, I led exercise sessions, supported students with challenging concepts, and graded assignments—strengthening my ability to explain complex ML ideas clearly and practically.",
+      "para2": "Before and alongside academia, I built 5+ years of industry experience as a Software Engineer across software and industrial environments, with a strong focus on Python and production-grade development. I'm comfortable taking ideas from prototype to production using clean engineering practices, testing, and scalable design.",
+      "para3": "Across roles and projects, I've worked in diverse industries and research areas, including energy, consumer electronics, healthcare, and the broader software industry, as well as academic research such as gene expression data analysis, biomedical research, and ML-driven analytics.",
+      "resume": "Resume",
+      "reference": "Reference",
+      "github": "Github"
+    },
+    "experience": {
+      "title": "Experience",
+      "present": "Present",
+      "roles": {
+        "solutionArchitect": "Solution Architect - AI",
+        "portfolioAnalyst": "Portfolio & Quantitative Analyst",
+        "dataScientist": "Data Scientist",
+        "researchAssistantViz": "Research Assistant (Data Viz)",
+        "researchAssistant": "Research Assistant",
+        "projectManager": "Assistant Project Manager",
+        "softwareEngineer": "Consultant Software Engineer"
+      }
+    },
+    "skills": {
+      "title": "Skills & Tools",
+      "categories": {
+        "programming": "Programming Languages",
+        "visualization": "Visualization",
+        "bigdata": "Data & Big Data",
+        "cloud": "Cloud & MLOps",
+        "ml": "Machine Learning",
+        "tools": "Tools & Methodologies",
+        "languages": "Language Skills",
+        "analysis": "Data Analysis"
+      }
+    },
+    "services": {
+      "title": "Services",
+      "subtitle": "Transform your business with AI-powered solutions. From RAG systems to custom LLM applications, I deliver end-to-end AI and data engineering solutions.",
+      "rag": {
+        "title": "RAG Systems",
+        "desc": "Build intelligent RAG (Retrieval-Augmented Generation) systems for domain-specific Q&A and document understanding."
+      },
+      "llm": {
+        "title": "LLM Development",
+        "desc": "Custom LLM fine-tuning, prompt engineering, and AI agent development for your specific use cases."
+      },
+      "data": {
+        "title": "Data Engineering",
+        "desc": "Scalable ETL pipelines, data warehousing with Databricks, Dremio, and cloud platforms (Azure, AWS)."
+      },
+      "ml": {
+        "title": "ML & Analytics",
+        "desc": "Machine learning models, predictive analytics, anomaly detection, and interactive dashboards with Power BI/Tableau."
+      }
+    },
+    "projects": {
+      "title": "Projects",
+      "moreProjects": "More Projects"
+    },
+    "github": {
+      "title": "GitHub Summary",
+      "loading": "Loading repos...",
+      "publicRepos": "Public repos"
+    },
+    "testimonials": {
+      "title": "Testimonials",
+      "subtitle": "What colleagues and clients say"
+    },
+    "contact": {
+      "title": "Contact",
+      "subtitle": "Let's work together",
+      "description": "I'm always interested in hearing about new projects and opportunities. Whether you have a question or just want to say hi, feel free to reach out!",
+      "email": "Email Me",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "location": "Location",
+      "locationValue": "Dortmund, Germany",
+      "sendMessage": "Send Message"
+    },
+    "location": {
+      "title": "Based in Dortmund, Germany",
+      "subtitle": "Open to remote work and relocation within Germany & EU"
+    },
+    "chatbot": {
+      "title": "Ask Akash AI",
+      "greeting": "Hi! I'm Akash's AI assistant. Ask me anything about his skills, experience, projects, or how he can help you!",
+      "placeholder": "Type your question...",
+      "unknown": "I'm not sure about that specific topic. Here's what I can help you with:",
+      "topics": "Skills, Experience, Projects, Services, Contact, Location, RAG Systems, LLM Development"
+    },
+    "footer": {
+      "copyright": "Copyright",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Use"
+    }
+  },
+  "de": {
+    "nav": {
+      "intro": "Einführung",
+      "skills": "Fähigkeiten",
+      "experience": "Erfahrung",
+      "services": "Dienste",
+      "projects": "Projekte",
+      "testimonials": "Referenzen",
+      "contact": "Kontakt"
+    },
+    "landing": {
+      "welcome": "Willkommen auf meiner Homepage. Ich bin Akash Chandra Baidya, Data-Science-Experte von der TU Dortmund und derzeit Solution Architect (AI) bei RWE Renewables. Mit über 5 Jahren Erfahrung in Python & Full-Stack-Entwicklung und über 3 Jahren in Data Science entwickle ich End-to-End-Daten- und KI-Lösungen (Automatisierung, Analytics und RAG/LLM-Anwendungen). Ich suche aktiv nach Positionen als AI Engineer, Data Scientist, Data Engineer und Software Engineer.",
+      "visit": "Besuchen",
+      "contactBtn": "Kontakt"
+    },
+    "description": {
+      "title": "Über mich",
+      "para1": "Während meines Studiums war ich als Tutor für mehrere fortgeschrittene Data-Science- und Machine-Learning-Kurse tätig, darunter Advanced Statistical Learning, Big Data Analytics, Statistical Learning for Big Data und Probabilistic Reasoning for Machine Learning. In dieser Rolle leitete ich Übungssitzungen, unterstützte Studierende bei komplexen Konzepten und bewertete Aufgaben.",
+      "para2": "Neben dem Studium sammelte ich über 5 Jahre Branchenerfahrung als Software Engineer mit Schwerpunkt auf Python und produktionsreifer Entwicklung. Ich bin routiniert darin, Ideen vom Prototyp bis zur Produktion umzusetzen.",
+      "para3": "Ich habe in verschiedenen Branchen und Forschungsbereichen gearbeitet, darunter Energie, Unterhaltungselektronik, Gesundheitswesen und akademische Forschung wie Genexpressionsanalyse, biomedizinische Forschung und ML-gesteuerte Analytik.",
+      "resume": "Lebenslauf",
+      "reference": "Referenz",
+      "github": "Github"
+    },
+    "experience": {
+      "title": "Berufserfahrung",
+      "present": "Heute",
+      "roles": {
+        "solutionArchitect": "Solution Architect - KI",
+        "portfolioAnalyst": "Portfolio- & Quantitativer Analyst",
+        "dataScientist": "Data Scientist",
+        "researchAssistantViz": "Wissenschaftlicher Mitarbeiter (Datenvisualisierung)",
+        "researchAssistant": "Wissenschaftlicher Mitarbeiter",
+        "projectManager": "Assistent Projektmanager",
+        "softwareEngineer": "Software-Berater"
+      }
+    },
+    "skills": {
+      "title": "Fähigkeiten & Tools",
+      "categories": {
+        "programming": "Programmiersprachen",
+        "visualization": "Visualisierung",
+        "bigdata": "Daten & Big Data",
+        "cloud": "Cloud & MLOps",
+        "ml": "Machine Learning",
+        "tools": "Tools & Methoden",
+        "languages": "Sprachkenntnisse",
+        "analysis": "Datenanalyse"
+      }
+    },
+    "services": {
+      "title": "Dienste",
+      "subtitle": "Transformieren Sie Ihr Unternehmen mit KI-gestützten Lösungen. Von RAG-Systemen bis zu benutzerdefinierten LLM-Anwendungen liefere ich End-to-End-KI- und Datenengineering-Lösungen.",
+      "rag": {
+        "title": "RAG-Systeme",
+        "desc": "Intelligente RAG-Systeme (Retrieval-Augmented Generation) für domänenspezifische Fragen und Dokumentenverständnis."
+      },
+      "llm": {
+        "title": "LLM-Entwicklung",
+        "desc": "Benutzerdefiniertes LLM-Feintuning, Prompt Engineering und KI-Agenten-Entwicklung für Ihre spezifischen Anwendungsfälle."
+      },
+      "data": {
+        "title": "Data Engineering",
+        "desc": "Skalierbare ETL-Pipelines, Data Warehousing mit Databricks, Dremio und Cloud-Plattformen (Azure, AWS)."
+      },
+      "ml": {
+        "title": "ML & Analytik",
+        "desc": "Machine-Learning-Modelle, prädiktive Analytik, Anomalieerkennung und interaktive Dashboards mit Power BI/Tableau."
+      }
+    },
+    "projects": {
+      "title": "Projekte",
+      "moreProjects": "Weitere Projekte"
+    },
+    "github": {
+      "title": "GitHub-Zusammenfassung",
+      "loading": "Repos werden geladen...",
+      "publicRepos": "Öffentliche Repos"
+    },
+    "testimonials": {
+      "title": "Referenzen",
+      "subtitle": "Was Kollegen und Kunden sagen"
+    },
+    "contact": {
+      "title": "Kontakt",
+      "subtitle": "Lassen Sie uns zusammenarbeiten",
+      "description": "Ich freue mich immer über neue Projekte und Möglichkeiten. Ob Sie eine Frage haben oder einfach nur Hallo sagen möchten - kontaktieren Sie mich!",
+      "email": "E-Mail",
+      "linkedin": "LinkedIn",
+      "github": "GitHub",
+      "location": "Standort",
+      "locationValue": "Dortmund, Deutschland",
+      "sendMessage": "Nachricht senden"
+    },
+    "location": {
+      "title": "Mit Sitz in Dortmund, Deutschland",
+      "subtitle": "Offen für Remote-Arbeit und Umzug innerhalb Deutschlands & der EU"
+    },
+    "chatbot": {
+      "title": "Akash KI fragen",
+      "greeting": "Hallo! Ich bin Akashs KI-Assistent. Fragen Sie mich nach seinen Fähigkeiten, Erfahrungen, Projekten oder wie er Ihnen helfen kann!",
+      "placeholder": "Geben Sie Ihre Frage ein...",
+      "unknown": "Ich bin mir bei diesem Thema nicht sicher. Hier ist, wobei ich helfen kann:",
+      "topics": "Fähigkeiten, Erfahrung, Projekte, Dienste, Kontakt, Standort, RAG-Systeme, LLM-Entwicklung"
+    },
+    "footer": {
+      "copyright": "Urheberrecht",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen"
+    }
+  },
+  "bn": {
+    "nav": {
+      "intro": "পরিচিতি",
+      "skills": "দক্ষতা",
+      "experience": "অভিজ্ঞতা",
+      "services": "সেবা",
+      "projects": "প্রকল্প",
+      "testimonials": "প্রশংসাপত্র",
+      "contact": "যোগাযোগ"
+    },
+    "landing": {
+      "welcome": "আমার হোমপেজে স্বাগতম। আমি আকাশ চন্দ্র বৈদ্য, টিইউ ডর্টমুন্ড থেকে একজন ডেটা সায়েন্স পেশাদার এবং বর্তমানে RWE Renewables-এ সলিউশন আর্কিটেক্ট (AI)। পাইথন এবং ফুল-স্ট্যাক ডেভেলপমেন্টে ৫+ বছর এবং ডেটা সায়েন্সে ৩+ বছরের অভিজ্ঞতা নিয়ে, আমি এন্ড-টু-এন্ড ডেটা এবং AI সলিউশন তৈরি করি। আমি AI Engineer, Data Scientist, Data Engineer এবং Software Engineer পদের জন্য সক্রিয়ভাবে খুঁজছি।",
+      "visit": "পরিদর্শন",
+      "contactBtn": "যোগাযোগ"
+    },
+    "description": {
+      "title": "আমার সম্পর্কে",
+      "para1": "আমার একাডেমিক যাত্রায়, আমি বেশ কয়েকটি উন্নত ডেটা সায়েন্স এবং মেশিন লার্নিং কোর্সের জন্য শিক্ষণ সহকারী হিসাবে কাজ করেছি, যার মধ্যে রয়েছে Advanced Statistical Learning, Big Data Analytics, Statistical Learning for Big Data এবং Probabilistic Reasoning for Machine Learning।",
+      "para2": "একাডেমিয়ার পাশাপাশি, আমি পাইথন এবং প্রোডাকশন-গ্রেড ডেভেলপমেন্টে ফোকাস সহ সফটওয়্যার ইঞ্জিনিয়ার হিসাবে ৫+ বছরের শিল্প অভিজ্ঞতা তৈরি করেছি।",
+      "para3": "আমি বিভিন্ন শিল্প এবং গবেষণা ক্ষেত্রে কাজ করেছি, যার মধ্যে রয়েছে শক্তি, গ্রাহক ইলেকট্রনিক্স, স্বাস্থ্যসেবা এবং একাডেমিক গবেষণা।",
+      "resume": "জীবনবৃত্তান্ত",
+      "reference": "রেফারেন্স",
+      "github": "গিটহাব"
+    },
+    "experience": {
+      "title": "অভিজ্ঞতা",
+      "present": "বর্তমান",
+      "roles": {
+        "solutionArchitect": "সলিউশন আর্কিটেক্ট - AI",
+        "portfolioAnalyst": "পোর্টফোলিও ও কোয়ান্টিটেটিভ অ্যানালিস্ট",
+        "dataScientist": "ডেটা সায়েন্টিস্ট",
+        "researchAssistantViz": "রিসার্চ অ্যাসিস্ট্যান্ট (ডেটা ভিজ)",
+        "researchAssistant": "রিসার্চ অ্যাসিস্ট্যান্ট",
+        "projectManager": "অ্যাসিস্ট্যান্ট প্রজেক্ট ম্যানেজার",
+        "softwareEngineer": "কনসালট্যান্ট সফটওয়্যার ইঞ্জিনিয়ার"
+      }
+    },
+    "skills": {
+      "title": "দক্ষতা এবং সরঞ্জাম",
+      "categories": {
+        "programming": "প্রোগ্রামিং ভাষা",
+        "visualization": "ভিজুয়ালাইজেশন",
+        "bigdata": "ডেটা এবং বিগ ডেটা",
+        "cloud": "ক্লাউড এবং MLOps",
+        "ml": "মেশিন লার্নিং",
+        "tools": "টুলস এবং পদ্ধতি",
+        "languages": "ভাষা দক্ষতা",
+        "analysis": "ডেটা বিশ্লেষণ"
+      }
+    },
+    "services": {
+      "title": "সেবা",
+      "subtitle": "AI-চালিত সমাধান দিয়ে আপনার ব্যবসা রূপান্তর করুন। RAG সিস্টেম থেকে কাস্টম LLM অ্যাপ্লিকেশন পর্যন্ত, আমি এন্ড-টু-এন্ড AI এবং ডেটা ইঞ্জিনিয়ারিং সলিউশন সরবরাহ করি।",
+      "rag": {
+        "title": "RAG সিস্টেম",
+        "desc": "ডোমেন-নির্দিষ্ট প্রশ্নোত্তর এবং ডকুমেন্ট বোঝার জন্য বুদ্ধিমান RAG (Retrieval-Augmented Generation) সিস্টেম তৈরি করুন।"
+      },
+      "llm": {
+        "title": "LLM উন্নয়ন",
+        "desc": "আপনার নির্দিষ্ট ব্যবহারের জন্য কাস্টম LLM ফাইন-টিউনিং, প্রম্পট ইঞ্জিনিয়ারিং এবং AI এজেন্ট উন্নয়ন।"
+      },
+      "data": {
+        "title": "ডেটা ইঞ্জিনিয়ারিং",
+        "desc": "স্কেলযোগ্য ETL পাইপলাইন, Databricks, Dremio এবং ক্লাউড প্ল্যাটফর্ম (Azure, AWS) সহ ডেটা ওয়্যারহাউসিং।"
+      },
+      "ml": {
+        "title": "ML এবং অ্যানালিটিক্স",
+        "desc": "মেশিন লার্নিং মডেল, প্রেডিক্টিভ অ্যানালিটিক্স, অ্যানোমালি ডিটেকশন এবং Power BI/Tableau সহ ইন্টারেক্টিভ ড্যাশবোর্ড।"
+      }
+    },
+    "projects": {
+      "title": "প্রকল্প",
+      "moreProjects": "আরও প্রকল্প"
+    },
+    "github": {
+      "title": "গিটহাব সারসংক্ষেপ",
+      "loading": "রিপো লোড হচ্ছে...",
+      "publicRepos": "পাবলিক রিপো"
+    },
+    "testimonials": {
+      "title": "প্রশংসাপত্র",
+      "subtitle": "সহকর্মী এবং ক্লায়েন্টরা কী বলেন"
+    },
+    "contact": {
+      "title": "যোগাযোগ",
+      "subtitle": "একসাথে কাজ করি",
+      "description": "আমি সবসময় নতুন প্রকল্প এবং সুযোগ সম্পর্কে শুনতে আগ্রহী। আপনার কোন প্রশ্ন থাকলে বা শুধু হ্যালো বলতে চাইলে, যোগাযোগ করুন!",
+      "email": "ইমেইল",
+      "linkedin": "লিঙ্কডইন",
+      "github": "গিটহাব",
+      "location": "অবস্থান",
+      "locationValue": "ডর্টমুন্ড, জার্মানি",
+      "sendMessage": "বার্তা পাঠান"
+    },
+    "location": {
+      "title": "ডর্টমুন্ড, জার্মানিতে অবস্থিত",
+      "subtitle": "জার্মানি এবং ইইউ-এর মধ্যে রিমোট কাজ এবং স্থানান্তরের জন্য উন্মুক্ত"
+    },
+    "chatbot": {
+      "title": "আকাশ AI জিজ্ঞাসা করুন",
+      "greeting": "হ্যালো! আমি আকাশের AI সহকারী। তার দক্ষতা, অভিজ্ঞতা, প্রকল্প বা তিনি কীভাবে আপনাকে সাহায্য করতে পারেন সে সম্পর্কে আমাকে জিজ্ঞাসা করুন!",
+      "placeholder": "আপনার প্রশ্ন টাইপ করুন...",
+      "unknown": "আমি এই নির্দিষ্ট বিষয়ে নিশ্চিত নই। আমি যা সাহায্য করতে পারি তা এখানে:",
+      "topics": "দক্ষতা, অভিজ্ঞতা, প্রকল্প, সেবা, যোগাযোগ, অবস্থান, RAG সিস্টেম, LLM উন্নয়ন"
+    },
+    "footer": {
+      "copyright": "কপিরাইট",
+      "privacy": "গোপনীয়তা নীতি",
+      "terms": "ব্যবহারের শর্তাবলী"
+    }
+  }
+}
