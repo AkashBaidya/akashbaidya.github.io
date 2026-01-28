@@ -994,6 +994,11 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   background-size: cover;
   background-position: 50% 50%;
   background-repeat: no-repeat;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode #particles-js {
+  background-color: #0a0a1a;
 }
 
 
@@ -1065,13 +1070,25 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
 .landing-logo {
   width: 90px;
   height: auto;
+  animation: gentleFloat 3s ease-in-out infinite;
+  transition: filter 0.3s ease;
 }
+
+body.dark-mode .landing-logo {
+  filter: brightness(1.8) saturate(1.2);
+}
+
 .landing-underline {
   width: 100px;
   margin: 1rem auto;
   height: 2px;
   background-color: #333;
   border: none;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .landing-underline {
+  background-color: #69b3a2;
 }
 .landing-intro {
   max-width: 600px;
@@ -1109,5 +1126,21 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
+}
+
+/* Landing logo animation */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(5px) rotate(-1deg);
+  }
 }
 

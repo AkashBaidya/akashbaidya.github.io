@@ -17,8 +17,8 @@
     "description": {
       "title": "About Me",
       "para1": "During my academic journey, I served as a Teaching Assistant for several advanced data science and machine learning courses, including Advanced Statistical Learning, Big Data Analytics, Statistical Learning for Big Data, and Probabilistic Reasoning for Machine Learning. In this role, I led exercise sessions, supported students with challenging concepts, and graded assignments—strengthening my ability to explain complex ML ideas clearly and practically.",
-      "para2": "Before and alongside academia, I built 5+ years of industry experience as a Software Engineer across software and industrial environments, with a strong focus on Python and production-grade development. I'm comfortable taking ideas from prototype to production using clean engineering practices, testing, and scalable design.",
-      "para3": "Across roles and projects, I've worked in diverse industries and research areas, including energy, consumer electronics, healthcare, and the broader software industry, as well as academic research such as gene expression data analysis, biomedical research, and ML-driven analytics.",
+      "para2": "Before and alongside academia, I built 5+ years of industry experience as a Software Engineer across software and industrial environments, with a strong focus on Python and production-grade development. I'm comfortable taking ideas from prototype to production using clean engineering practices, testing, and scalable design—and I've also contributed in consulting-style engagements across multiple domains, adapting quickly to different stakeholders, data realities, and business goals.",
+      "para3": "Across roles and projects, I've worked in diverse industries and research areas, including energy, consumer electronics, healthcare, and the broader software industry, as well as academic research such as gene expression data analysis, biomedical research, and ML-driven analytics. More recently, I completed an AI project on time-series anomaly scoring using LSTM models, applying an end-to-end workflow: data cleaning and integration, transformation and feature engineering, model training, evaluation, and clear visualization of results.",
       "resume": "Resume",
       "reference": "Reference",
       "github": "Github"
@@ -34,7 +34,115 @@
         "researchAssistant": "Research Assistant",
         "projectManager": "Assistant Project Manager",
         "softwareEngineer": "Consultant Software Engineer"
+      },
+      "jobs": {
+        "rweAI": {
+          "title": "Solution Architect - AI",
+          "company": "RWE Renewables, Essen",
+          "period": "Oct 2025 – Present",
+          "duties": ["Enhancing user experience by creating RAG systems (Retrieval-Augmented Generation) and LLM models.", "Optimizing API integrations and answering domain-specific questions using AI.", "Skills: Artificial Intelligence (AI), n8n, LLM, RAG."]
+        },
+        "rwest": {
+          "title": "Portfolio & Quantitative Analyst",
+          "company": "RWE Supply & Trading GmbH (RWEST), Essen",
+          "period": "Jan 2025 – Nov 2025",
+          "duties": ["Developed quantitative models and conducted portfolio analysis to support trading & risk management.", "Designed and optimized data workflows using Databricks, Dremio, SQL, and Python.", "Ensured seamless data integration and analysis for trading decisions."]
+        },
+        "imsp": {
+          "title": "Data Scientist",
+          "company": "IMSP, Munich",
+          "period": "Jun 2024 – Jan 2025",
+          "duties": ["Applied ML models for energy-demand forecasting.", "Automated Python ETL workflows & designed Power BI reports.", "Delivered analytics & visualization training to 50+ participants."]
+        },
+        "borstel": {
+          "title": "Research Assistant (Data Viz)",
+          "company": "Forschungszentrum Borstel",
+          "period": "Sep 2023 – May 2024",
+          "duties": ["Analyzed proteomics (cysteine oxidation) & produced publication-ready plots.", "Batch-corrected & visualized multi-sample datasets in Python & R."]
+        },
+        "eon": {
+          "title": "Research Assistant",
+          "company": "E.ON RWTH Energy Research Center",
+          "period": "Sep 2021 – Apr 2022",
+          "duties": ["Developed Django web apps & Docker/Ansible CI pipelines.", "Built probabilistic simulation models for energy-system evaluation."]
+        },
+        "itm": {
+          "title": "Assistant Project Manager",
+          "company": "ITM System LLC (Remote)",
+          "period": "Jun 2018 – Aug 2021",
+          "duties": ["Led Django-based appointment system with voice/text notifications.", "Served healthcare clients across US, Philippines & Vietnam."]
+        },
+        "ubitrix": {
+          "title": "Consultant Software Engineer",
+          "company": "Ubitrix BD Ltd., Dhaka",
+          "period": "Feb 2017 – May 2018",
+          "duties": ["Developed healthcare & social-care apps (Python, Android, PHP)."]
+        }
       }
+    },
+    "projects": {
+      "title": "Projects",
+      "moreProjects": "More Projects",
+      "items": {
+        "maldix": {
+          "name": "MALDIX NLP & LLM Pipeline",
+          "tech": "Python • spaCy • NLTK • PyMongo • Mistral AI",
+          "desc": "End-to-end NLP pipeline for document processing and information extraction. Features fine-tuned LLMs using Mistral AI for domain-specific text understanding, entity recognition, and intelligent query answering."
+        },
+        "anomaly": {
+          "name": "Time-Series Anomaly Detection",
+          "tech": "PyTorch • LSTM • Pandas • Matplotlib",
+          "desc": "Deep learning system for detecting anomalies in energy consumption data. Uses LSTM neural networks to learn normal patterns and flag unusual usage, helping identify equipment failures or energy theft."
+        },
+        "automl": {
+          "name": "AutoML Cashflow Optimization",
+          "tech": "AutoML • Power BI • Python • Scikit-learn",
+          "desc": "Automated ML solution for insurance cashflow prediction. Combines AutoML model selection with interactive Power BI dashboards, enabling data-driven financial planning and risk assessment."
+        },
+        "fraud": {
+          "name": "Credit Card Fraud Detection",
+          "tech": "SMOTE • Logistic Regression • GBM • Plotly",
+          "desc": "Machine learning system to detect fraudulent transactions using imbalanced data techniques. Implements SMOTE oversampling with ensemble methods, achieving high precision while minimizing false positives."
+        },
+        "weather": {
+          "name": "Germany Weather Data Engineering",
+          "tech": "Python • SQL • REST APIs • ETL • Data Pipeline",
+          "desc": "Scalable data engineering pipeline that ingests weather data from multiple German stations via REST APIs. Implements automated ETL workflows for data cleaning, transformation, and storage in SQL databases."
+        },
+        "inventory": {
+          "name": "Inventory Management System",
+          "tech": "Django • Android • PostgreSQL • REST API",
+          "desc": "Full-stack inventory tracking solution with OTP-based location verification. Features a Django backend, Android mobile app, and PostgreSQL database for real-time stock management across multiple warehouses."
+        }
+      }
+    },
+    "education": {
+      "title": "Education",
+      "institutions": {
+        "tudortmund": {
+          "name": "TU Dortmund University",
+          "degree": "Master of Science - Data Science",
+          "period": "Nov 2020 - Dec 2025",
+          "thesis": "Evaluating Cluster Quality for Grouping of High-Dimensional Gene Expression Data Using Dataset Similarity Measures",
+          "seminar": "Unsupervised ML - Anomaly Detection (HiCS)",
+          "project": "Time series anomaly detection with focus on energy consumption data"
+        },
+        "kuet": {
+          "name": "Khulna University of Engineering & Technology",
+          "degree": "Bachelor's Degree - Computer Science and Engineering",
+          "period": "2012 - 2016",
+          "thesis": "Distributed MAC protocols for VANET (RR-Aloha, MS-Aloha, RRAloha+)"
+        },
+        "notredame": {
+          "name": "Notre Dame College",
+          "degree": "Higher Secondary Certificate - Science",
+          "period": "2009 - 2011"
+        }
+      }
+    },
+    "certifications": {
+      "title": "Certifications",
+      "viewCredential": "View Credential"
     },
     "skills": {
       "title": "Skills & Tools",
@@ -80,7 +188,27 @@
     },
     "testimonials": {
       "title": "Testimonials",
-      "subtitle": "What colleagues and clients say"
+      "subtitle": "What colleagues and clients say",
+      "chi": {
+        "quote": "Akash was my assistant project manager for many healthcare technology projects including AI-powered text messaging engine, telehealth mobile application, and COVID-19 testing platform. He was always enthusiastic about technologies and willing to explore new solutions to enhance the products. Akash is a professional, driven, and dedicated individual that will contribute tremendously to any projects he's given. Definitely recommended!",
+        "author": "Chi Nguyen",
+        "role": "IT Project Manager at MD24 House Call, Inc"
+      },
+      "miftah": {
+        "quote": "Akash has worked in my team at his early stage of his career for some cutting edge research based application development. During his short period of career he really amazed me with his quick learning, and can do type attitude. He was very devoted to his work and good team player because of his communication skills.",
+        "author": "Md Miftah Uddin",
+        "role": "Head of Strategic Business Unit at Brain Station 23"
+      },
+      "yousuf": {
+        "quote": "Akash was an amazing person to work with, and is not only a multi-skilled colleague, but also an inspiring individual. He showed tremendous expertise on Django, Android and PHP while working in Ubitrix Inc. I highly recommend him. I wish him very good success in his career.",
+        "author": "Abu Yousuf",
+        "role": "Lead Engineer at Samsung R&D Institute Bangladesh"
+      },
+      "kaiser": {
+        "quote": "Both Akash and I joined our hands on several projects in Singer Bangladesh Ltd. These projects include technologies like Python, Django, REST API, Jasper Report, and Android App development. As a team member, he is very helpful, dedicated and a good team player. His depth knowledge in Django & Android development helped us to solve some key challenges. I highly recommend him as a true professional.",
+        "author": "Abu Kaiser Mohammad Hashem",
+        "role": "Database Developer at Singer BD LTD"
+      }
     },
     "contact": {
       "title": "Contact",
@@ -98,7 +226,7 @@
       "subtitle": "Open to remote work and relocation within Germany & EU"
     },
     "chatbot": {
-      "title": "Ask Akash AI",
+      "title": "Ask Me",
       "greeting": "Hi! I'm Akash's AI assistant. Ask me anything about his skills, experience, projects, or how he can help you!",
       "placeholder": "Type your question...",
       "unknown": "I'm not sure about that specific topic. Here's what I can help you with:",
@@ -145,6 +273,50 @@
         "researchAssistant": "Wissenschaftlicher Mitarbeiter",
         "projectManager": "Assistent Projektmanager",
         "softwareEngineer": "Software-Berater"
+      },
+      "jobs": {
+        "rweAI": {
+          "title": "Solution Architect - KI",
+          "company": "RWE Renewables, Essen",
+          "period": "Okt 2025 – Heute",
+          "duties": ["Verbesserung der Benutzererfahrung durch RAG-Systeme und LLM-Modelle.", "Optimierung von API-Integrationen und Beantwortung domänenspezifischer Fragen mit KI.", "Fähigkeiten: Künstliche Intelligenz (KI), n8n, LLM, RAG."]
+        },
+        "rwest": {
+          "title": "Portfolio- & Quantitativer Analyst",
+          "company": "RWE Supply & Trading GmbH (RWEST), Essen",
+          "period": "Jan 2025 – Nov 2025",
+          "duties": ["Entwicklung quantitativer Modelle und Portfolioanalyse zur Unterstützung von Handel & Risikomanagement.", "Gestaltung und Optimierung von Daten-Workflows mit Databricks, Dremio, SQL und Python.", "Sicherstellung nahtloser Datenintegration und -analyse für Handelsentscheidungen."]
+        },
+        "imsp": {
+          "title": "Data Scientist",
+          "company": "IMSP, München",
+          "period": "Jun 2024 – Jan 2025",
+          "duties": ["Anwendung von ML-Modellen für Energiebedarfsprognosen.", "Automatisierung von Python-ETL-Workflows & Gestaltung von Power BI-Berichten.", "Durchführung von Analytics- & Visualisierungstrainings für 50+ Teilnehmer."]
+        },
+        "borstel": {
+          "title": "Wissenschaftlicher Mitarbeiter (Datenvisualisierung)",
+          "company": "Forschungszentrum Borstel",
+          "period": "Sep 2023 – Mai 2024",
+          "duties": ["Analyse von Proteomik (Cystein-Oxidation) & Erstellung publikationsreifer Grafiken.", "Batch-Korrektur & Visualisierung von Multi-Sample-Datensätzen in Python & R."]
+        },
+        "eon": {
+          "title": "Wissenschaftlicher Mitarbeiter",
+          "company": "E.ON RWTH Energy Research Center",
+          "period": "Sep 2021 – Apr 2022",
+          "duties": ["Entwicklung von Django-Webanwendungen & Docker/Ansible CI-Pipelines.", "Erstellung probabilistischer Simulationsmodelle für Energiesystem-Bewertung."]
+        },
+        "itm": {
+          "title": "Assistent Projektmanager",
+          "company": "ITM System LLC (Remote)",
+          "period": "Jun 2018 – Aug 2021",
+          "duties": ["Leitung eines Django-basierten Terminsystems mit Sprach-/Textbenachrichtigungen.", "Betreuung von Healthcare-Kunden in USA, Philippinen & Vietnam."]
+        },
+        "ubitrix": {
+          "title": "Software-Berater",
+          "company": "Ubitrix BD Ltd., Dhaka",
+          "period": "Feb 2017 – Mai 2018",
+          "duties": ["Entwicklung von Healthcare- & Sozialfürsorge-Apps (Python, Android, PHP)."]
+        }
       }
     },
     "skills": {
@@ -182,7 +354,39 @@
     },
     "projects": {
       "title": "Projekte",
-      "moreProjects": "Weitere Projekte"
+      "moreProjects": "Weitere Projekte",
+      "items": {
+        "maldix": {
+          "name": "MALDIX NLP & LLM Pipeline",
+          "tech": "Python • spaCy • NLTK • PyMongo • Mistral AI",
+          "desc": "End-to-End NLP-Pipeline für Dokumentenverarbeitung und Informationsextraktion. Verfügt über feinabgestimmte LLMs mit Mistral AI für domänenspezifisches Textverständnis, Entitätserkennung und intelligente Abfragebeantwortung."
+        },
+        "anomaly": {
+          "name": "Zeitreihen-Anomalieerkennung",
+          "tech": "PyTorch • LSTM • Pandas • Matplotlib",
+          "desc": "Deep-Learning-System zur Erkennung von Anomalien in Energieverbrauchsdaten. Verwendet LSTM-Neuronale Netze zum Erlernen normaler Muster und zur Kennzeichnung ungewöhnlicher Nutzung."
+        },
+        "automl": {
+          "name": "AutoML Cashflow-Optimierung",
+          "tech": "AutoML • Power BI • Python • Scikit-learn",
+          "desc": "Automatisierte ML-Lösung für Versicherungs-Cashflow-Prognosen. Kombiniert AutoML-Modellauswahl mit interaktiven Power BI-Dashboards für datengesteuerte Finanzplanung."
+        },
+        "fraud": {
+          "name": "Kreditkartenbetrugs­erkennung",
+          "tech": "SMOTE • Logistische Regression • GBM • Plotly",
+          "desc": "Machine-Learning-System zur Erkennung betrügerischer Transaktionen mit Techniken für unausgewogene Daten. Implementiert SMOTE-Oversampling mit Ensemble-Methoden."
+        },
+        "weather": {
+          "name": "Deutschland Wetter Data Engineering",
+          "tech": "Python • SQL • REST APIs • ETL • Data Pipeline",
+          "desc": "Skalierbare Data-Engineering-Pipeline, die Wetterdaten von mehreren deutschen Stationen über REST-APIs aufnimmt. Implementiert automatisierte ETL-Workflows."
+        },
+        "inventory": {
+          "name": "Inventar­verwaltungs­system",
+          "tech": "Django • Android • PostgreSQL • REST API",
+          "desc": "Full-Stack-Inventarverfolgungslösung mit OTP-basierter Standortverifizierung. Verfügt über Django-Backend, Android-App und PostgreSQL-Datenbank."
+        }
+      }
     },
     "github": {
       "title": "GitHub-Zusammenfassung",
@@ -191,7 +395,27 @@
     },
     "testimonials": {
       "title": "Referenzen",
-      "subtitle": "Was Kollegen und Kunden sagen"
+      "subtitle": "Was Kollegen und Kunden sagen",
+      "chi": {
+        "quote": "Akash was my assistant project manager for many healthcare technology projects including AI-powered text messaging engine, telehealth mobile application, and COVID-19 testing platform. He was always enthusiastic about technologies and willing to explore new solutions to enhance the products. Akash is a professional, driven, and dedicated individual that will contribute tremendously to any projects he's given. Definitely recommended!",
+        "author": "Chi Nguyen",
+        "role": "IT Project Manager at MD24 House Call, Inc"
+      },
+      "miftah": {
+        "quote": "Akash has worked in my team at his early stage of his career for some cutting edge research based application development. During his short period of career he really amazed me with his quick learning, and can do type attitude. He was very devoted to his work and good team player because of his communication skills.",
+        "author": "Md Miftah Uddin",
+        "role": "Head of Strategic Business Unit at Brain Station 23"
+      },
+      "yousuf": {
+        "quote": "Akash was an amazing person to work with, and is not only a multi-skilled colleague, but also an inspiring individual. He showed tremendous expertise on Django, Android and PHP while working in Ubitrix Inc. I highly recommend him. I wish him very good success in his career.",
+        "author": "Abu Yousuf",
+        "role": "Lead Engineer at Samsung R&D Institute Bangladesh"
+      },
+      "kaiser": {
+        "quote": "Both Akash and I joined our hands on several projects in Singer Bangladesh Ltd. These projects include technologies like Python, Django, REST API, Jasper Report, and Android App development. As a team member, he is very helpful, dedicated and a good team player. His depth knowledge in Django & Android development helped us to solve some key challenges. I highly recommend him as a true professional.",
+        "author": "Abu Kaiser Mohammad Hashem",
+        "role": "Database Developer at Singer BD LTD"
+      }
     },
     "contact": {
       "title": "Kontakt",
@@ -209,7 +433,7 @@
       "subtitle": "Offen für Remote-Arbeit und Umzug innerhalb Deutschlands & der EU"
     },
     "chatbot": {
-      "title": "Akash KI fragen",
+      "title": "Frag mich",
       "greeting": "Hallo! Ich bin Akashs KI-Assistent. Fragen Sie mich nach seinen Fähigkeiten, Erfahrungen, Projekten oder wie er Ihnen helfen kann!",
       "placeholder": "Geben Sie Ihre Frage ein...",
       "unknown": "Ich bin mir bei diesem Thema nicht sicher. Hier ist, wobei ich helfen kann:",
@@ -256,6 +480,50 @@
         "researchAssistant": "রিসার্চ অ্যাসিস্ট্যান্ট",
         "projectManager": "অ্যাসিস্ট্যান্ট প্রজেক্ট ম্যানেজার",
         "softwareEngineer": "কনসালট্যান্ট সফটওয়্যার ইঞ্জিনিয়ার"
+      },
+      "jobs": {
+        "rweAI": {
+          "title": "সলিউশন আর্কিটেক্ট - AI",
+          "company": "RWE Renewables, এসেন",
+          "period": "অক্টোবর ২০২৫ – বর্তমান",
+          "duties": ["RAG সিস্টেম এবং LLM মডেল তৈরি করে ব্যবহারকারীর অভিজ্ঞতা উন্নত করা।", "API ইন্টিগ্রেশন অপ্টিমাইজ করা এবং AI ব্যবহার করে ডোমেন-নির্দিষ্ট প্রশ্নের উত্তর দেওয়া।", "দক্ষতা: কৃত্রিম বুদ্ধিমত্তা (AI), n8n, LLM, RAG।"]
+        },
+        "rwest": {
+          "title": "পোর্টফোলিও ও কোয়ান্টিটেটিভ অ্যানালিস্ট",
+          "company": "RWE Supply & Trading GmbH, এসেন",
+          "period": "জানুয়ারি ২০২৫ – নভেম্বর ২০২৫",
+          "duties": ["ট্রেডিং ও ঝুঁকি ব্যবস্থাপনার জন্য কোয়ান্টিটেটিভ মডেল তৈরি করা।", "Databricks, Dremio, SQL এবং Python ব্যবহার করে ডেটা ওয়ার্কফ্লো ডিজাইন করা।", "ট্রেডিং সিদ্ধান্তের জন্য নির্বিঘ্ন ডেটা ইন্টিগ্রেশন নিশ্চিত করা।"]
+        },
+        "imsp": {
+          "title": "ডেটা সায়েন্টিস্ট",
+          "company": "IMSP, মিউনিখ",
+          "period": "জুন ২০২৪ – জানুয়ারি ২০২৫",
+          "duties": ["শক্তি চাহিদা পূর্বাভাসের জন্য ML মডেল প্রয়োগ করা।", "Python ETL ওয়ার্কফ্লো স্বয়ংক্রিয় করা এবং Power BI রিপোর্ট ডিজাইন করা।", "৫০+ অংশগ্রহণকারীদের অ্যানালিটিক্স ও ভিজুয়ালাইজেশন প্রশিক্ষণ দেওয়া।"]
+        },
+        "borstel": {
+          "title": "রিসার্চ অ্যাসিস্ট্যান্ট (ডেটা ভিজ)",
+          "company": "Forschungszentrum Borstel",
+          "period": "সেপ্টেম্বর ২০২৩ – মে ২০২৪",
+          "duties": ["প্রোটিওমিক্স বিশ্লেষণ এবং প্রকাশনা-যোগ্য প্লট তৈরি করা।", "Python ও R-এ মাল্টি-স্যাম্পল ডেটাসেট ভিজুয়ালাইজ করা।"]
+        },
+        "eon": {
+          "title": "রিসার্চ অ্যাসিস্ট্যান্ট",
+          "company": "E.ON RWTH Energy Research Center",
+          "period": "সেপ্টেম্বর ২০২১ – এপ্রিল ২০২২",
+          "duties": ["Django ওয়েব অ্যাপ এবং Docker/Ansible CI পাইপলাইন তৈরি করা।", "শক্তি সিস্টেম মূল্যায়নের জন্য সম্ভাব্যতা সিমুলেশন মডেল তৈরি করা।"]
+        },
+        "itm": {
+          "title": "অ্যাসিস্ট্যান্ট প্রজেক্ট ম্যানেজার",
+          "company": "ITM System LLC (রিমোট)",
+          "period": "জুন ২০১৮ – আগস্ট ২০২১",
+          "duties": ["ভয়েস/টেক্সট নোটিফিকেশন সহ Django-ভিত্তিক অ্যাপয়েন্টমেন্ট সিস্টেম নেতৃত্ব দেওয়া।", "USA, ফিলিপাইন এবং ভিয়েতনামে হেলথকেয়ার ক্লায়েন্টদের সেবা প্রদান।"]
+        },
+        "ubitrix": {
+          "title": "কনসালট্যান্ট সফটওয়্যার ইঞ্জিনিয়ার",
+          "company": "Ubitrix BD Ltd., ঢাকা",
+          "period": "ফেব্রুয়ারি ২০১৭ – মে ২০১৮",
+          "duties": ["হেলথকেয়ার ও সোশ্যাল কেয়ার অ্যাপ তৈরি করা (Python, Android, PHP)।"]
+        }
       }
     },
     "skills": {
@@ -293,7 +561,39 @@
     },
     "projects": {
       "title": "প্রকল্প",
-      "moreProjects": "আরও প্রকল্প"
+      "moreProjects": "আরও প্রকল্প",
+      "items": {
+        "maldix": {
+          "name": "MALDIX NLP ও LLM পাইপলাইন",
+          "tech": "Python • spaCy • NLTK • PyMongo • Mistral AI",
+          "desc": "ডকুমেন্ট প্রসেসিং এবং তথ্য নিষ্কাশনের জন্য এন্ড-টু-এন্ড NLP পাইপলাইন। ডোমেন-নির্দিষ্ট টেক্সট বোঝা এবং বুদ্ধিমান প্রশ্নের উত্তরের জন্য Mistral AI ব্যবহার করে।"
+        },
+        "anomaly": {
+          "name": "টাইম-সিরিজ অ্যানোমালি ডিটেকশন",
+          "tech": "PyTorch • LSTM • Pandas • Matplotlib",
+          "desc": "শক্তি ব্যবহারের ডেটায় অসঙ্গতি সনাক্ত করার জন্য ডিপ লার্নিং সিস্টেম। LSTM নিউরাল নেটওয়ার্ক ব্যবহার করে স্বাভাবিক প্যাটার্ন শেখে।"
+        },
+        "automl": {
+          "name": "AutoML ক্যাশফ্লো অপ্টিমাইজেশন",
+          "tech": "AutoML • Power BI • Python • Scikit-learn",
+          "desc": "বীমা ক্যাশফ্লো পূর্বাভাসের জন্য স্বয়ংক্রিয় ML সমাধান। ডেটা-চালিত আর্থিক পরিকল্পনার জন্য Power BI ড্যাশবোর্ডের সাথে AutoML মডেল নির্বাচন।"
+        },
+        "fraud": {
+          "name": "ক্রেডিট কার্ড জালিয়াতি সনাক্তকরণ",
+          "tech": "SMOTE • লজিস্টিক রিগ্রেশন • GBM • Plotly",
+          "desc": "অসম ডেটা কৌশল ব্যবহার করে প্রতারণামূলক লেনদেন সনাক্ত করার জন্য মেশিন লার্নিং সিস্টেম।"
+        },
+        "weather": {
+          "name": "জার্মানি আবহাওয়া ডেটা ইঞ্জিনিয়ারিং",
+          "tech": "Python • SQL • REST APIs • ETL • ডেটা পাইপলাইন",
+          "desc": "REST API এর মাধ্যমে একাধিক জার্মান স্টেশন থেকে আবহাওয়ার ডেটা সংগ্রহ করে স্কেলযোগ্য ডেটা ইঞ্জিনিয়ারিং পাইপলাইন।"
+        },
+        "inventory": {
+          "name": "ইনভেন্টরি ম্যানেজমেন্ট সিস্টেম",
+          "tech": "Django • Android • PostgreSQL • REST API",
+          "desc": "OTP-ভিত্তিক লোকেশন ভেরিফিকেশন সহ ফুল-স্ট্যাক ইনভেন্টরি ট্র্যাকিং সমাধান। Django ব্যাকএন্ড এবং Android অ্যাপ।"
+        }
+      }
     },
     "github": {
       "title": "গিটহাব সারসংক্ষেপ",
@@ -302,7 +602,27 @@
     },
     "testimonials": {
       "title": "প্রশংসাপত্র",
-      "subtitle": "সহকর্মী এবং ক্লায়েন্টরা কী বলেন"
+      "subtitle": "সহকর্মী এবং ক্লায়েন্টরা কী বলেন",
+      "chi": {
+        "quote": "Akash was my assistant project manager for many healthcare technology projects including AI-powered text messaging engine, telehealth mobile application, and COVID-19 testing platform. He was always enthusiastic about technologies and willing to explore new solutions to enhance the products. Akash is a professional, driven, and dedicated individual that will contribute tremendously to any projects he's given. Definitely recommended!",
+        "author": "Chi Nguyen",
+        "role": "IT Project Manager at MD24 House Call, Inc"
+      },
+      "miftah": {
+        "quote": "Akash has worked in my team at his early stage of his career for some cutting edge research based application development. During his short period of career he really amazed me with his quick learning, and can do type attitude. He was very devoted to his work and good team player because of his communication skills.",
+        "author": "Md Miftah Uddin",
+        "role": "Head of Strategic Business Unit at Brain Station 23"
+      },
+      "yousuf": {
+        "quote": "Akash was an amazing person to work with, and is not only a multi-skilled colleague, but also an inspiring individual. He showed tremendous expertise on Django, Android and PHP while working in Ubitrix Inc. I highly recommend him. I wish him very good success in his career.",
+        "author": "Abu Yousuf",
+        "role": "Lead Engineer at Samsung R&D Institute Bangladesh"
+      },
+      "kaiser": {
+        "quote": "Both Akash and I joined our hands on several projects in Singer Bangladesh Ltd. These projects include technologies like Python, Django, REST API, Jasper Report, and Android App development. As a team member, he is very helpful, dedicated and a good team player. His depth knowledge in Django & Android development helped us to solve some key challenges. I highly recommend him as a true professional.",
+        "author": "Abu Kaiser Mohammad Hashem",
+        "role": "Database Developer at Singer BD LTD"
+      }
     },
     "contact": {
       "title": "যোগাযোগ",
@@ -320,7 +640,7 @@
       "subtitle": "জার্মানি এবং ইইউ-এর মধ্যে রিমোট কাজ এবং স্থানান্তরের জন্য উন্মুক্ত"
     },
     "chatbot": {
-      "title": "আকাশ AI জিজ্ঞাসা করুন",
+      "title": "আমাকে জিজ্ঞাসা করুন",
       "greeting": "হ্যালো! আমি আকাশের AI সহকারী। তার দক্ষতা, অভিজ্ঞতা, প্রকল্প বা তিনি কীভাবে আপনাকে সাহায্য করতে পারেন সে সম্পর্কে আমাকে জিজ্ঞাসা করুন!",
       "placeholder": "আপনার প্রশ্ন টাইপ করুন...",
       "unknown": "আমি এই নির্দিষ্ট বিষয়ে নিশ্চিত নই। আমি যা সাহায্য করতে পারি তা এখানে:",

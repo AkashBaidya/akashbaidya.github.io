@@ -1,19 +1,30 @@
 /* -----------------------------------------------
-/* How to use? : Check the GitHub README
+/* Theme-aware particles.js for landing section
 /* ----------------------------------------------- */
 
-/* To load a config file (particles.json) you need to host this demo (MAMP/WAMP/local)... */
-/*
-particlesJS.load('particles-js', 'particles.json', function() {
-  console.log('particles.js loaded - callback');
-});
-*/
+// Function to initialize landing particles with theme awareness
+function initLandingParticles() {
+  const isDark = document.body.classList.contains('dark-mode');
+  const particleColor = isDark ? '#7ec8b8' : '#69b3a2';
+  const lineColor = isDark ? '#7ec8b8' : '#69b3a2';
 
-/* Otherwise just put the config content (json): */
+  // Properly destroy existing particles instance
+  if (window.pJSDom && window.pJSDom.length > 0) {
+    window.pJSDom.forEach(p => {
+      if (p.pJS && p.pJS.fn && p.pJS.fn.vendors && p.pJS.fn.vendors.destroypJS) {
+        p.pJS.fn.vendors.destroypJS();
+      }
+    });
+    window.pJSDom = [];
+  }
 
-particlesJS('particles-js',
-  
-  {
+  // Clear the container
+  const particlesContainer = document.getElementById('particles-js');
+  if (particlesContainer) {
+    particlesContainer.innerHTML = '';
+  }
+
+  particlesJS('particles-js', {
     "particles": {
       "number": {
         "value": 80,
@@ -23,7 +34,7 @@ particlesJS('particles-js',
         }
       },
       "color": {
-        "value": "#888888"
+        "value": particleColor
       },
       "shape": {
         "type": "circle",
@@ -33,15 +44,10 @@ particlesJS('particles-js',
         },
         "polygon": {
           "nb_sides": 5
-        },
-        "image": {
-          "src": "img/github.svg",
-          "width": 100,
-          "height": 100
         }
       },
       "opacity": {
-        "value": 0.5,
+        "value": isDark ? 0.6 : 0.5,
         "random": false,
         "anim": {
           "enable": false,
@@ -63,8 +69,8 @@ particlesJS('particles-js',
       "line_linked": {
         "enable": true,
         "distance": 150,
-        "color": "#888888",
-        "opacity": 0.4,
+        "color": lineColor,
+        "opacity": isDark ? 0.5 : 0.4,
         "width": 1
       },
       "move": {
@@ -119,15 +125,9 @@ particlesJS('particles-js',
         }
       }
     },
-    "retina_detect": true,
-    "config_demo": {
-      "hide_card": false,
-      "background_color": "#b61924",
-      "background_image": "",
-      "background_position": "50% 50%",
-      "background_repeat": "no-repeat",
-      "background_size": "cover"
-    }
-  }
+    "retina_detect": true
+  });
+}
 
-);
+// Initialize on page load
+initLandingParticles();
