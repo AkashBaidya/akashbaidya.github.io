@@ -1085,27 +1085,71 @@
       background: var(--fluent-surface) !important;
     }
 
-    /* Fluent Navigation */
+    /* Modern Navigation - Clean Glassmorphism Style */
     #mainNav {
-      background: var(--fluent-surface) !important;
-      box-shadow: var(--fluent-shadow-4);
-      transition: all var(--fluent-duration-normal) var(--fluent-easing);
-      border-bottom: 1px solid var(--fluent-divider);
+      background: rgba(255, 255, 255, 0.85) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      border-bottom: 1px solid rgba(105, 179, 162, 0.1);
+    }
+
+    #mainNav.navbar-shrink {
+      background: rgba(255, 255, 255, 0.95) !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
     }
 
     .nav-link {
       font-family: var(--fluent-font) !important;
       font-weight: 600 !important;
       font-size: 14px !important;
-      color: var(--fluent-text-primary) !important;
-      padding: 8px 12px !important;
-      border-radius: var(--fluent-radius-md);
-      transition: all var(--fluent-duration-fast) var(--fluent-easing);
+      color: #2d3748 !important;
+      padding: 10px 16px !important;
+      margin: 0 4px;
+      border-radius: 8px;
+      transition: all 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-link::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(135deg, #69b3a2, #7ee8d1);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
     }
 
     .nav-link:hover {
-      background: var(--fluent-surface-secondary);
-      color: var(--fluent-accent) !important;
+      background: rgba(105, 179, 162, 0.1);
+      color: #69b3a2 !important;
+      transform: translateY(-2px);
+    }
+
+    .nav-link:hover::before {
+      width: 60%;
+    }
+
+    .nav-link.active {
+      background: linear-gradient(135deg, rgba(105, 179, 162, 0.15), rgba(126, 232, 209, 0.1));
+      color: #69b3a2 !important;
+    }
+
+    .nav-link.active::before {
+      width: 80%;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      background: linear-gradient(135deg, #69b3a2, #4a9a8a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     /* Fluent Progress bars */
@@ -1415,11 +1459,7 @@
       min-width: 40px;
     }
 
-    #mainNav {
-      background-color: rgba(255, 255, 255, 0.95);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      transition: all 0.3s ease;
-    }
+    /* Additional mainNav responsive override */
 
     /* Dark Mode Styles - Modern Deep Blue Theme */
     body.dark-mode {
@@ -1475,19 +1515,40 @@
     }
 
     body.dark-mode #mainNav {
-      background-color: #161b22 !important;
-      border-bottom: 1px solid #30363d;
+      background: rgba(22, 27, 34, 0.9) !important;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(126, 232, 209, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    body.dark-mode #mainNav.navbar-shrink {
+      background: rgba(22, 27, 34, 0.98) !important;
     }
 
     body.dark-mode .nav-link {
       color: #e6edf3 !important;
     }
 
-    body.dark-mode #mainNav .navbar-nav .nav-item .nav-link.active,
-    body.dark-mode #mainNav .navbar-nav .nav-item .nav-link:hover {
-      background-color: #21262d !important;
+    body.dark-mode .nav-link:hover {
+      background: rgba(126, 232, 209, 0.15) !important;
       color: #7ee8d1 !important;
-      border-bottom: 3px solid #7ee8d1;
+    }
+
+    body.dark-mode .nav-link.active {
+      background: linear-gradient(135deg, rgba(126, 232, 209, 0.2), rgba(105, 179, 162, 0.1)) !important;
+      color: #7ee8d1 !important;
+    }
+
+    body.dark-mode .nav-link::before {
+      background: linear-gradient(135deg, #7ee8d1, #69b3a2);
+    }
+
+    body.dark-mode .navbar-brand {
+      background: linear-gradient(135deg, #7ee8d1, #69b3a2);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     body.dark-mode footer {
@@ -2708,10 +2769,11 @@
       worldCopyJump: true
     }).setView([30, 20], 2); // Start with world view
 
-    // Use Stamen Terrain tiles (3D-like appearance with terrain shading)
-    L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://stadiamaps.com/">Stadia Maps</a> &copy; <a href="https://stamen.com/">Stamen Design</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      maxZoom: 18
+    // Use CartoDB Voyager tiles (clean, modern style - no API key needed)
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/attributions">CARTO</a>',
+      subdomains: 'abcd',
+      maxZoom: 19
     }).addTo(mymap);
 
     // 3D-style marker with shadow and elevation effect
@@ -5312,23 +5374,231 @@ console.log('%cBuilt with: HTML5, CSS3, JavaScript, Bootstrap', 'color: #888; fo
     body.dark-mode .cursor-ripple {
       border-color: rgba(126, 200, 184, 0.5);
     }
-    @media (max-width: 768px) { .cursor-ripple { display: none; } }
+    /* Mobile: larger ripple for touch */
+    @media (max-width: 768px) {
+      .cursor-ripple {
+        width: 30px;
+        height: 30px;
+        border-width: 3px;
+      }
+    }
   `;
   document.head.appendChild(style);
 
   let lastRipple = 0;
-  document.addEventListener('mousemove', (e) => {
+
+  function createRipple(x, y) {
     const now = Date.now();
     if (now - lastRipple < 60) return;
     lastRipple = now;
 
     const ripple = document.createElement('div');
     ripple.className = 'cursor-ripple';
-    ripple.style.left = e.clientX + 'px';
-    ripple.style.top = e.clientY + 'px';
+    ripple.style.left = x + 'px';
+    ripple.style.top = y + 'px';
     document.body.appendChild(ripple);
     setTimeout(() => ripple.remove(), 600);
+  }
+
+  // Desktop: mouse move
+  document.addEventListener('mousemove', (e) => {
+    createRipple(e.clientX, e.clientY);
   });
+
+  // Mobile: touch move
+  document.addEventListener('touchmove', (e) => {
+    if (e.touches.length > 0) {
+      createRipple(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  // Mobile: touch start (for taps)
+  document.addEventListener('touchstart', (e) => {
+    if (e.touches.length > 0) {
+      createRipple(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+})();
+
+// ========== MAGNETIC BUTTONS FOR RESUME, REFERENCE, GITHUB ==========
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .magnetic-btn {
+      position: relative;
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .magnetic-btn::before {
+      content: '';
+      position: absolute;
+      inset: -10px;
+      border-radius: inherit;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(105, 179, 162, 0.15), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .magnetic-btn:hover::before {
+      opacity: 1;
+    }
+    .magnetic-btn .btn-text {
+      display: inline-block;
+      transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    body.dark-mode .magnetic-btn::before {
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(126, 232, 209, 0.2), transparent 60%);
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Select the Resume, Reference, Github buttons in About section
+  const magneticBtns = document.querySelectorAll('.about-section .btn-secondary, #description .btn-secondary');
+
+  magneticBtns.forEach(btn => {
+    btn.classList.add('magnetic-btn');
+    const originalContent = btn.innerHTML;
+    btn.innerHTML = `<span class="btn-text">${originalContent}</span>`;
+
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const moveX = (x - centerX) / 4;
+      const moveY = (y - centerY) / 4;
+
+      btn.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+      btn.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+      btn.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      btn.querySelector('.btn-text').style.transform = `translate(${moveX / 2}px, ${moveY / 2}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+      btn.querySelector('.btn-text').style.transform = '';
+    });
+  });
+})();
+
+// ========== SERVICES SECTION INTERACTIVITY ==========
+(function() {
+  const style = document.createElement('style');
+  style.textContent = `
+    .service-item {
+      cursor: pointer;
+      perspective: 1000px;
+    }
+    .service-item-inner {
+      transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+    }
+    .service-item:hover .service-item-inner {
+      transform: rotateY(5deg) rotateX(5deg);
+    }
+    .service-glow {
+      position: absolute;
+      inset: 0;
+      border-radius: 15px;
+      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%),
+        rgba(105, 179, 162, 0.3), transparent 50%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .service-item:hover .service-glow {
+      opacity: 1;
+    }
+    .service-item .services-logo {
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .service-item:hover .services-logo {
+      transform: scale(1.1) translateY(-5px);
+      box-shadow: 0 15px 40px rgba(105, 179, 162, 0.4);
+    }
+    body.dark-mode .service-glow {
+      background: radial-gradient(circle at var(--glow-x, 50%) var(--glow-y, 50%),
+        rgba(126, 232, 209, 0.25), transparent 50%);
+    }
+    body.dark-mode .service-item:hover .services-logo {
+      box-shadow: 0 15px 40px rgba(126, 232, 209, 0.3);
+    }
+    /* Typing animation for service descriptions */
+    .service-item p {
+      position: relative;
+    }
+    .service-item:hover p {
+      color: #333;
+    }
+    body.dark-mode .service-item:hover p {
+      color: #e6edf3 !important;
+    }
+  `;
+  document.head.appendChild(style);
+
+  const serviceItems = document.querySelectorAll('.service-item');
+
+  serviceItems.forEach(item => {
+    // Add glow element
+    const glow = document.createElement('div');
+    glow.className = 'service-glow';
+    item.style.position = 'relative';
+    item.insertBefore(glow, item.firstChild);
+
+    // Add 3D tilt effect on mouse move
+    item.addEventListener('mousemove', (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+
+      item.style.setProperty('--glow-x', `${(x / rect.width) * 100}%`);
+      item.style.setProperty('--glow-y', `${(y / rect.height) * 100}%`);
+      item.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+    });
+
+    item.addEventListener('mouseleave', () => {
+      item.style.transform = '';
+    });
+
+    // Add click ripple
+    item.addEventListener('click', (e) => {
+      const rect = item.getBoundingClientRect();
+      const ripple = document.createElement('span');
+      ripple.style.cssText = `
+        position: absolute;
+        background: rgba(105, 179, 162, 0.4);
+        border-radius: 50%;
+        transform: scale(0);
+        animation: serviceRipple 0.6s ease-out;
+        pointer-events: none;
+        left: ${e.clientX - rect.left}px;
+        top: ${e.clientY - rect.top}px;
+        width: 200px;
+        height: 200px;
+        margin-left: -100px;
+        margin-top: -100px;
+      `;
+      item.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+
+  // Add keyframes for service ripple
+  const keyframes = document.createElement('style');
+  keyframes.textContent = `
+    @keyframes serviceRipple {
+      to { transform: scale(3); opacity: 0; }
+    }
+  `;
+  document.head.appendChild(keyframes);
 })();
 
 // ========== FLOATING PARTICLES BACKGROUND ==========
