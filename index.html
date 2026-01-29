@@ -1834,6 +1834,205 @@
       50% { opacity: 1; transform: translateY(-5px); }
     }
 
+    /* AI Status Badge */
+    .ai-status-badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.2);
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .ai-status-badge.ai-active {
+      background: rgba(126, 232, 209, 0.3);
+      box-shadow: 0 0 10px rgba(126, 232, 209, 0.5);
+    }
+
+    .ai-status-badge.ai-active i {
+      color: #7ee8d1;
+    }
+
+    /* Chat Settings Button */
+    .chat-settings-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: all 0.2s ease;
+      padding: 4px;
+    }
+
+    .chat-settings-btn:hover {
+      opacity: 1;
+      transform: rotate(45deg);
+    }
+
+    /* Chat Settings Panel */
+    .chat-settings-panel {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      padding: 15px;
+      border-bottom: 1px solid #dee2e6;
+      animation: slideDown 0.3s ease;
+    }
+
+    body.dark-mode .chat-settings-panel {
+      background: linear-gradient(135deg, #21262d 0%, #161b22 100%);
+      border-color: #30363d;
+    }
+
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .chat-settings-panel h6 {
+      margin: 0 0 8px 0;
+      color: #69b3a2;
+      font-size: 13px;
+    }
+
+    .chat-settings-panel .settings-info {
+      font-size: 11px;
+      margin: 0 0 10px 0;
+      color: #666;
+    }
+
+    body.dark-mode .chat-settings-panel .settings-info {
+      color: #8b949e;
+    }
+
+    .chat-settings-panel .settings-info a {
+      color: #69b3a2;
+    }
+
+    .api-key-input {
+      display: flex;
+      gap: 8px;
+    }
+
+    .api-key-input input {
+      flex: 1;
+      padding: 8px 12px;
+      border: 1px solid #dee2e6;
+      border-radius: 6px;
+      font-size: 12px;
+      outline: none;
+    }
+
+    body.dark-mode .api-key-input input {
+      background: #0d1117;
+      border-color: #30363d;
+      color: #e6edf3;
+    }
+
+    .api-key-input input:focus {
+      border-color: #69b3a2;
+    }
+
+    .save-key-btn {
+      background: #69b3a2;
+      border: none;
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .save-key-btn:hover {
+      background: #5a9d8d;
+      transform: scale(1.05);
+    }
+
+    .settings-note {
+      display: block;
+      margin-top: 8px;
+      font-size: 10px;
+      color: #888;
+    }
+
+    body.dark-mode .settings-note {
+      color: #6e7681;
+    }
+
+    /* Usage Stats */
+    .usage-stats {
+      margin-top: 10px;
+    }
+
+    .usage-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      margin-bottom: 5px;
+    }
+
+    .usage-label {
+      color: #666;
+    }
+
+    body.dark-mode .usage-label {
+      color: #8b949e;
+    }
+
+    .usage-value {
+      font-weight: 600;
+      color: #69b3a2;
+    }
+
+    .usage-bar {
+      height: 6px;
+      background: #e9ecef;
+      border-radius: 3px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    body.dark-mode .usage-bar {
+      background: #30363d;
+    }
+
+    .usage-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #69b3a2, #7ee8d1);
+      border-radius: 3px;
+      transition: width 0.3s ease;
+    }
+
+    .usage-fill.warning {
+      background: linear-gradient(90deg, #f0ad4e, #ffcc00);
+    }
+
+    .usage-fill.danger {
+      background: linear-gradient(90deg, #dc3545, #ff6b6b);
+    }
+
+    /* AI Response indicator */
+    .chat-message.bot.ai-response {
+      border-left: 3px solid #69b3a2;
+      background: linear-gradient(135deg, #f0f9f7 0%, #f0f0f0 100%);
+    }
+
+    body.dark-mode .chat-message.bot.ai-response {
+      background: linear-gradient(135deg, #1a2e2a 0%, #21262d 100%);
+    }
+
+    /* Limit warning message */
+    .chat-message.bot.limit-warning {
+      border-left: 3px solid #f0ad4e;
+      background: linear-gradient(135deg, #fff8e6 0%, #f0f0f0 100%);
+      font-size: 12px;
+    }
+
+    body.dark-mode .chat-message.bot.limit-warning {
+      background: linear-gradient(135deg, #2d2a1a 0%, #21262d 100%);
+    }
+
     /* Quick suggestions in chatbot */
     .quick-suggestions {
       padding: 10px;
@@ -3025,13 +3224,42 @@
   <div class="chatbot-container">
     <div class="chatbot-window" id="chatbotWindow">
       <div class="chatbot-header">
-        <div>
+        <div style="display:flex;align-items:center;gap:8px;">
           <i class="fas fa-robot mr-2"></i>
           <strong>Ask Me</strong>
+          <span id="aiStatusIndicator" class="ai-status-badge ai-active" title="AI-powered by Groq">
+            <i class="fas fa-brain"></i> AI
+          </span>
         </div>
-        <button onclick="toggleChatbot()" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;">
-          <i class="fas fa-times"></i>
-        </button>
+        <div style="display:flex;gap:8px;">
+          <button onclick="toggleChatSettings()" class="chat-settings-btn" title="AI Usage Stats">
+            <i class="fas fa-chart-bar"></i>
+          </button>
+          <button onclick="toggleChatbot()" style="background:none;border:none;color:white;font-size:18px;cursor:pointer;">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+      </div>
+      <!-- AI Usage Stats Panel -->
+      <div id="chatSettingsPanel" class="chat-settings-panel" style="display:none;">
+        <div class="settings-content">
+          <h6><i class="fas fa-brain"></i> AI Usage (Groq LLM)</h6>
+          <p class="settings-info">This chatbot is powered by Groq's Llama 3.3 70B model</p>
+          <div class="usage-stats" id="usageStats">
+            <div class="usage-item">
+              <span class="usage-label">Today:</span>
+              <span class="usage-value" id="dailyUsage">0 / 30</span>
+            </div>
+            <div class="usage-item">
+              <span class="usage-label">This month:</span>
+              <span class="usage-value" id="monthlyUsage">0 / 300</span>
+            </div>
+            <div class="usage-bar">
+              <div class="usage-fill" id="usageFill" style="width: 0%"></div>
+            </div>
+          </div>
+          <small class="settings-note">Usage resets daily (30/day) and monthly (300/month). Falls back to basic mode when limits are reached.</small>
+        </div>
       </div>
       <div class="chatbot-messages" id="chatMessages">
         <div class="chat-message bot">
@@ -4120,6 +4348,115 @@
     // ==================== SMART CHATBOT ====================
     let chatbotKnowledge = null;
 
+    // Groq RAG Configuration with embedded key and rate limiting
+    const GROQ_CONFIG = {
+      // Embedded API key (obfuscated for basic protection)
+      _k: ['gsk_tzjay30ISYLlE1k4uVoI', 'WGdyb3FY3BdxaY6AwcfMPlIxlKwTUs6q'],
+      get apiKey() { return this._k.join(''); },
+      model: 'llama-3.3-70b-versatile',
+      endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+      maxTokens: 500,
+      temperature: 0.7,
+      // Rate limits (free tier protection)
+      limits: {
+        perMinute: 5,        // Max requests per minute per user
+        perDay: 30,          // Max requests per day per user
+        perMonth: 300        // Max requests per month per user
+      }
+    };
+
+    // Usage tracking for rate limiting
+    const UsageTracker = {
+      getUsage() {
+        const stored = localStorage.getItem('groq_usage');
+        if (!stored) return this.resetUsage();
+        const usage = JSON.parse(stored);
+
+        // Reset if new day
+        const today = new Date().toDateString();
+        if (usage.date !== today) {
+          usage.daily = 0;
+          usage.date = today;
+          usage.minuteRequests = [];
+        }
+
+        // Reset if new month
+        const thisMonth = new Date().getMonth() + '-' + new Date().getFullYear();
+        if (usage.month !== thisMonth) {
+          usage.monthly = 0;
+          usage.month = thisMonth;
+        }
+
+        // Clean old minute requests (older than 60 seconds)
+        const now = Date.now();
+        usage.minuteRequests = (usage.minuteRequests || []).filter(t => now - t < 60000);
+
+        this.saveUsage(usage);
+        return usage;
+      },
+
+      resetUsage() {
+        const usage = {
+          daily: 0,
+          monthly: 0,
+          date: new Date().toDateString(),
+          month: new Date().getMonth() + '-' + new Date().getFullYear(),
+          minuteRequests: []
+        };
+        this.saveUsage(usage);
+        return usage;
+      },
+
+      saveUsage(usage) {
+        localStorage.setItem('groq_usage', JSON.stringify(usage));
+      },
+
+      canMakeRequest() {
+        const usage = this.getUsage();
+        const limits = GROQ_CONFIG.limits;
+
+        if (usage.minuteRequests.length >= limits.perMinute) {
+          return { allowed: false, reason: 'minute', remaining: 0 };
+        }
+        if (usage.daily >= limits.perDay) {
+          return { allowed: false, reason: 'daily', remaining: 0 };
+        }
+        if (usage.monthly >= limits.perMonth) {
+          return { allowed: false, reason: 'monthly', remaining: 0 };
+        }
+
+        return {
+          allowed: true,
+          remaining: {
+            minute: limits.perMinute - usage.minuteRequests.length,
+            daily: limits.perDay - usage.daily,
+            monthly: limits.perMonth - usage.monthly
+          }
+        };
+      },
+
+      recordRequest() {
+        const usage = this.getUsage();
+        usage.daily++;
+        usage.monthly++;
+        usage.minuteRequests.push(Date.now());
+        this.saveUsage(usage);
+      },
+
+      getLimitMessage(reason) {
+        switch(reason) {
+          case 'minute':
+            return "**Slow down!** Please wait a moment before asking another question. (Rate limit: 5 requests/minute)";
+          case 'daily':
+            return "**Daily AI limit reached!** You've used all 30 AI-powered responses for today. The chatbot will still work with basic responses. Come back tomorrow for more AI assistance!";
+          case 'monthly':
+            return "**Monthly AI limit reached!** You've reached the maximum 300 AI responses for this month. The chatbot will continue working with basic keyword matching. Thank you for your interest in Akash's work!";
+          default:
+            return "AI usage limit reached. Please try again later.";
+        }
+      }
+    };
+
     // Load chatbot knowledge from JSON
     async function loadChatbotKnowledge() {
       try {
@@ -4130,6 +4467,143 @@
       }
     }
     loadChatbotKnowledge();
+
+    // Build RAG context from knowledge base
+    function buildRAGContext() {
+      const contextParts = [];
+
+      // Add all knowledge from the JSON intents
+      if (chatbotKnowledge && chatbotKnowledge.intents) {
+        chatbotKnowledge.intents.forEach(intent => {
+          const topicInfo = `Topic: ${intent.tag}\nInformation: ${intent.responses.join(' ')}`;
+          contextParts.push(topicInfo);
+        });
+      }
+
+      // Add structured profile data
+      const profileData = `
+AKASH CHANDRA BAIDYA - AI Engineer & Data Scientist
+
+CURRENT ROLE:
+- Solution Architect (AI) at RWE Renewables, Essen (Oct 2025 - Present)
+- Building RAG systems, LLM models, and optimizing API integrations
+
+PREVIOUS EXPERIENCE:
+- Portfolio & Quantitative Analyst at RWE Supply & Trading (Jan-Nov 2025)
+- Data Scientist at IMSP, Munich (Jun 2024 - Jan 2025)
+- Research Assistant at Forschungszentrum Borstel (Sep 2023 - May 2024)
+- Research Assistant at E.ON RWTH Energy Research Center (Sep 2021 - Apr 2022)
+- Assistant Project Manager at ITM System LLC (Jun 2018 - Aug 2021) - Remote healthcare clients in US, Philippines, Vietnam
+- Consultant Software Engineer at Ubitrix BD Ltd., Dhaka (Feb 2017 - May 2018)
+
+EDUCATION:
+- MSc Data Science, TU Dortmund (Nov 2020 - Dec 2025)
+  Thesis: Evaluating Cluster Quality for Gene Expression Data
+- BSc Computer Science, KUET Bangladesh (2012-2016)
+
+TECHNICAL SKILLS:
+- Programming: Python (expert), R, SQL, JavaScript
+- AI/ML: PyTorch, TensorFlow, Scikit-learn, LangChain, RAG, LLMs (GPT-4, Claude, Mistral)
+- Data Engineering: Databricks, Dremio, Airflow, Spark, Snowflake
+- Visualization: Power BI, Tableau, Plotly, Matplotlib
+- Cloud & MLOps: Azure, AWS, Docker, Kubernetes, MLflow
+
+SERVICES OFFERED:
+1. RAG Systems Development - Document intelligence, vector databases, semantic search
+2. LLM Development & Fine-tuning - Prompt engineering, AI agents, model evaluation
+3. Data Engineering - ETL pipelines with Databricks/Dremio/Airflow, cloud architecture
+4. ML & Analytics - Predictive models, anomaly detection, dashboards
+
+KEY PROJECTS:
+1. MALDIX NLP & LLM Pipeline - Document processing with Mistral AI
+2. Time-Series Anomaly Detection - LSTM-based energy consumption analysis
+3. AutoML Cashflow Optimization - Insurance forecasting with Power BI
+4. Credit Card Fraud Detection - SMOTE with ensemble methods
+5. Germany Weather Data Engineering - Scalable ETL pipeline
+
+CONTACT:
+- Email: akashbaidya2@gmail.com
+- LinkedIn: linkedin.com/in/akashbaidya
+- GitHub: github.com/AkashBaidya
+- Location: Dortmund, Germany (open to remote & EU relocation)
+
+LANGUAGES: English (fluent), German (B1), Bengali (native)
+AVAILABILITY: Immediately available for full-time, contract, or consulting roles
+`;
+      contextParts.push(profileData);
+
+      return contextParts.join('\n\n---\n\n');
+    }
+
+    // Call Groq API for RAG-powered response
+    async function getGroqResponse(question) {
+      if (!GROQ_CONFIG.apiKey) {
+        return { response: null, limitReached: false };
+      }
+
+      // Check rate limits before making request
+      const limitCheck = UsageTracker.canMakeRequest();
+      if (!limitCheck.allowed) {
+        return {
+          response: UsageTracker.getLimitMessage(limitCheck.reason),
+          limitReached: true,
+          reason: limitCheck.reason
+        };
+      }
+
+      const context = buildRAGContext();
+
+      const systemPrompt = `You are Akash's friendly AI assistant on his portfolio website. Answer questions about Akash based ONLY on the provided context. Be helpful, concise, and professional. Use markdown formatting (**bold** for emphasis). If the question is unrelated to Akash or you cannot find the answer in the context, politely redirect to relevant topics you can help with. Keep responses under 150 words unless more detail is specifically needed.
+
+CONTEXT:
+${context}`;
+
+      try {
+        const response = await fetch(GROQ_CONFIG.endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GROQ_CONFIG.apiKey}`
+          },
+          body: JSON.stringify({
+            model: GROQ_CONFIG.model,
+            messages: [
+              { role: 'system', content: systemPrompt },
+              { role: 'user', content: question }
+            ],
+            max_tokens: GROQ_CONFIG.maxTokens,
+            temperature: GROQ_CONFIG.temperature
+          })
+        });
+
+        if (!response.ok) {
+          console.warn('Groq API error:', response.status);
+          return { response: null, limitReached: false };
+        }
+
+        // Record successful request
+        UsageTracker.recordRequest();
+
+        const data = await response.json();
+        return {
+          response: data.choices?.[0]?.message?.content || null,
+          limitReached: false
+        };
+      } catch (error) {
+        console.warn('Groq API call failed:', error);
+        return { response: null, limitReached: false };
+      }
+    }
+
+    // Update AI status indicator (always active with embedded key)
+    function updateAIStatus() {
+      const indicator = document.getElementById('aiStatusIndicator');
+      if (indicator) {
+        indicator.innerHTML = '<i class="fas fa-brain"></i> AI';
+        indicator.title = 'AI-powered by Groq Llama 3.3 70B';
+        indicator.classList.add('ai-active');
+      }
+    }
 
     // Copy email to clipboard function
     function copyEmail() {
@@ -4255,7 +4729,7 @@
         .replace(/\n/g, '<br>');
     }
 
-    function sendMessage() {
+    async function sendMessage() {
       const input = document.getElementById('chatInput');
       const messages = document.getElementById('chatMessages');
       const question = input.value.trim();
@@ -4277,20 +4751,103 @@
       messages.appendChild(typingDiv);
       messages.scrollTop = messages.scrollHeight;
 
-      // Variable delay based on response length (simulates thinking)
-      const delay = 600 + Math.random() * 600;
+      let answer;
+      let isAI = false;
+      let isLimitWarning = false;
 
-      setTimeout(() => {
-        const typing = document.getElementById('typing');
-        if (typing) typing.remove();
+      // Try AI response first if API key is set
+      if (GROQ_CONFIG.apiKey) {
+        try {
+          const result = await getGroqResponse(question);
 
-        const answer = findBestIntent(question);
-        const botMsg = document.createElement('div');
-        botMsg.className = 'chat-message bot';
-        botMsg.innerHTML = formatMessage(answer);
-        messages.appendChild(botMsg);
-        messages.scrollTop = messages.scrollHeight;
-      }, delay);
+          if (result.limitReached) {
+            // Show limit message but still try to answer with keyword matching
+            answer = result.response;
+            isLimitWarning = true;
+          } else if (result.response) {
+            answer = result.response;
+            isAI = true;
+          }
+        } catch (e) {
+          console.warn('AI response failed, using fallback');
+        }
+      }
+
+      // Fall back to keyword matching if AI didn't respond (and not a limit warning)
+      if (!answer) {
+        // Small delay to simulate processing
+        await new Promise(resolve => setTimeout(resolve, 400 + Math.random() * 400));
+        answer = findBestIntent(question);
+      }
+
+      // Remove typing indicator and show response
+      const typing = document.getElementById('typing');
+      if (typing) typing.remove();
+
+      const botMsg = document.createElement('div');
+      let msgClass = 'chat-message bot';
+      if (isAI) msgClass += ' ai-response';
+      if (isLimitWarning) msgClass += ' limit-warning';
+      botMsg.className = msgClass;
+      botMsg.innerHTML = formatMessage(answer);
+      messages.appendChild(botMsg);
+
+      // If it was a limit warning for rate limiting, also show the actual answer
+      if (isLimitWarning) {
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const fallbackAnswer = findBestIntent(question);
+        const fallbackMsg = document.createElement('div');
+        fallbackMsg.className = 'chat-message bot';
+        fallbackMsg.innerHTML = formatMessage(fallbackAnswer);
+        messages.appendChild(fallbackMsg);
+      }
+
+      messages.scrollTop = messages.scrollHeight;
+    }
+
+    // Toggle chat settings/usage panel
+    function toggleChatSettings() {
+      const panel = document.getElementById('chatSettingsPanel');
+
+      if (panel.style.display === 'none') {
+        panel.style.display = 'block';
+        updateUsageDisplay();
+      } else {
+        panel.style.display = 'none';
+      }
+    }
+
+    // Update usage statistics display
+    function updateUsageDisplay() {
+      const usage = UsageTracker.getUsage();
+      const limits = GROQ_CONFIG.limits;
+
+      // Update daily usage
+      const dailyEl = document.getElementById('dailyUsage');
+      if (dailyEl) {
+        dailyEl.textContent = `${usage.daily} / ${limits.perDay}`;
+      }
+
+      // Update monthly usage
+      const monthlyEl = document.getElementById('monthlyUsage');
+      if (monthlyEl) {
+        monthlyEl.textContent = `${usage.monthly} / ${limits.perMonth}`;
+      }
+
+      // Update progress bar
+      const fillEl = document.getElementById('usageFill');
+      if (fillEl) {
+        const percentage = (usage.monthly / limits.perMonth) * 100;
+        fillEl.style.width = percentage + '%';
+
+        // Change color based on usage
+        fillEl.classList.remove('warning', 'danger');
+        if (percentage >= 90) {
+          fillEl.classList.add('danger');
+        } else if (percentage >= 70) {
+          fillEl.classList.add('warning');
+        }
+      }
     }
 
     // Quick question suggestions
@@ -4316,8 +4873,11 @@
       messages.appendChild(suggestDiv);
     }
 
-    // Add quick questions on load
-    document.addEventListener('DOMContentLoaded', addQuickQuestions);
+    // Initialize chatbot on load
+    document.addEventListener('DOMContentLoaded', () => {
+      addQuickQuestions();
+      updateAIStatus();
+    });
   </script>
 
 <!-- ProgressBar.js CDN -->
