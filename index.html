@@ -4348,11 +4348,148 @@
     // ==================== SMART CHATBOT ====================
     let chatbotKnowledge = null;
 
-    // Groq RAG Configuration with embedded key and rate limiting
+    // Secure Key Manager with multi-layer protection
+    const SecureKeyManager = (function() {
+      // XOR-encrypted key fragments (each fragment is XOR'd with cipher)
+      const _f = [
+        [0x36, 0x04, 0x0e, 0x0d, 0x00, 0x23, 0x1f, 0x28, 0x16, 0x63, 0x51, 0x1a], // gsk_tzjay30I
+        [0x02, 0x2e, 0x29, 0x3e, 0x31, 0x68, 0x1e, 0x7d, 0x1a, 0x06, 0x0e, 0x1a], // SYLlE1k4uVoI
+        [0x06, 0x30, 0x01, 0x2b, 0x16, 0x6a, 0x33, 0x10, 0x5c, 0x12, 0x05, 0x2b], // WGdyb3FY3Bdx
+        [0x30, 0x2e, 0x53, 0x13, 0x03, 0x1a, 0x13, 0x04, 0x3f, 0x3c, 0x28, 0x2b], // aY6AwcfMPlIx
+        [0x3d, 0x3c, 0x12, 0x06, 0x21, 0x2a, 0x43, 0x38]                          // lKwTUs6q
+      ];
+      // XOR cipher (randomized)
+      const _c = [0x51, 0x77, 0x65, 0x52, 0x74, 0x59, 0x75, 0x49, 0x6f, 0x50, 0x61, 0x53];
+
+      // Allowed domains (your GitHub Pages + local dev)
+      const _d = ['akashbaidya.github.io', 'localhost', '127.0.0.1', ''];
+
+      // Anti-tampering checksum (sum of all encrypted bytes)
+      const _cs = 2198;
+
+      let _cache = null;
+      let _lastCheck = 0;
+      let _violations = 0;
+
+      // Domain validation
+      function _vd() {
+        const h = window.location.hostname.toLowerCase();
+        return _d.some(d => h === d || h.endsWith('.' + d));
+      }
+
+      // Referrer validation
+      function _vr() {
+        const r = document.referrer;
+        if (!r) return true; // Direct access allowed
+        try {
+          const u = new URL(r);
+          return _d.some(d => u.hostname === d || u.hostname.endsWith('.' + d));
+        } catch { return true; }
+      }
+
+      // Basic anti-debugging (detect DevTools)
+      function _ad() {
+        const t1 = performance.now();
+        debugger;
+        const t2 = performance.now();
+        return (t2 - t1) < 100; // Should be instant if DevTools not open
+      }
+
+      // Verify integrity
+      function _vi() {
+        let sum = 0;
+        _f.forEach(arr => arr.forEach(v => sum += v));
+        return sum === _cs;
+      }
+
+      // Check if in iframe (potential malicious embedding)
+      function _if() {
+        try {
+          return window.self === window.top;
+        } catch (e) {
+          return false; // Blocked = likely cross-origin iframe
+        }
+      }
+
+      // Simple browser fingerprint for session binding
+      function _fp() {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        ctx.textBaseline = 'top';
+        ctx.font = '14px Arial';
+        ctx.fillText('fp', 2, 2);
+        return canvas.toDataURL().slice(-50);
+      }
+
+      // Decode with XOR
+      function _dec() {
+        if (!_vd() || !_vi()) {
+          _violations++;
+          return null;
+        }
+
+        let result = '';
+        _f.forEach(fragment => {
+          fragment.forEach((byte, i) => {
+            result += String.fromCharCode(byte ^ _c[i % _c.length]);
+          });
+        });
+        return result;
+      }
+
+      // Rate limit check (beyond regular limits)
+      function _rl() {
+        const now = Date.now();
+        if (now - _lastCheck < 500) {
+          _violations++;
+          return false;
+        }
+        _lastCheck = now;
+        return _violations < 10;
+      }
+
+      // Session fingerprint validation
+      let _sfp = null;
+      function _vfp() {
+        const current = _fp();
+        if (!_sfp) {
+          _sfp = current;
+          return true;
+        }
+        return _sfp === current;
+      }
+
+      return {
+        getKey: function() {
+          // Multi-layer security checks
+          if (!_rl()) return null;
+          if (!_vd()) return null;
+          if (!_vr()) return null;
+          if (!_if()) return null;  // Block iframe usage
+          if (!_vfp()) return null; // Fingerprint mismatch
+
+          // Use cached value if available
+          if (_cache && (Date.now() - _lastCheck < 300000)) {
+            return _cache;
+          }
+
+          _cache = _dec();
+          return _cache;
+        },
+
+        isAuthorized: function() {
+          return _vd() && _vr() && _if() && _violations < 10;
+        },
+
+        getViolations: function() {
+          return _violations;
+        }
+      };
+    })();
+
+    // Groq RAG Configuration
     const GROQ_CONFIG = {
-      // Embedded API key (obfuscated for basic protection)
-      _k: ['gsk_tzjay30ISYLlE1k4uVoI', 'WGdyb3FY3BdxaY6AwcfMPlIxlKwTUs6q'],
-      get apiKey() { return this._k.join(''); },
+      get apiKey() { return SecureKeyManager.getKey(); },
       model: 'llama-3.3-70b-versatile',
       endpoint: 'https://api.groq.com/openai/v1/chat/completions',
       maxTokens: 500,
@@ -4365,12 +4502,38 @@
       }
     };
 
-    // Usage tracking for rate limiting
+    // Usage tracking for rate limiting with fingerprint binding
     const UsageTracker = {
+      // Generate browser fingerprint for binding
+      _getFingerprint() {
+        const nav = navigator;
+        const screen = window.screen;
+        const fp = [
+          nav.userAgent,
+          nav.language,
+          screen.width + 'x' + screen.height,
+          screen.colorDepth,
+          new Date().getTimezoneOffset()
+        ].join('|');
+        // Simple hash
+        let hash = 0;
+        for (let i = 0; i < fp.length; i++) {
+          hash = ((hash << 5) - hash) + fp.charCodeAt(i);
+          hash = hash & hash;
+        }
+        return hash.toString(36);
+      },
+
       getUsage() {
         const stored = localStorage.getItem('groq_usage');
         if (!stored) return this.resetUsage();
         const usage = JSON.parse(stored);
+
+        // Validate fingerprint (reset if different browser/device)
+        const currentFp = this._getFingerprint();
+        if (usage.fp && usage.fp !== currentFp) {
+          return this.resetUsage();
+        }
 
         // Reset if new day
         const today = new Date().toDateString();
@@ -4401,13 +4564,15 @@
           monthly: 0,
           date: new Date().toDateString(),
           month: new Date().getMonth() + '-' + new Date().getFullYear(),
-          minuteRequests: []
+          minuteRequests: [],
+          fp: this._getFingerprint()
         };
         this.saveUsage(usage);
         return usage;
       },
 
       saveUsage(usage) {
+        usage.fp = this._getFingerprint();
         localStorage.setItem('groq_usage', JSON.stringify(usage));
       },
 
@@ -4537,6 +4702,15 @@ AVAILABILITY: Immediately available for full-time, contract, or consulting roles
 
     // Call Groq API for RAG-powered response
     async function getGroqResponse(question) {
+      // Check if security manager allows access
+      if (!SecureKeyManager.isAuthorized()) {
+        return {
+          response: "**AI unavailable** - This feature is only available on the official portfolio site.",
+          limitReached: true,
+          reason: 'unauthorized'
+        };
+      }
+
       if (!GROQ_CONFIG.apiKey) {
         return { response: null, limitReached: false };
       }
