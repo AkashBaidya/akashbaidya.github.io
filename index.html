@@ -4748,8 +4748,88 @@ CONTACT:
 
 LANGUAGES: English (fluent), German (B1), Bengali (native)
 AVAILABILITY: Immediately available for full-time, contract, or consulting roles
+
+CERTIFICATIONS:
+- Docker & Kubernetes Containerization, DataCamp (2025)
+- Azure Fundamentals, DataCamp (2024)
+- Cluster Analysis in Data Mining, Coursera/UIUC (2021)
+- Agile Scrum for Project Management, Coursera/UMD (2019)
 `;
       contextParts.push(profileData);
+
+      // Professional recommendations and testimonials
+      const recommendations = `
+PROFESSIONAL RECOMMENDATIONS & WORK CERTIFICATES:
+
+**RWE Supply & Trading GmbH (Jan 2025 - Oct 2025)**
+Work Certificate: Akash worked as Portfolio & Quantitative Analyst. Key responsibilities:
+- Development and maintenance of data management and automation tools using Python, Streamlit, Dremio, Databricks
+- Implementation of quantitative models using asset and market price data for portfolio optimization
+- Analysis and testing of AI-based use cases to improve forecasting accuracy
+Performance: Showed excellent learning motivation and comprehension. Completed all assigned tasks with care and accuracy. Work quality was fully satisfactory in quantitative aspects. Behavior towards supervisors, colleagues, and clients was always impeccable.
+
+**IMSP Munich (Jun 2024 - Jan 2025)**
+Work Certificate by Philipp Grunert: Akash worked as Data Scientist (Werkstudent). Key tasks:
+- Training delivery for Power BI, Tableau, NoSQL/MongoDB, AWS, PySpark, NLP, Deep Learning
+- Unit testing, API integration for TalentLMS, MALDIX document code updates
+- Working with JSONL for large language models
+Performance: Quick learner who adapted to new topics very efficiently. High analytical thinking enabled him to handle complex tasks. Work results were consistently high quality - especially training sessions received very positive customer evaluations. Always worked conscientiously, structured, and independently. Completed all tasks to fullest satisfaction. Behavior was always professional and exemplary.
+
+**Forschungszentrum Borstel - Prof. Dr. Inken Wohlers (Oct 2023 - May 2024)**
+Recommendation: Akash was research assistant for data visualization in Biomolecular Data Science in Pneumology.
+- Contributed to two collaborative proteomics projects with potential for journal publications
+- Generated summary statistics, overview figures, annotated clustered heatmaps, and PCA plots
+- Implemented scripts in R with Quarto for comprehensive documentation
+- Contributed to establishing FAIRDOMHub for project documentation
+Assessment: "Akash was in the unique position to independently establish and provide Data Science approaches for proteomics. He established basic proteomics expertise very successfully and conducted his work to full satisfaction. I enjoyed working with Akash because of his technical skills, reliability, professionalism and kindness."
+
+**TU Dortmund - Prof. Dr. Jörg Rahnenführer (Apr 2023 - Sep 2023)**
+Recommendation: Akash worked as graduate assistant in RTG 2624 "Biostatistical Methods for High-Dimensional Data in Toxicology".
+- Familiarized himself with theory of identifying differentially expressed genes in RNAseq experiments
+- Implemented R program for simulating realistic gene expression datasets
+Assessment: "Always well prepared and open for suggestions. A friendly and motivated student who performed tasks to our full satisfaction."
+
+**TU Dortmund - Prof. Dr. Andreas Groll (Apr 2022 - Sep 2022)**
+Recommendation for Advanced Statistical Learning course:
+- Served as highly competent WHF tutor
+- Demonstrated exceptional ability in explaining complex statistical concepts
+- Provided R programming guidance and graded assignments
+Assessment: "Strong foundation in statistical methods. Clear communicator, collaborative team member, willingness to take on new challenges. Confident he would make significant contributions."
+
+**TU Dortmund - Prof. Dr. Emmanuel Müller**
+Recommendation: Completed case study "Time Series Processing, Anomaly Detection and Explanation" under supervision.
+- Demonstrated outstanding capabilities in data analysis and machine learning
+- Utilized advanced LSTM techniques for anomaly detection on 10 TU Dortmund building datasets
+- Completed coursework in Big Data Analytics and Machine Learning for Complex Data
+Assessment: "Exhibits an appreciation for theory and scientific methods, creativity, and a lust for learning."
+
+**TU Dortmund - Prof. Dr. Stefan Harmeling (Oct 2022 - Mar 2024)**
+Experience Letter: Teaching Assistant for "Probabilistic Reasoning for Machine Learning" course.
+- Assisted with grading assignments over two academic periods
+- Demonstrated reasonable understanding of course content
+
+**Singer Bangladesh Ltd. - Md. Anisur Rahman (Nov 2018 - Mar 2021)**
+Recommendation: IT Officer in Charge. Responsibilities:
+- Plan and develop in-house software, maintain softwares, develop mobile applications
+- Develop Jasper reports for monthly and requirement basis, documentation
+- Developed Lease Management System, Online Service Request Form, API for Online Installment Management
+Assessment: "Committed to his tasks, motivated, self-starter, quick learner. Inquisitive in understanding requirements. Completed all tasks in professional manner. Highly remembered by users and team members. Bright and outgoing individual with great leadership skills, innovative technical skills, and communication skills."
+
+**Marquette University - Prof. Sheikh Iqbal Ahamed, Ph.D.**
+Recommendation for graduate program. Supervised Akash at Ubitrix Inc on multiple healthcare projects:
+- Ag-palliative care (Android & Web), Natural Family Planning, Speech Therapy Online
+- MCW Preemie, Suicide Prevention, ITextMessaging
+Assessment: "Very hardworking and smart. Strict on completing tasks in time. Substantial in communication. Amazing talent to convince clients with presentation skills. Holds great leadership skills, innovative technical skills, always motivated to take up new challenges."
+
+**Ubitrix BD Ltd. (Feb 2017 - Jun 2018)**
+Work Certificate: Software Engineer in Mobile Application Development Team.
+Assessment: "Sincere, honest, dedicated employee with professional attitude and very good job knowledge. Amiable in nature and character is well."
+
+**Code Surfer BD (Aug 2016 - Jan 2017)**
+Work Certificate by CEO Muhammad Tanvir Siddiqui: Software Engineer for 6 months working on PHP and Android projects.
+Assessment: "Active and competent in executing all assigned tasks. Professionally sound, hard-working, devoted and motivated. Sincere, reliable, trustworthy, sociable, pleasant, and open to challenges. Genial temperament and can efficiently work in and lead a team."
+`;
+      contextParts.push(recommendations);
 
       return contextParts.join('\n\n---\n\n');
     }
@@ -4924,9 +5004,10 @@ ${context}`;
         rag: "Akash specializes in **RAG systems**:\n- Tools: LangChain, LlamaIndex, n8n\n- Vector DBs: ChromaDB, Pinecone, Weaviate\n- Building intelligent Q&A systems for enterprise knowledge bases",
         llm: "Akash works with **LLMs**:\n- Models: OpenAI GPT-4, Claude, Mistral AI, Hugging Face\n- Capabilities: Fine-tuning (LoRA, QLoRA), prompt engineering, AI agents\n- Building domain-specific AI solutions",
         hire: "Akash is actively looking for:\n- **AI Engineer**\n- **Data Scientist**\n- **Data Engineer**\n- **Software Engineer**\n\nOpen to positions in Germany/EU including remote work.",
-        certifications: "Akash has certifications from IBM and other industry leaders in AI, Data Science, and Machine Learning.",
+        certifications: "Akash holds certifications in:\n- **Docker & Kubernetes** (DataCamp, 2025)\n- **Azure Fundamentals** (DataCamp, 2024)\n- **Cluster Analysis in Data Mining** (Coursera/UIUC, 2021)\n- **Agile Scrum** (Coursera/UMD, 2019)",
         availability: "Akash is **immediately available** for new opportunities. He prefers full-time roles but is open to contract and consulting work.",
-        languages: "Akash speaks **English** (fluent), **German** (intermediate B1), and **Bengali** (native)."
+        languages: "Akash speaks **English** (fluent), **German** (intermediate B1), and **Bengali** (native).",
+        recommendations: "Akash has excellent professional recommendations:\n\n**RWE S&T:** \"Completed all tasks with care and accuracy. Work quality fully satisfactory.\"\n\n**IMSP Munich:** \"Work results consistently high quality. Completed all tasks to fullest satisfaction.\"\n\n**Prof. Inken Wohlers (Borstel):** \"Technical skills, reliability, professionalism and kindness.\"\n\n**Prof. Rahnenführer (TU Dortmund):** \"Friendly and motivated student who performed tasks to full satisfaction.\"\n\n**Prof. Groll (TU Dortmund):** \"Strong foundation in statistical methods. Clear communicator.\"\n\n**Prof. Müller (TU Dortmund):** \"Appreciation for theory and scientific methods, creativity, and a lust for learning.\"\n\n**Singer Bangladesh:** \"Great leadership skills, innovative technical skills, always motivated.\"\n\n**Ubitrix/Code Surfer:** \"Sincere, reliable, trustworthy, sociable, can efficiently lead a team.\""
       };
 
       if (q.includes('skill') || q.includes('tech') || q.includes('know') || q.includes('stack') || q.includes('programming')) return knowledge.skills;
@@ -4942,12 +5023,13 @@ ${context}`;
       if (q.includes('certif') || q.includes('credential') || q.includes('ibm')) return knowledge.certifications;
       if (q.includes('available') || q.includes('start') || q.includes('when') || q.includes('immediate')) return knowledge.availability;
       if (q.includes('language') || q.includes('speak') || q.includes('german') || q.includes('english') || q.includes('bengali')) return knowledge.languages;
-      if (q.includes('hello') || q.includes('hi') || q.includes('hey')) return "Hello! I'm Akash's AI assistant. How can I help you? Ask about skills, experience, projects, services, or availability!";
+      if (q.includes('recommend') || q.includes('reference') || q.includes('testimonial') || q.includes('review') || q.includes('feedback') || q.includes('what do people say') || q.includes('work certificate')) return knowledge.recommendations;
+      if (q.includes('hello') || q.includes('hi') || q.includes('hey')) return "Hello! I'm Akash's AI assistant. How can I help you? Ask about skills, experience, projects, services, recommendations, or availability!";
       if (q.includes('thank') || q.includes('appreciate')) return "You're welcome! Feel free to ask more questions!";
       if (q.includes('bye') || q.includes('goodbye')) return "Goodbye! Have a great day!";
 
       // Admit when we don't know - but offer related info
-      return "**I'm not sure about that exact topic**, but I can help you with:\n\n- **Skills** - Python, AI/ML, Data Engineering\n- **Experience** - RWE, RWEST, IMSP roles\n- **Projects** - NLP pipelines, Anomaly Detection\n- **Services** - RAG Systems, LLM Development\n- **Education** - Data Science, TU Dortmund\n- **Availability** - Open to opportunities\n\nFor specific questions, please reach out directly to **Akash at akashbaidya2@gmail.com**";
+      return "**I'm not sure about that exact topic**, but I can help you with:\n\n- **Skills** - Python, AI/ML, Data Engineering\n- **Experience** - RWE, RWEST, IMSP roles\n- **Projects** - NLP pipelines, Anomaly Detection\n- **Services** - RAG Systems, LLM Development\n- **Education** - Data Science, TU Dortmund\n- **Recommendations** - Professional testimonials\n- **Certifications** - Docker, Azure, ML courses\n- **Availability** - Open to opportunities\n\nFor specific questions, please reach out directly to **Akash at akashbaidya2@gmail.com**";
     }
 
     // Format message with markdown-like syntax
