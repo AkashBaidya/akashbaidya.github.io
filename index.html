@@ -606,6 +606,36 @@
       padding-right: 10px;
     }
 
+    /* Fix light mode white gaps between cards */
+    section.bg-light .row,
+    section.bg-white .row {
+      margin-left: -10px;
+      margin-right: -10px;
+    }
+
+    section.bg-light .row > [class*="col-"],
+    section.bg-white .row > [class*="col-"] {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    /* Ensure consistent card styling in light mode */
+    section .card {
+      background: #ffffff !important;
+      border: 1px solid rgba(0, 0, 0, 0.08) !important;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    section .card:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Card header styling */
+    section .card-header {
+      background: #f8f9fa !important;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06) !important;
+    }
+
     /* Timeline badges */
     .timeline-description .badge {
       display: inline-block;
@@ -644,10 +674,120 @@
         transform: translateX(0);
       }
     }
+
+    /* ==================== EXPANDABLE SECTIONS ==================== */
+    .expandable-section .row {
+      position: relative;
+    }
+
+    .expandable-section .expandable-items {
+      max-height: 800px;
+      overflow: hidden;
+      transition: max-height 0.5s ease-out;
+      position: relative;
+    }
+
+    .expandable-section .expandable-items.collapsed {
+      max-height: 450px;
+    }
+
+    .expandable-section .expandable-items.collapsed::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      background: linear-gradient(to bottom, transparent, #ffffff);
+      pointer-events: none;
+    }
+
+    body.dark-mode .expandable-section .expandable-items.collapsed::after {
+      background: linear-gradient(to bottom, transparent, #0d1117);
+    }
+
+    .expand-toggle {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .expand-toggle .btn {
+      padding: 12px 30px;
+      border-radius: 25px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #69b3a2, #7ee8d1);
+      border: none;
+      color: white;
+      box-shadow: 0 4px 15px rgba(105, 179, 162, 0.3);
+    }
+
+    .expand-toggle .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(105, 179, 162, 0.4);
+    }
+
+    .expand-toggle .btn i {
+      transition: transform 0.3s ease;
+    }
+
+    .expand-toggle .btn.expanded i {
+      transform: rotate(180deg);
+    }
+
+    body.dark-mode .expand-toggle .btn {
+      background: linear-gradient(135deg, #7ee8d1, #69b3a2);
+      color: #0d1117;
+    }
+
+    /* Hide expand toggle when grid view is not active */
+    .grid-view:not(.active) .grid-expand {
+      display: none;
+    }
+
+    /* Project year badges */
+    .project-card .badge {
+      font-size: 0.75rem;
+      padding: 5px 12px;
+      border-radius: 15px;
+      font-weight: 600;
+    }
+
+    .project-card .badge-primary {
+      background: linear-gradient(135deg, #69b3a2, #7ee8d1);
+      color: white;
+    }
+
+    .project-card .badge-success {
+      background: linear-gradient(135deg, #28a745, #5cb85c);
+      color: white;
+    }
+
+    .project-card .badge-warning {
+      background: linear-gradient(135deg, #ffc107, #ffda6a);
+      color: #333;
+    }
+
+    body.dark-mode .project-card .badge-primary {
+      background: linear-gradient(135deg, #7ee8d1, #69b3a2);
+      color: #0d1117;
+    }
+
+    body.dark-mode .project-card .badge-success {
+      background: linear-gradient(135deg, #5cb85c, #28a745);
+      color: #0d1117;
+    }
+
+    body.dark-mode .project-card .badge-warning {
+      background: linear-gradient(135deg, #ffda6a, #ffc107);
+      color: #0d1117;
+    }
   </style>
 
 <!-- Experience -->
-  <section id="experience" class="py-5 bg-light">
+  <section id="experience" class="py-5 bg-light expandable-section">
     <div class="container">
       <h2 class="mb-4 text-center" data-aos="fade-up" data-i18n="experience.title">Experience</h2>
 
@@ -663,7 +803,7 @@
 
       <!-- Grid View -->
       <div class="grid-view active" id="experience-grid">
-      <div class="row">
+      <div class="row expandable-items collapsed">
         <!-- RWE Renewables - Solution Architect AI -->
         <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
           <div class="card h-100 shadow-sm experience-card" data-job="rweAI">
@@ -829,6 +969,13 @@
             </div>
           </div>
         </div>
+      </div>
+      <!-- Expand Toggle for Grid View -->
+      <div class="expand-toggle grid-expand" data-aos="fade-up">
+        <button class="btn" onclick="toggleExpand('experience')">
+          <span class="btn-text">Show More</span>
+          <i class="fas fa-chevron-down ml-2"></i>
+        </button>
       </div>
       </div><!-- End Grid View -->
 
@@ -1000,10 +1147,66 @@
   </section>
 
    <!-- Projects -->
-  <section id="projects" class="py-5 bg-white">
+  <section id="projects" class="py-5 bg-white expandable-section">
     <div class="container">
       <h2 class="mb-4 text-center" data-aos="fade-up" data-i18n="projects.title">Projects</h2>
-      <div class="row">
+      <div class="row expandable-items collapsed">
+        <!-- Wind Turbine POC - AI Document Processing -->
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+          <div class="card h-100 shadow-sm project-card" data-project="windturbine">
+            <div class="card-body">
+              <h5>
+                <i class="fas fa-wind mr-2 text-info"></i>
+                <span class="project-name">Wind Turbine Document AI</span>
+              </h5>
+              <p class="text-muted small mb-2 project-tech">n8n • Azure AI • Python • JavaScript • LLM</p>
+              <p class="project-desc">Intelligent document processing system for wind turbine operations. Leverages LLM models to automatically gather information from multiple technical documents, extract critical data points, and cross-validate information across sources for accuracy verification.</p>
+              <span class="badge badge-primary">2026</span>
+            </div>
+          </div>
+        </div>
+        <!-- Portfolio Revenue Model -->
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="150">
+          <div class="card h-100 shadow-sm project-card" data-project="portfoliomodel">
+            <div class="card-body">
+              <h5>
+                <i class="fas fa-chart-area mr-2 text-success"></i>
+                <span class="project-name">Portfolio Revenue Model</span>
+              </h5>
+              <p class="text-muted small mb-2 project-tech">Python • Financial Modeling • Data Analysis</p>
+              <p class="project-desc">Comprehensive portfolio modeling tool integrating multiple price scenarios and generation forecasts with extrapolation capabilities. Enables visualization of projected revenues across different offtake agreements, supporting strategic decision-making for renewable energy assets.</p>
+              <span class="badge badge-success">2025</span>
+            </div>
+          </div>
+        </div>
+        <!-- Portfolio Information Management -->
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+          <div class="card h-100 shadow-sm project-card" data-project="portfoliomgmt">
+            <div class="card-body">
+              <h5>
+                <i class="fas fa-database mr-2 text-primary"></i>
+                <span class="project-name">Portfolio Information Management</span>
+              </h5>
+              <p class="text-muted small mb-2 project-tech">Streamlit • Databricks • Dremio • Python</p>
+              <p class="project-desc">Streamlined asset management platform featuring an intuitive Streamlit interface. Optimizes data workflows by bypassing traditional Databricks jobs, utilizing Dremio reflection for high-performance queries and real-time portfolio insights.</p>
+              <span class="badge badge-primary">2025</span>
+            </div>
+          </div>
+        </div>
+        <!-- AI Appointment Management System -->
+        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="250">
+          <div class="card h-100 shadow-sm project-card" data-project="appointment">
+            <div class="card-body">
+              <h5>
+                <i class="fas fa-calendar-check mr-2 text-danger"></i>
+                <span class="project-name">AI Appointment Management</span>
+              </h5>
+              <p class="text-muted small mb-2 project-tech">Django • Twilio API • Python • AI/ML</p>
+              <p class="project-desc">Intelligent healthcare scheduling system for MD24HouseCall. Features AI-powered doctor route optimization, automated appointment scheduling, and multi-channel communication via Twilio API for SMS and voice call reminders, reducing no-shows and improving operational efficiency.</p>
+              <span class="badge badge-warning">2021</span>
+            </div>
+          </div>
+        </div>
         <!-- MALDIX NLP & LLM Pipeline -->
         <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="card h-100 shadow-sm project-card" data-project="maldix" data-github="https://github.com/AkashBaidya/maldix-nlp-pipeline">
@@ -1101,9 +1304,16 @@
           </div>
         </div>
       </div>
+      <!-- Expand Toggle -->
+      <div class="expand-toggle" data-aos="fade-up">
+        <button class="btn" onclick="toggleExpand('projects')">
+          <span class="btn-text">Show More</span>
+          <i class="fas fa-chevron-down ml-2"></i>
+        </button>
+      </div>
       <div class="text-center mt-4">
         <a href="https://github.com/AkashBaidya" target="_blank" class="btn btn-outline-dark">
-          <i class="fab fa-github mr-2"></i><span data-i18n="projects.moreProjects">More Projects</span>
+          <i class="fab fa-github mr-2"></i><span data-i18n="projects.moreProjects">More on GitHub</span>
         </a>
       </div>
     </div>
@@ -1413,7 +1623,7 @@
           <div class="card-body">
             <ul class="pl-3 mb-0">
               <li>MySQL, PostgreSQL, Oracle</li>
-              <li>MongoDB, Airflow, Snowflake</li>
+              <li>MongoDB, Snowflake, Dremio</li>
               <li>Databricks, MLflow, PySpark</li>
             </ul>
           </div>
@@ -1426,8 +1636,8 @@
           <div class="card-header bg-white"><h5>Cloud &amp; MLOps</h5></div>
           <div class="card-body">
             <ul class="pl-3 mb-0">
-              <li>Azure, AWS SageMaker</li>
-              <li>Docker, Kubernetes, Terraform</li>
+              <li>Azure, AWS, GCP</li>
+              <li>Docker, Kubernetes, CI/CD</li>
               <li>CI/CD, Git, Agile</li>
             </ul>
           </div>
@@ -1486,7 +1696,7 @@
             <ul class="pl-3 mb-0">
               <li>Advanced Excel</li>
               <li>Statistical Analysis</li>
-              <li>Power Apps</li>
+              <li>Pandas, Polars, NumPy</li>
             </ul>
           </div>
         </div>
@@ -1717,12 +1927,10 @@
       transition: background-color var(--fluent-duration-normal) var(--fluent-easing);
     }
 
-    section.bg-light {
-      background: var(--fluent-surface-secondary) !important;
-    }
-
-    section.bg-white, section.bg {
-      background: var(--fluent-surface) !important;
+    section.bg-light,
+    section.bg-white,
+    section.bg {
+      background: #ffffff !important;
     }
 
     /* Modern Navigation - Clean Glassmorphism Style */
@@ -2854,13 +3062,14 @@
       background: #ffffff;
       border-radius: 16px;
       padding: 2rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       margin: 0 1rem;
       transition: all 0.2s ease;
+      border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
     .testimonial-card:hover {
-      box-shadow: var(--md-shadow-4);
+      box-shadow: 0 6px 25px rgba(0,0,0,0.12);
     }
 
     .testimonial-img {
@@ -3080,7 +3289,8 @@
       background: white;
       border-radius: 20px;
       padding: 40px 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      border: 1px solid rgba(0, 0, 0, 0.06);
       transition: all 0.3s ease;
     }
 
@@ -3416,7 +3626,7 @@
     /* Certifications uses bg-white class for consistent backgrounds */
   </style>
 
-  <section id="certifications" class="py-5 bg-white">
+  <section id="certifications" class="py-5 bg-white expandable-section">
     <div class="container">
       <h2 class="text-center mb-5" data-aos="fade-up" data-i18n="certifications.title">Certifications</h2>
 
@@ -3432,7 +3642,7 @@
 
       <!-- Grid View -->
       <div class="grid-view active" id="certifications-grid">
-      <div class="row">
+      <div class="row expandable-items collapsed">
         <!-- Row 1 -->
         <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
           <div class="cert-card">
@@ -3635,6 +3845,13 @@
             </div>
           </div>
         </div>
+      </div>
+      <!-- Expand Toggle for Grid View -->
+      <div class="expand-toggle grid-expand" data-aos="fade-up">
+        <button class="btn" onclick="toggleExpand('certifications')">
+          <span class="btn-text">Show More</span>
+          <i class="fas fa-chevron-down ml-2"></i>
+        </button>
       </div>
       </div><!-- End Grid View -->
 
@@ -5517,14 +5734,14 @@ EDUCATION:
 TECHNICAL SKILLS:
 - Programming: Python (expert), R, SQL, JavaScript
 - AI/ML: PyTorch, TensorFlow, Scikit-learn, LangChain, RAG, LLMs (GPT-4, Claude, Mistral)
-- Data Engineering: Databricks, Dremio, Airflow, Spark, Snowflake
+- Data Engineering: Databricks, Dremio, Spark, Snowflake
 - Visualization: Power BI, Tableau, Plotly, Matplotlib
 - Cloud & MLOps: Azure, AWS, Docker, Kubernetes, MLflow
 
 SERVICES OFFERED:
 1. RAG Systems Development - Document intelligence, vector databases, semantic search
 2. LLM Development & Fine-tuning - Prompt engineering, AI agents, model evaluation
-3. Data Engineering - ETL pipelines with Databricks/Dremio/Airflow, cloud architecture
+3. Data Engineering - ETL pipelines with Databricks/Dremio/Spark, cloud architecture
 4. ML & Analytics - Predictive models, anomaly detection, dashboards
 
 KEY PROJECTS:
@@ -5740,6 +5957,46 @@ ${context}`;
       }
     }
 
+    // Toggle expand/collapse for sections
+    function toggleExpand(section) {
+      let expandableItems;
+      let toggleBtn;
+
+      // Handle different section structures
+      if (section === 'projects') {
+        expandableItems = document.querySelector(`#${section} .expandable-items`);
+        toggleBtn = document.querySelector(`#${section} .expand-toggle .btn`);
+      } else {
+        // For sections with grid/timeline view, target the grid-view's expandable items and toggle
+        expandableItems = document.querySelector(`#${section}-grid .expandable-items`);
+        toggleBtn = document.querySelector(`#${section}-grid .grid-expand .btn`);
+      }
+
+      if (!expandableItems || !toggleBtn) return;
+
+      const isCollapsed = expandableItems.classList.contains('collapsed');
+      const btnText = toggleBtn.querySelector('.btn-text');
+
+      if (isCollapsed) {
+        // Expand
+        expandableItems.classList.remove('collapsed');
+        expandableItems.style.maxHeight = expandableItems.scrollHeight + 'px';
+        toggleBtn.classList.add('expanded');
+        if (btnText) btnText.textContent = 'Show Less';
+      } else {
+        // Collapse
+        expandableItems.classList.add('collapsed');
+        expandableItems.style.maxHeight = '';
+        toggleBtn.classList.remove('expanded');
+        if (btnText) btnText.textContent = 'Show More';
+      }
+
+      // Refresh AOS animations
+      if (typeof AOS !== 'undefined') {
+        setTimeout(() => AOS.refresh(), 300);
+      }
+    }
+
     // Copy email to clipboard function
     function copyEmail() {
       const email = 'akashbaidya2@gmail.com';
@@ -5821,10 +6078,10 @@ ${context}`;
       const q = question.toLowerCase();
 
       const knowledge = {
-        skills: "Akash is highly skilled in:\n\n**Programming:** Python (95%), R (85%), SQL (90%), JavaScript\n\n**AI/ML:** PyTorch, TensorFlow, Scikit-learn, LangChain, RAG systems, LLMs (GPT-4, Claude, Mistral)\n\n**Data Engineering:** Databricks, Dremio, Airflow, Spark, Snowflake\n\n**Visualization:** Power BI, Tableau, Plotly, Matplotlib\n\n**Cloud & MLOps:** Azure, AWS, Docker, Kubernetes, MLflow",
+        skills: "Akash is highly skilled in:\n\n**Programming:** Python (95%), R (85%), SQL (90%), JavaScript\n\n**AI/ML:** PyTorch, TensorFlow, Scikit-learn, LangChain, RAG systems, LLMs (GPT-4, Claude, Mistral)\n\n**Data Engineering:** Databricks, Dremio, Spark, Snowflake\n\n**Visualization:** Power BI, Tableau, Plotly, Matplotlib\n\n**Cloud & MLOps:** Azure, AWS, Docker, Kubernetes, MLflow",
         experience: "**Current:** Solution Architect (AI) at RWE Renewables, Essen (Oct 2025 - Present)\n- Building RAG systems and LLM models\n- Optimizing API integrations with AI\n\n**Previous:**\n- Portfolio & Quantitative Analyst at RWEST (Jan-Nov 2025)\n- Data Scientist at IMSP, Munich (Jun 2024 - Jan 2025)\n- Research Assistant at TU Dortmund - Gene Expression Simulation (Apr 2023 - Nov 2024)\n- Research Assistant at Forschungszentrum Borstel (Sep 2023 - May 2024)\n- WHF Tutor at TU Dortmund - ML, Big Data, Statistical Learning (Oct 2021 - Mar 2023)\n- Research Assistant at E.ON RWTH Energy Research Center\n- Software Engineer at Code Surfer BD (Oct 2016 - Jan 2017)\n- 5+ years Python & full-stack development",
         education: "**Master's in Data Science** from TU Dortmund (Nov 2020 - Dec 2025)\n- Thesis: Cluster Quality for Gene Expression Data\n- Teaching Assistant for Advanced Statistical Learning, Big Data Analytics\n\n**Bachelor's in Computer Science** from KUET, Bangladesh",
-        services: "Akash offers:\n\n1. **RAG Systems** - Document intelligence, vector databases, semantic search\n2. **LLM Development** - Fine-tuning, prompt engineering, AI agents\n3. **Data Engineering** - ETL pipelines with Databricks/Dremio/Airflow\n4. **ML & Analytics** - Predictive models, anomaly detection, Power BI dashboards",
+        services: "Akash offers:\n\n1. **RAG Systems** - Document intelligence, vector databases, semantic search\n2. **LLM Development** - Fine-tuning, prompt engineering, AI agents\n3. **Data Engineering** - ETL pipelines with Databricks/Dremio/Spark\n4. **ML & Analytics** - Predictive models, anomaly detection, Power BI dashboards",
         contact: "**Email:** akashbaidya2@gmail.com\n**LinkedIn:** linkedin.com/in/akashbaidya\n**GitHub:** github.com/AkashBaidya",
         projects: "Key projects:\n\n1. **MALDIX NLP & LLM Pipeline** - Document processing with Mistral AI\n2. **Time-Series Anomaly Detection** - LSTM-based energy consumption analysis\n3. **AutoML Cashflow Optimization** - Insurance forecasting with Power BI\n4. **Credit Card Fraud Detection** - SMOTE with ensemble methods\n5. **Germany Weather Data Engineering** - Scalable ETL pipeline\n6. **Inventory Management System** - Django + Android full-stack",
         location: "Akash is based in **Dortmund, Germany**. Open to remote work and relocation within Germany & EU.",
@@ -7310,7 +7567,8 @@ console.log('%cBuilt with: HTML5, CSS3, JavaScript, Bootstrap', 'color: #888; fo
     height: 100%;
     pointer-events: none;
     z-index: -1;
-    opacity: 0.3;
+    opacity: 0;
+    display: none;
   `;
   document.body.appendChild(canvas);
 
@@ -7620,7 +7878,7 @@ console.log('%cBuilt with: HTML5, CSS3, JavaScript, Bootstrap', 'color: #888; fo
   const skillTagsData = {
     0: ['NumPy', 'Pandas', 'Flask', 'Django'],
     1: ['Plotly', 'Seaborn', 'D3.js'],
-    2: ['Spark', 'Airflow', 'Snowflake'],
+    2: ['Spark', 'Dremio', 'Snowflake'],
     3: ['Docker', 'K8s', 'CI/CD', 'MLflow']
   };
 
