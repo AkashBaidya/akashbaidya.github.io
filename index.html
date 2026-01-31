@@ -2976,6 +2976,198 @@
     body, .card, .navbar, footer, section, .chatbot-window, .chat-message {
       transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
+
+    /* RAG User Registration Modal */
+    .rag-registration-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(255, 255, 255, 0.98);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+      animation: fadeIn 0.3s ease;
+    }
+
+    body.dark-mode .rag-registration-overlay {
+      background: rgba(22, 27, 34, 0.98);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .rag-registration-overlay h5 {
+      color: #69b3a2;
+      font-size: 16px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .rag-registration-overlay .reg-subtitle {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    body.dark-mode .rag-registration-overlay .reg-subtitle {
+      color: #8b949e;
+    }
+
+    .rag-registration-overlay .form-group {
+      margin-bottom: 12px;
+    }
+
+    .rag-registration-overlay label {
+      display: block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 4px;
+    }
+
+    body.dark-mode .rag-registration-overlay label {
+      color: #e6edf3;
+    }
+
+    .rag-registration-overlay input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    body.dark-mode .rag-registration-overlay input {
+      background: #21262d;
+      border-color: #30363d;
+      color: #e6edf3;
+    }
+
+    .rag-registration-overlay input:focus {
+      border-color: #69b3a2;
+      box-shadow: 0 0 0 3px rgba(105, 179, 162, 0.1);
+    }
+
+    .rag-registration-overlay input.invalid {
+      border-color: #dc3545;
+    }
+
+    .rag-registration-overlay .error-msg {
+      font-size: 10px;
+      color: #dc3545;
+      margin-top: 3px;
+      display: none;
+    }
+
+    .rag-registration-overlay .error-msg.show {
+      display: block;
+    }
+
+    .rag-registration-overlay .reg-btn {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(135deg, #69b3a2 0%, #4a9a8a 100%);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .rag-registration-overlay .reg-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(105, 179, 162, 0.4);
+    }
+
+    .rag-registration-overlay .reg-btn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .rag-registration-overlay .privacy-note {
+      font-size: 10px;
+      color: #888;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    body.dark-mode .rag-registration-overlay .privacy-note {
+      color: #6e7681;
+    }
+
+    /* User Info Badge in Chat Header */
+    .user-info-badge {
+      font-size: 9px;
+      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      max-width: 100px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* Daily Limit Warning */
+    .daily-limit-warning {
+      background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+      padding: 10px 15px;
+      border-radius: 8px;
+      margin: 10px;
+      font-size: 12px;
+      color: #856404;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    body.dark-mode .daily-limit-warning {
+      background: linear-gradient(135deg, #3d3d1a 0%, #2d2d0a 100%);
+      color: #f0ad4e;
+    }
+
+    /* Question History in Settings */
+    .question-history {
+      max-height: 100px;
+      overflow-y: auto;
+      margin-top: 10px;
+      padding: 8px;
+      background: rgba(0,0,0,0.03);
+      border-radius: 6px;
+      font-size: 11px;
+    }
+
+    body.dark-mode .question-history {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .question-history-item {
+      padding: 4px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      color: #666;
+    }
+
+    body.dark-mode .question-history-item {
+      border-color: rgba(255,255,255,0.05);
+      color: #8b949e;
+    }
+
+    .question-history-item:last-child {
+      border-bottom: none;
+    }
   </style>
 
   <section id="services" class="bg-white py-5">
@@ -4307,6 +4499,16 @@
         <div class="settings-content">
           <h6><i class="fas fa-brain"></i> AI Usage (Groq LLM)</h6>
           <p class="settings-info">This chatbot is powered by Groq's Llama 3.3 70B model</p>
+          <div id="currentUserInfo" style="margin-bottom:10px;display:none;">
+            <div class="usage-item">
+              <span class="usage-label">User:</span>
+              <span class="usage-value" id="currentUserName">-</span>
+            </div>
+            <div class="usage-item">
+              <span class="usage-label">Questions today:</span>
+              <span class="usage-value" id="userDailyQuestions">0 / 5</span>
+            </div>
+          </div>
           <div class="usage-stats" id="usageStats">
             <div class="usage-item">
               <span class="usage-label">Today:</span>
@@ -4321,7 +4523,37 @@
             </div>
           </div>
           <small class="settings-note">Usage resets daily (30/day) and monthly (300/month). Falls back to basic mode when limits are reached.</small>
+          <div id="questionHistorySection" style="display:none;margin-top:10px;">
+            <small style="color:#69b3a2;font-weight:600;">Recent Questions:</small>
+            <div class="question-history" id="questionHistory"></div>
+          </div>
         </div>
+      </div>
+      <!-- RAG User Registration Overlay -->
+      <div class="rag-registration-overlay" id="ragRegistration" style="display:none;">
+        <h5><i class="fas fa-user-plus"></i> Register to Use AI Chat</h5>
+        <p class="reg-subtitle">Please provide your details to access AI-powered responses (5 questions/day limit)</p>
+        <form id="ragRegistrationForm" onsubmit="return false;">
+          <div class="form-group">
+            <label for="regName">Name *</label>
+            <input type="text" id="regName" placeholder="Your name" required>
+            <div class="error-msg" id="nameError">Please enter your name</div>
+          </div>
+          <div class="form-group">
+            <label for="regEmail">Email *</label>
+            <input type="email" id="regEmail" placeholder="your@email.com" required>
+            <div class="error-msg" id="emailError">Please enter a valid email</div>
+          </div>
+          <div class="form-group">
+            <label for="regLocation">Location *</label>
+            <input type="text" id="regLocation" placeholder="City, Country">
+            <div class="error-msg" id="locationError">Please enter your location</div>
+          </div>
+          <button type="button" class="reg-btn" onclick="submitRAGRegistration()">
+            <i class="fas fa-check"></i> Start Chatting
+          </button>
+        </form>
+        <p class="privacy-note"><i class="fas fa-lock"></i> Your data is stored locally and used only for rate limiting</p>
       </div>
       <div class="chatbot-messages" id="chatMessages">
         <div class="chat-message bot">
@@ -5410,6 +5642,238 @@
     // ==================== SMART CHATBOT ====================
     let chatbotKnowledge = null;
 
+    // ==================== GOOGLE SHEETS LOGGER ====================
+    const SheetLogger = {
+      webhookUrl: 'https://script.google.com/macros/s/AKfycbyXc0M6qFhuSq46UEw8B_20WnZiz2Lf4xg-JOxnACTbnsAAgFrffFTEh74xr7KBHofy/exec',
+
+      // Send data to Google Sheets (fire and forget)
+      async log(data) {
+        try {
+          fetch(this.webhookUrl, {
+            method: 'POST',
+            mode: 'no-cors', // Required for Google Apps Script
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+        } catch (e) {
+          // Silent fail - don't break user experience
+          console.warn('Sheet logging failed:', e);
+        }
+      },
+
+      // Log user registration
+      logRegistration(user) {
+        this.log({
+          type: 'registration',
+          name: user.name,
+          email: user.email,
+          location: user.location,
+          dailyCount: user.dailyQuestionCount,
+          totalQuestions: user.totalQuestions
+        });
+      },
+
+      // Log a question
+      logQuestion(user, question) {
+        this.log({
+          type: 'question',
+          name: user.name,
+          email: user.email,
+          location: user.location,
+          question: question,
+          dailyCount: user.dailyQuestionCount,
+          totalQuestions: user.totalQuestions
+        });
+      }
+    };
+
+    // ==================== RAG USER DATABASE (IndexedDB) ====================
+    const RAGUserDB = {
+      dbName: 'RAGUserDatabase',
+      dbVersion: 1,
+      storeName: 'users',
+      db: null,
+      currentUser: null,
+      DAILY_LIMIT: 5,
+
+      // Initialize IndexedDB
+      async init() {
+        return new Promise((resolve, reject) => {
+          const request = indexedDB.open(this.dbName, this.dbVersion);
+
+          request.onerror = () => reject(request.error);
+
+          request.onsuccess = () => {
+            this.db = request.result;
+            resolve(this.db);
+          };
+
+          request.onupgradeneeded = (event) => {
+            const db = event.target.result;
+            if (!db.objectStoreNames.contains(this.storeName)) {
+              const store = db.createObjectStore(this.storeName, { keyPath: 'id' });
+              store.createIndex('email', 'email', { unique: false });
+              store.createIndex('name_email', ['name', 'email'], { unique: true });
+            }
+          };
+        });
+      },
+
+      // Generate unique ID from name + email
+      generateId(name, email) {
+        const str = `${name.toLowerCase().trim()}_${email.toLowerCase().trim()}`;
+        let hash = 0;
+        for (let i = 0; i < str.length; i++) {
+          const char = str.charCodeAt(i);
+          hash = ((hash << 5) - hash) + char;
+          hash = hash & hash;
+        }
+        return 'user_' + Math.abs(hash).toString(36);
+      },
+
+      // Get or create user
+      async getOrCreateUser(name, email, location) {
+        await this.init();
+        const id = this.generateId(name, email);
+
+        return new Promise((resolve, reject) => {
+          const transaction = this.db.transaction([this.storeName], 'readwrite');
+          const store = transaction.objectStore(this.storeName);
+          const getRequest = store.get(id);
+
+          getRequest.onsuccess = () => {
+            let user = getRequest.result;
+            const today = new Date().toDateString();
+
+            if (user) {
+              // Existing user - update location and reset daily count if new day
+              user.location = location;
+              user.lastVisit = new Date().toISOString();
+              user.totalVisits = (user.totalVisits || 0) + 1;
+
+              if (user.lastQuestionDate !== today) {
+                user.dailyQuestionCount = 0;
+                user.lastQuestionDate = today;
+              }
+
+              store.put(user);
+            } else {
+              // New user
+              user = {
+                id: id,
+                name: name.trim(),
+                email: email.toLowerCase().trim(),
+                location: location.trim(),
+                createdAt: new Date().toISOString(),
+                lastVisit: new Date().toISOString(),
+                totalVisits: 1,
+                totalQuestions: 0,
+                dailyQuestionCount: 0,
+                lastQuestionDate: today,
+                questions: []
+              };
+              store.add(user);
+            }
+
+            this.currentUser = user;
+            resolve(user);
+          };
+
+          getRequest.onerror = () => reject(getRequest.error);
+        });
+      },
+
+      // Check if user can ask a question (daily limit)
+      canAskQuestion() {
+        if (!this.currentUser) return { allowed: false, reason: 'not_registered' };
+
+        const today = new Date().toDateString();
+        if (this.currentUser.lastQuestionDate !== today) {
+          this.currentUser.dailyQuestionCount = 0;
+          this.currentUser.lastQuestionDate = today;
+        }
+
+        if (this.currentUser.dailyQuestionCount >= this.DAILY_LIMIT) {
+          return {
+            allowed: false,
+            reason: 'daily_limit',
+            remaining: 0,
+            used: this.currentUser.dailyQuestionCount
+          };
+        }
+
+        return {
+          allowed: true,
+          remaining: this.DAILY_LIMIT - this.currentUser.dailyQuestionCount,
+          used: this.currentUser.dailyQuestionCount
+        };
+      },
+
+      // Record a question
+      async recordQuestion(question) {
+        if (!this.currentUser || !this.db) return;
+
+        const today = new Date().toDateString();
+        if (this.currentUser.lastQuestionDate !== today) {
+          this.currentUser.dailyQuestionCount = 0;
+          this.currentUser.lastQuestionDate = today;
+        }
+
+        this.currentUser.dailyQuestionCount++;
+        this.currentUser.totalQuestions++;
+        this.currentUser.questions.push({
+          text: question.substring(0, 200), // Limit stored question length
+          timestamp: new Date().toISOString()
+        });
+
+        // Keep only last 50 questions
+        if (this.currentUser.questions.length > 50) {
+          this.currentUser.questions = this.currentUser.questions.slice(-50);
+        }
+
+        return new Promise((resolve, reject) => {
+          const transaction = this.db.transaction([this.storeName], 'readwrite');
+          const store = transaction.objectStore(this.storeName);
+          const request = store.put(this.currentUser);
+          request.onsuccess = () => resolve(this.currentUser);
+          request.onerror = () => reject(request.error);
+        });
+      },
+
+      // Get current user's recent questions
+      getRecentQuestions(limit = 5) {
+        if (!this.currentUser || !this.currentUser.questions) return [];
+        return this.currentUser.questions.slice(-limit).reverse();
+      },
+
+      // Check if session has registered user (from sessionStorage)
+      loadSessionUser() {
+        const sessionData = sessionStorage.getItem('ragCurrentUser');
+        if (sessionData) {
+          try {
+            this.currentUser = JSON.parse(sessionData);
+            return this.currentUser;
+          } catch (e) {
+            return null;
+          }
+        }
+        return null;
+      },
+
+      // Save current user to session
+      saveSessionUser() {
+        if (this.currentUser) {
+          sessionStorage.setItem('ragCurrentUser', JSON.stringify(this.currentUser));
+        }
+      },
+
+      // Clear session (for logout/reset)
+      clearSession() {
+        this.currentUser = null;
+        sessionStorage.removeItem('ragCurrentUser');
+      }
+    };
+
     // Secure Key Manager with multi-layer protection
     const SecureKeyManager = (function() {
       // XOR-encrypted key fragments (each fragment is XOR'd with cipher)
@@ -6130,6 +6594,15 @@ ${context}`;
 
       if (!question) return;
 
+      // Check if user is registered for RAG
+      if (!RAGUserDB.currentUser) {
+        showRAGRegistration();
+        return;
+      }
+
+      // Check user's daily limit for RAG
+      const userLimitCheck = RAGUserDB.canAskQuestion();
+
       // Add user message
       const userMsg = document.createElement('div');
       userMsg.className = 'chat-message user';
@@ -6149,6 +6622,30 @@ ${context}`;
       let isAI = false;
       let isLimitWarning = false;
 
+      // Check if user has exceeded their personal daily limit
+      if (!userLimitCheck.allowed) {
+        // User hit their 5/day limit - show message and use fallback
+        const typing = document.getElementById('typing');
+        if (typing) typing.remove();
+
+        const limitMsg = document.createElement('div');
+        limitMsg.className = 'chat-message bot limit-warning';
+        limitMsg.innerHTML = formatMessage(`**Daily limit reached!** You've used all ${RAGUserDB.DAILY_LIMIT} AI questions for today. Come back tomorrow for more AI-powered responses!`);
+        messages.appendChild(limitMsg);
+
+        // Still provide a basic answer
+        await new Promise(resolve => setTimeout(resolve, 400));
+        answer = findBestIntent(question);
+        const fallbackMsg = document.createElement('div');
+        fallbackMsg.className = 'chat-message bot';
+        fallbackMsg.innerHTML = formatMessage(answer);
+        messages.appendChild(fallbackMsg);
+        messages.scrollTop = messages.scrollHeight;
+
+        updateUserInfoDisplay();
+        return;
+      }
+
       // Try AI response first if API key is set
       const apiKey = GROQ_CONFIG.apiKey; // Get key ONCE and reuse to avoid rate limit
 
@@ -6163,6 +6660,11 @@ ${context}`;
           } else if (result.response) {
             answer = result.response;
             isAI = true;
+            // Record the question in user's history (only for successful AI responses)
+            await RAGUserDB.recordQuestion(question);
+            RAGUserDB.saveSessionUser();
+            // Log question to Google Sheets
+            SheetLogger.logQuestion(RAGUserDB.currentUser, question);
           }
         } catch (e) {
           console.warn('AI response failed, using fallback');
@@ -6199,6 +6701,135 @@ ${context}`;
       }
 
       messages.scrollTop = messages.scrollHeight;
+      updateUserInfoDisplay();
+    }
+
+    // Show RAG registration overlay
+    function showRAGRegistration() {
+      const overlay = document.getElementById('ragRegistration');
+      const chatMessages = document.getElementById('chatMessages');
+      const chatInput = document.querySelector('.chatbot-input');
+      if (overlay) {
+        overlay.style.display = 'flex';
+        chatMessages.style.display = 'none';
+        if (chatInput) chatInput.style.display = 'none';
+        document.getElementById('regName').focus();
+      }
+    }
+
+    // Hide RAG registration overlay
+    function hideRAGRegistration() {
+      const overlay = document.getElementById('ragRegistration');
+      const chatMessages = document.getElementById('chatMessages');
+      const chatInput = document.querySelector('.chatbot-input');
+      if (overlay) {
+        overlay.style.display = 'none';
+        chatMessages.style.display = '';  // Reset to default (not 'flex')
+        if (chatInput) chatInput.style.display = '';
+      }
+    }
+
+    // Submit RAG registration
+    async function submitRAGRegistration() {
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const location = document.getElementById('regLocation').value.trim();
+
+      // Validation
+      let isValid = true;
+
+      // Name validation
+      if (!name || name.length < 2) {
+        document.getElementById('regName').classList.add('invalid');
+        document.getElementById('nameError').classList.add('show');
+        isValid = false;
+      } else {
+        document.getElementById('regName').classList.remove('invalid');
+        document.getElementById('nameError').classList.remove('show');
+      }
+
+      // Email validation
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!email || !emailRegex.test(email)) {
+        document.getElementById('regEmail').classList.add('invalid');
+        document.getElementById('emailError').classList.add('show');
+        isValid = false;
+      } else {
+        document.getElementById('regEmail').classList.remove('invalid');
+        document.getElementById('emailError').classList.remove('show');
+      }
+
+      // Location validation
+      if (!location || location.length < 2) {
+        document.getElementById('regLocation').classList.add('invalid');
+        document.getElementById('locationError').classList.add('show');
+        isValid = false;
+      } else {
+        document.getElementById('regLocation').classList.remove('invalid');
+        document.getElementById('locationError').classList.remove('show');
+      }
+
+      if (!isValid) return;
+
+      try {
+        // Register/get user
+        await RAGUserDB.getOrCreateUser(name, email, location);
+        RAGUserDB.saveSessionUser();
+
+        // Log registration to Google Sheets
+        SheetLogger.logRegistration(RAGUserDB.currentUser);
+
+        // Hide registration, show chat
+        hideRAGRegistration();
+
+        // Update user info display
+        updateUserInfoDisplay();
+
+        // Add welcome message
+        const messages = document.getElementById('chatMessages');
+        const welcomeMsg = document.createElement('div');
+        welcomeMsg.className = 'chat-message bot ai-response';
+        const isReturning = RAGUserDB.currentUser.totalVisits > 1;
+        welcomeMsg.innerHTML = formatMessage(
+          isReturning
+            ? `**Welcome back, ${name}!** You have ${RAGUserDB.DAILY_LIMIT - RAGUserDB.currentUser.dailyQuestionCount} AI questions remaining today.`
+            : `**Welcome, ${name}!** You can ask up to ${RAGUserDB.DAILY_LIMIT} AI-powered questions per day. What would you like to know about Akash?`
+        );
+        messages.appendChild(welcomeMsg);
+        messages.scrollTop = messages.scrollHeight;
+
+      } catch (error) {
+        console.error('Registration failed:', error);
+        alert('Registration failed. Please try again.');
+      }
+    }
+
+    // Update user info display in settings panel
+    function updateUserInfoDisplay() {
+      const userInfoSection = document.getElementById('currentUserInfo');
+      const questionHistorySection = document.getElementById('questionHistorySection');
+
+      if (RAGUserDB.currentUser) {
+        // Show user info
+        if (userInfoSection) {
+          userInfoSection.style.display = 'block';
+          document.getElementById('currentUserName').textContent = RAGUserDB.currentUser.name;
+          document.getElementById('userDailyQuestions').textContent =
+            `${RAGUserDB.currentUser.dailyQuestionCount} / ${RAGUserDB.DAILY_LIMIT}`;
+        }
+
+        // Show question history
+        if (questionHistorySection) {
+          const questions = RAGUserDB.getRecentQuestions(5);
+          if (questions.length > 0) {
+            questionHistorySection.style.display = 'block';
+            const historyDiv = document.getElementById('questionHistory');
+            historyDiv.innerHTML = questions.map(q =>
+              `<div class="question-history-item">"${q.text.substring(0, 50)}${q.text.length > 50 ? '...' : ''}"</div>`
+            ).join('');
+          }
+        }
+      }
     }
 
     // Toggle chat settings/usage panel
@@ -6208,6 +6839,7 @@ ${context}`;
       if (panel.style.display === 'none') {
         panel.style.display = 'block';
         updateUsageDisplay();
+        updateUserInfoDisplay();
       } else {
         panel.style.display = 'none';
       }
@@ -6270,9 +6902,31 @@ ${context}`;
     }
 
     // Initialize chatbot on load
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
       addQuickQuestions();
       updateAIStatus();
+
+      // Initialize RAG user database and check for existing session
+      try {
+        await RAGUserDB.init();
+        const sessionUser = RAGUserDB.loadSessionUser();
+
+        if (sessionUser) {
+          // Refresh user data from IndexedDB
+          await RAGUserDB.getOrCreateUser(
+            sessionUser.name,
+            sessionUser.email,
+            sessionUser.location
+          );
+          RAGUserDB.saveSessionUser();
+          updateUserInfoDisplay();
+        } else {
+          // No session user - show registration when chat opens
+          // Registration will be shown on first message attempt
+        }
+      } catch (error) {
+        console.warn('RAGUserDB initialization failed:', error);
+      }
     });
   </script>
 
