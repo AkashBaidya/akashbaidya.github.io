@@ -5414,11 +5414,11 @@
     const SecureKeyManager = (function() {
       // XOR-encrypted key fragments (each fragment is XOR'd with cipher)
       const _f = [
-        [0x36, 0x04, 0x0e, 0x0d, 0x00, 0x23, 0x1f, 0x28, 0x16, 0x63, 0x51, 0x1a], // gsk_tzjay30I
-        [0x02, 0x2e, 0x29, 0x3e, 0x31, 0x68, 0x1e, 0x7d, 0x1a, 0x06, 0x0e, 0x1a], // SYLlE1k4uVoI
-        [0x06, 0x30, 0x01, 0x2b, 0x16, 0x6a, 0x33, 0x10, 0x5c, 0x12, 0x05, 0x2b], // WGdyb3FY3Bdx
-        [0x30, 0x2e, 0x53, 0x13, 0x03, 0x1a, 0x13, 0x04, 0x3f, 0x3c, 0x28, 0x2b], // aY6AwcfMPlIx
-        [0x3d, 0x3c, 0x12, 0x06, 0x21, 0x2a, 0x43, 0x38]                          // lKwTUs6q
+        [0x36, 0x04, 0x0e, 0x0d, 0x41, 0x2c, 0x2f, 0x1a, 0x35, 0x05, 0x03, 0x12], // gsk_5uZSZUbA
+        [0x65, 0x23, 0x0b, 0x3e, 0x05, 0x09, 0x47, 0x20, 0x0c, 0x06, 0x56, 0x32], // 4TnlqP2icV7a
+        [0x06, 0x30, 0x01, 0x2b, 0x16, 0x6a, 0x33, 0x10, 0x58, 0x60, 0x13, 0x1b], // WGdyb3FY70rH
+        [0x34, 0x25, 0x06, 0x21, 0x33, 0x03, 0x36, 0x21, 0x3f, 0x60, 0x12, 0x0a], // eRcsGZChP0sY
+        [0x1b, 0x1e, 0x54, 0x1a, 0x24, 0x29, 0x3e, 0x7b]                          // Ji1HPpK2
       ];
       // XOR cipher (randomized)
       const _c = [0x51, 0x77, 0x65, 0x52, 0x74, 0x59, 0x75, 0x49, 0x6f, 0x50, 0x61, 0x53];
@@ -5427,7 +5427,7 @@
       const _d = ['akashbaidya.github.io', 'localhost', '127.0.0.1', ''];
 
       // Anti-tampering checksum (sum of all encrypted bytes)
-      const _cs = 2198;
+      const _cs = 2234;
 
       let _cache = null;
       let _lastCheck = 0;
@@ -5527,8 +5527,8 @@
           if (!_rl()) return null;
           if (!_vd()) return null;
           if (!_vr()) return null;
-          if (!_if()) return null;  // Block iframe usage
-          if (!_vfp()) return null; // Fingerprint mismatch
+          if (!_if()) return null;
+          if (!_vfp()) return null;
 
           // Use cached value if available
           if (_cache && (Date.now() - _lastCheck < 300000)) {
@@ -5846,7 +5846,7 @@ Assessment: "Active and competent in executing all assigned tasks. Professionall
     }
 
     // Call Groq API for RAG-powered response
-    async function getGroqResponse(question) {
+    async function getGroqResponse(question, apiKey) {
       // Check if security manager allows access
       if (!SecureKeyManager.isAuthorized()) {
         return {
@@ -5856,7 +5856,7 @@ Assessment: "Active and competent in executing all assigned tasks. Professionall
         };
       }
 
-      if (!GROQ_CONFIG.apiKey) {
+      if (!apiKey) {
         return { response: null, limitReached: false };
       }
 
@@ -5882,7 +5882,7 @@ ${context}`;
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${GROQ_CONFIG.apiKey}`
+            'Authorization': `Bearer ${apiKey}`
           },
           body: JSON.stringify({
             model: GROQ_CONFIG.model,
@@ -6150,9 +6150,11 @@ ${context}`;
       let isLimitWarning = false;
 
       // Try AI response first if API key is set
-      if (GROQ_CONFIG.apiKey) {
+      const apiKey = GROQ_CONFIG.apiKey; // Get key ONCE and reuse to avoid rate limit
+
+      if (apiKey) {
         try {
-          const result = await getGroqResponse(question);
+          const result = await getGroqResponse(question, apiKey);
 
           if (result.limitReached) {
             // Show limit message but still try to answer with keyword matching
