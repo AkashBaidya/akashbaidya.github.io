@@ -997,11 +997,11 @@ ul.social-buttons li a:active, ul.social-buttons li a:focus, ul.social-buttons l
   background-position: 50% 50%;
   background-repeat: no-repeat;
   transition: background-color 0.3s ease;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 #particles-js canvas {
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 body.dark-mode #particles-js {

@@ -5448,26 +5448,44 @@
         const particleColor = isDark ? '#4a9a8a' : '#69b3a2';
         const lineColor = isDark ? '#4a9a8a' : '#69b3a2';
 
-        particlesJS('particles-bg', {
+        particlesJS('particles-js', {
           particles: {
-            number:    { value: 60 },
-            size:      { value: 3 },
-            color:     { value: particleColor },
+            number: { value: 60, density: { enable: true, value_area: 800 } },
+            size: { value: 3, random: true },
+            color: { value: particleColor },
+            shape: { type: 'circle' },
+            opacity: { value: 0.5, random: false },
             line_linked: {
-              enable:   true,
+              enable: true,
               distance: 120,
-              color:    lineColor,
-              opacity:  0.3,
-              width:    1
+              color: lineColor,
+              opacity: 0.3,
+              width: 1
             },
-            move: { speed: 2 }
+            move: {
+              enable: true,
+              speed: 2,
+              direction: 'none',
+              random: false,
+              straight: false,
+              out_mode: 'out',
+              bounce: false
+            }
           },
           interactivity: {
+            detect_on: 'canvas',
             events: {
               onhover: { enable: true, mode: 'grab' },
-              onclick: { enable: true, mode: 'push' }
+              onclick: { enable: true, mode: 'push' },
+              resize: true
+            },
+            modes: {
+              grab: { distance: 140, line_linked: { opacity: 1 } },
+              push: { particles_nb: 4 },
+              repulse: { distance: 200, duration: 0.4 }
             }
-          }
+          },
+          retina_detect: true
         });
       }
 
