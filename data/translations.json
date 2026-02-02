@@ -10,7 +10,7 @@
       "contact": "Contact"
     },
     "landing": {
-      "welcome": "Welcome to my homepage. I'm Akash Chandra Baidya, a Data Science professional from TU Dortmund and currently a Solution Architect (AI) at RWE Renewables. With 5+ years of experience in Python & full-stack development and 3+ years in data science, I build end-to-end data and AI solutions (automation, analytics, and RAG/LLM applications). I'm actively looking for AI Engineer, Data Scientist, Data Engineer, and Software Engineer positions.",
+      "welcome": "Welcome to my homepage. I'm Akash Chandra Baidya, a Data Science professional from TU Dortmund and currently a Solution Architect (AI) at RWE Renewables. With 5+ years of experience in Python & full-stack development and 3+ years in data science, I build end-to-end data and AI solutions (automation, analytics, and RAG/LLM applications). I'm actively looking for Data Engineer, AI Engineer, Data Scientist, and Software Engineer positions.",
       "visit": "Visit",
       "contactBtn": "Contact"
     },
@@ -249,7 +249,7 @@
       "contact": "Kontakt"
     },
     "landing": {
-      "welcome": "Willkommen auf meiner Homepage. Ich bin Akash Chandra Baidya, Data-Science-Experte von der TU Dortmund und derzeit Solution Architect (AI) bei RWE Renewables. Mit über 5 Jahren Erfahrung in Python & Full-Stack-Entwicklung und über 3 Jahren in Data Science entwickle ich End-to-End-Daten- und KI-Lösungen (Automatisierung, Analytics und RAG/LLM-Anwendungen). Ich suche aktiv nach Positionen als AI Engineer, Data Scientist, Data Engineer und Software Engineer.",
+      "welcome": "Willkommen auf meiner Homepage. Ich bin Akash Chandra Baidya, Data-Science-Experte von der TU Dortmund und derzeit Solution Architect (AI) bei RWE Renewables. Mit über 5 Jahren Erfahrung in Python & Full-Stack-Entwicklung und über 3 Jahren in Data Science entwickle ich End-to-End-Daten- und KI-Lösungen (Automatisierung, Analytics und RAG/LLM-Anwendungen). Ich suche aktiv nach Positionen als Data Engineer, AI Engineer, Data Scientist und Software Engineer.",
       "visit": "Besuchen",
       "contactBtn": "Kontakt"
     },

@@ -146,7 +146,7 @@
 
     <!-- Intro paragraph -->
     <p class="landing-intro" data-i18n="landing.welcome">
-     Welcome to my homepage. I'm Akash Chandra Baidya, a Data Science professional from TU Dortmund and currently a Solution Architect (AI) at RWE Renewables. With 5+ years of experience in Python & full-stack development and 3+ years in data science, I build end-to-end data and AI solutions (automation, analytics, and RAG/LLM applications). I'm actively looking for AI Engineer, Data Scientist, Data Engineer, and Software Engineer positions.
+     Welcome to my homepage. I'm Akash Chandra Baidya, a Data Science professional from TU Dortmund and currently a Solution Architect (AI) at RWE Renewables. With 5+ years of experience in Python & full-stack development and 3+ years in data science, I build end-to-end data and AI solutions (automation, analytics, and RAG/LLM applications). I'm actively looking for Data Engineer, AI Engineer, Data Scientist, and Software Engineer positions.
     </p>
 
     <!-- Visit / Contact buttons -->
@@ -158,12 +158,18 @@
   </div>
 
   <!-- down-arrow -->
-  <div class="arrowlanding">
-    <a class="js-scroll-trigger" href="#description">
-      <p class="down-arrow">&#xfe40;</p>
+  <div class="arrowlanding" style="position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); z-index: 999;">
+    <a href="#description" class="js-scroll-trigger" style="display: flex; align-items: center; justify-content: center; width: 70px; height: 70px; background: linear-gradient(135deg, #69b3a2, #7ee8d1); border-radius: 50%; border: 3px solid white; box-shadow: 0 8px 25px rgba(105, 179, 162, 0.6); text-decoration: none;">
+      <div class="down-arrow" style="display: flex; flex-direction: column; align-items: center;">
+        <i class="fas fa-chevron-down" style="font-size: 1.6rem; color: white; margin-bottom: -12px;"></i>
+        <i class="fas fa-chevron-down" style="font-size: 1.6rem; color: white;"></i>
+      </div>
     </a>
   </div>
 </header>
+
+<!-- Light divider after landing section -->
+<div class="section-divider"></div>
 
 
 
@@ -574,6 +580,76 @@
       box-shadow: 0 4px 15px rgba(126, 232, 209, 0.4);
     }
 
+    /* Filter buttons */
+    .filter-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 25px;
+    }
+
+    .filter-btn {
+      padding: 8px 18px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 2px solid #69b3a2 !important;
+      background: white !important;
+      color: #69b3a2 !important;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(135deg, #69b3a2, #7ee8d1) !important;
+      border-color: #69b3a2 !important;
+      color: white !important;
+      box-shadow: 0 3px 10px rgba(105, 179, 162, 0.3);
+    }
+
+    .filter-btn:hover:not(.active) {
+      background: rgba(105, 179, 162, 0.15) !important;
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode .filter-btn {
+      background: #161b22 !important;
+      border-color: #7ee8d1 !important;
+      color: #7ee8d1 !important;
+    }
+
+    body.dark-mode .filter-btn.active {
+      background: linear-gradient(135deg, #7ee8d1, #69b3a2) !important;
+      color: #0d1117 !important;
+      box-shadow: 0 3px 10px rgba(126, 232, 209, 0.3);
+    }
+
+    body.dark-mode .filter-btn:hover:not(.active) {
+      background: rgba(126, 232, 209, 0.2) !important;
+    }
+
+    /* Project item transitions for filtering */
+    .project-item {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .project-item.hidden {
+      display: none !important;
+    }
+
+    /* Experience item transitions for filtering */
+    .experience-item {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .experience-item.hidden {
+      display: none !important;
+    }
+
+    .cert-item.hidden {
+      display: none !important;
+    }
+
     /* Hide/show views */
     .grid-view, .timeline-view {
       display: none;
@@ -791,6 +867,14 @@
     <div class="container">
       <h2 class="mb-4 text-center" data-aos="fade-up" data-i18n="experience.title">Experience</h2>
 
+      <!-- Experience Year Filters -->
+      <div class="filter-buttons text-center mb-3" data-aos="fade-up">
+        <button class="btn filter-btn active" data-filter="2023-present" onclick="filterExperience('2023-present')">2023-Present</button>
+        <button class="btn filter-btn" data-filter="2020-2022" onclick="filterExperience('2020-2022')">2020-2022</button>
+        <button class="btn filter-btn" data-filter="2016-2019" onclick="filterExperience('2016-2019')">2016-2019</button>
+        <button class="btn filter-btn" data-filter="all" onclick="filterExperience('all')">All</button>
+      </div>
+
       <!-- View Toggle -->
       <div class="view-toggle" data-aos="fade-up">
         <button class="btn active" data-view="grid" onclick="toggleView('experience', 'grid')">
@@ -805,7 +889,7 @@
       <div class="grid-view active" id="experience-grid">
       <div class="row expandable-items collapsed">
         <!-- RWE Renewables - Solution Architect AI -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="100" data-period="2025">
           <div class="card h-100 shadow-sm experience-card" data-job="rweAI">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-robot fa-2x mr-3 text-success"></i>
@@ -822,7 +906,7 @@
           </div>
         </div>
         <!-- RWEST - Portfolio & Quantitative Analyst -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="200" data-period="2025">
           <div class="card h-100 shadow-sm experience-card" data-job="rwest">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-chart-line fa-2x mr-3 text-primary"></i>
@@ -839,7 +923,7 @@
           </div>
         </div>
         <!-- IMSP -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="300" data-period="2024">
           <div class="card h-100 shadow-sm experience-card" data-job="imsp">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-database fa-2x mr-3 text-success"></i>
@@ -856,7 +940,7 @@
           </div>
         </div>
         <!-- Borstel -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="100" data-period="2023">
           <div class="card h-100 shadow-sm experience-card" data-job="borstel">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-chart-pie fa-2x mr-3 text-info"></i>
@@ -872,7 +956,7 @@
           </div>
         </div>
         <!-- E.ON RWTH -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="200" data-period="2021">
           <div class="card h-100 shadow-sm experience-card" data-job="eon">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-flask fa-2x mr-3 text-warning"></i>
@@ -888,7 +972,7 @@
           </div>
         </div>
         <!-- ITM System -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="300" data-period="2018">
           <div class="card h-100 shadow-sm experience-card" data-job="itm">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-tasks fa-2x mr-3 text-danger"></i>
@@ -904,7 +988,7 @@
           </div>
         </div>
         <!-- Ubitrix BD -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="100" data-period="2017">
           <div class="card h-100 shadow-sm experience-card" data-job="ubitrix">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-code fa-2x mr-3 text-secondary"></i>
@@ -919,7 +1003,7 @@
           </div>
         </div>
         <!-- TU Dortmund - Research Assistant (Gene Expression) -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="200">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="200" data-period="2023">
           <div class="card h-100 shadow-sm experience-card" data-job="tudoGenetics">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-dna fa-2x mr-3 text-success"></i>
@@ -936,7 +1020,7 @@
           </div>
         </div>
         <!-- TU Dortmund - WHF Tutor (Multiple Courses) -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="300">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="300" data-period="2021">
           <div class="card h-100 shadow-sm experience-card" data-job="tudoTutor">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-chalkboard-teacher fa-2x mr-3 text-info"></i>
@@ -953,7 +1037,7 @@
           </div>
         </div>
         <!-- Code Surfer BD -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="flip-left" data-aos-delay="100">
+        <div class="col-md-6 col-lg-4 mb-4 experience-item" data-aos="flip-left" data-aos-delay="100" data-period="2016">
           <div class="card h-100 shadow-sm experience-card" data-job="codesurfer">
             <div class="card-header d-flex align-items-center bg-white">
               <i class="fas fa-mobile-alt fa-2x mr-3 text-primary"></i>
@@ -1150,9 +1234,19 @@
   <section id="projects" class="py-5 bg-white expandable-section">
     <div class="container">
       <h2 class="mb-4 text-center" data-aos="fade-up" data-i18n="projects.title">Projects</h2>
-      <div class="row expandable-items collapsed">
+
+      <!-- Project Category Filters -->
+      <div class="filter-buttons text-center mb-4" data-aos="fade-up">
+        <button class="btn filter-btn active" data-filter="data-engineering" onclick="filterProjects('data-engineering')">Data Engineering</button>
+        <button class="btn filter-btn" data-filter="data-science" onclick="filterProjects('data-science')">Data Science</button>
+        <button class="btn filter-btn" data-filter="ai" onclick="filterProjects('ai')">AI</button>
+        <button class="btn filter-btn" data-filter="software-engineering" onclick="filterProjects('software-engineering')">Software Engineering</button>
+        <button class="btn filter-btn" data-filter="all" onclick="filterProjects('all')">All</button>
+      </div>
+
+      <div class="row expandable-items collapsed" id="projects-container">
         <!-- Energy Trading App -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="50">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="50" data-category="data-science data-engineering">
           <div class="card h-100 shadow-sm project-card" data-project="energytrading">
             <div class="card-body">
               <h5>
@@ -1169,7 +1263,7 @@
           </div>
         </div>
         <!-- Wind Turbine POC - AI Document Processing -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="100" data-category="ai">
           <div class="card h-100 shadow-sm project-card" data-project="windturbine">
             <div class="card-body">
               <h5>
@@ -1183,7 +1277,7 @@
           </div>
         </div>
         <!-- Stock Price Forecasting Benchmark -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="120">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="120" data-category="ai data-science">
           <div class="card h-100 shadow-sm project-card" data-project="stockforecast">
             <div class="card-body">
               <h5>
@@ -1197,7 +1291,7 @@
           </div>
         </div>
         <!-- Portfolio Revenue Model -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="150" data-category="data-science">
           <div class="card h-100 shadow-sm project-card" data-project="portfoliomodel">
             <div class="card-body">
               <h5>
@@ -1211,7 +1305,7 @@
           </div>
         </div>
         <!-- Portfolio Information Management -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="200" data-category="data-engineering">
           <div class="card h-100 shadow-sm project-card" data-project="portfoliomgmt">
             <div class="card-body">
               <h5>
@@ -1225,7 +1319,7 @@
           </div>
         </div>
         <!-- AI Appointment Management System -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="250" data-category="ai software-engineering">
           <div class="card h-100 shadow-sm project-card" data-project="appointment">
             <div class="card-body">
               <h5>
@@ -1239,7 +1333,7 @@
           </div>
         </div>
         <!-- MALDIX NLP & LLM Pipeline -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="100" data-category="ai">
           <div class="card h-100 shadow-sm project-card" data-project="maldix" data-github="https://github.com/AkashBaidya/maldix-nlp-pipeline">
             <div class="card-body">
               <h5>
@@ -1255,7 +1349,7 @@
           </div>
         </div>
         <!-- Anomaly Detection -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="200" data-category="ai data-science">
           <div class="card h-100 shadow-sm project-card" data-project="anomaly" data-github="https://github.com/AkashBaidya/Time-Series-Anomaly-Detection">
             <div class="card-body">
               <h5>
@@ -1271,7 +1365,7 @@
           </div>
         </div>
         <!-- AutoML Cashflow Optimization -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="300" data-category="ai data-science">
           <div class="card h-100 shadow-sm project-card" data-project="automl" data-github="https://github.com/AkashBaidya/AutoML-Cashflow-Optimization-for-Insurance-Company">
             <div class="card-body">
               <h5>
@@ -1287,7 +1381,7 @@
           </div>
         </div>
         <!-- Credit Card Fraud Detection -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="100" data-category="data-science">
           <div class="card h-100 shadow-sm project-card" data-project="fraud" data-github="https://github.com/AkashBaidya/Credit-Card-Fraud-Detection">
             <div class="card-body">
               <h5>
@@ -1303,7 +1397,7 @@
           </div>
         </div>
         <!-- Germany Weather Data Engineering -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="200" data-category="data-engineering">
           <div class="card h-100 shadow-sm project-card" data-project="weather" data-github="https://github.com/AkashBaidya/germanyweatheranalysis">
             <div class="card-body">
               <h5>
@@ -1319,7 +1413,7 @@
           </div>
         </div>
         <!-- Inventory Management System -->
-        <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-lg-4 mb-4 project-item" data-aos="fade-up" data-aos-delay="300" data-category="software-engineering">
           <div class="card h-100 shadow-sm project-card" data-project="inventory" data-github="https://github.com/AkashBaidya/inventory-otp-system">
             <div class="card-body">
               <h5>
@@ -1622,12 +1716,12 @@
         <div class="card h-100 shadow-sm">
           <div class="card-header bg-white"><h5>Programming Languages</h5></div>
           <div class="card-body">
-            <div class="d-flex justify-content-between"><span>Python</span><small>95%</small></div>
-            <div class="progress mb-3"><div class="progress-bar bg-primary" style="width:95%"></div></div>
-            <div class="d-flex justify-content-between"><span>R</span><small>85%</small></div>
-            <div class="progress mb-3"><div class="progress-bar bg-danger" style="width:85%"></div></div>
-            <div class="d-flex justify-content-between"><span>SQL</span><small>90%</small></div>
-            <div class="progress"><div class="progress-bar bg-success" style="width:90%"></div></div>
+            <div class="skill-label"><span>Python</span></div>
+            <div class="progress mb-3"><div class="progress-bar bg-primary" style="width:85%"></div></div>
+            <div class="skill-label"><span>R</span></div>
+            <div class="progress mb-3"><div class="progress-bar bg-danger" style="width:75%"></div></div>
+            <div class="skill-label"><span>SQL</span></div>
+            <div class="progress"><div class="progress-bar bg-success" style="width:70%"></div></div>
           </div>
         </div>
       </div>
@@ -1637,12 +1731,12 @@
         <div class="card h-100 shadow-sm">
           <div class="card-header bg-white"><h5>Visualization</h5></div>
           <div class="card-body">
-            <div class="d-flex justify-content-between"><span>Power BI</span><small>88%</small></div>
-            <div class="progress mb-3"><div class="progress-bar bg-info" style="width:88%"></div></div>
-            <div class="d-flex justify-content-between"><span>Tableau</span><small>85%</small></div>
-            <div class="progress mb-3"><div class="progress-bar bg-warning" style="width:85%"></div></div>
-            <div class="d-flex justify-content-between"><span>Matplotlib</span><small>80%</small></div>
-            <div class="progress"><div class="progress-bar bg-secondary" style="width:80%"></div></div>
+            <div class="skill-label"><span>Power BI</span></div>
+            <div class="progress mb-3"><div class="progress-bar bg-info" style="width:80%"></div></div>
+            <div class="skill-label"><span>Tableau</span></div>
+            <div class="progress mb-3"><div class="progress-bar bg-warning" style="width:65%"></div></div>
+            <div class="skill-label"><span>Matplotlib</span></div>
+            <div class="progress"><div class="progress-bar bg-secondary" style="width:70%"></div></div>
           </div>
         </div>
       </div>
@@ -1680,11 +1774,11 @@
         <div class="card h-100 shadow-sm">
           <div class="card-header bg-white"><h5>Machine Learning</h5></div>
           <div class="card-body">
-            <div class="d-flex justify-content-between"><span>Scikit-learn</span><small>90%</small></div>
+            <div class="skill-label"><span>Scikit-learn</span></div>
             <div class="progress mb-3"><div class="progress-bar bg-primary" style="width:90%"></div></div>
-            <div class="d-flex justify-content-between"><span>TensorFlow</span><small>85%</small></div>
+            <div class="skill-label"><span>TensorFlow</span></div>
             <div class="progress mb-3"><div class="progress-bar bg-danger" style="width:85%"></div></div>
-            <div class="d-flex justify-content-between"><span>PyTorch</span><small>80%</small></div>
+            <div class="skill-label"><span>PyTorch</span></div>
             <div class="progress"><div class="progress-bar bg-success" style="width:80%"></div></div>
           </div>
         </div>
@@ -1695,12 +1789,12 @@
         <div class="card h-100 shadow-sm">
           <div class="card-header bg-white"><h5>Tools &amp; Methodologies</h5></div>
           <div class="card-body">
-            <div class="d-flex justify-content-between"><span>Git</span><small>100%</small></div>
-            <div class="progress mb-3"><div class="progress-bar bg-dark" style="width:100%"></div></div>
-            <div class="d-flex justify-content-between"><span>Jupyter</span><small>100%</small></div>
-            <div class="progress mb-3"><div class="progress-bar bg-dark" style="width:100%"></div></div>
-            <div class="d-flex justify-content-between"><span>VS Code</span><small>95%</small></div>
-            <div class="progress"><div class="progress-bar bg-dark" style="width:95%"></div></div>
+            <div class="skill-label"><span>Git</span></div>
+            <div class="progress mb-3"><div class="progress-bar bg-dark" style="width:90%"></div></div>
+            <div class="skill-label"><span>Jupyter</span></div>
+            <div class="progress mb-3"><div class="progress-bar bg-dark" style="width:70%"></div></div>
+            <div class="skill-label"><span>VS Code</span></div>
+            <div class="progress"><div class="progress-bar bg-dark" style="width:70%"></div></div>
           </div>
         </div>
       </div>
@@ -1919,6 +2013,125 @@
       border-color: var(--fluent-accent-dark) !important;
     }
 
+    .btn-xl {
+      padding: 15px 35px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 30px;
+      box-shadow: 0 4px 15px rgba(105, 179, 162, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-xl:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(105, 179, 162, 0.4);
+    }
+
+    /* Landing Arrow Styles */
+    .arrowlanding {
+      position: absolute !important;
+      bottom: 50px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      z-index: 100 !important;
+    }
+
+    .arrowlanding a,
+    .arrowlanding a.js-scroll-trigger {
+      text-decoration: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 80px !important;
+      height: 80px !important;
+      border-radius: 50% !important;
+      background: linear-gradient(135deg, #69b3a2, #7ee8d1) !important;
+      border: 3px solid white !important;
+      box-shadow: 0 8px 30px rgba(105, 179, 162, 0.6), 0 0 0 4px rgba(105, 179, 162, 0.3) !important;
+      transition: all 0.3s ease !important;
+    }
+
+    .arrowlanding a:hover,
+    .arrowlanding a.js-scroll-trigger:hover {
+      background: linear-gradient(135deg, #5aa392, #6dd8c1) !important;
+      box-shadow: 0 12px 40px rgba(105, 179, 162, 0.7), 0 0 0 6px rgba(105, 179, 162, 0.4) !important;
+      transform: translateY(-5px) !important;
+    }
+
+    .down-arrow {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+    }
+
+    .down-arrow i {
+      font-size: 1.8rem !important;
+      color: white !important;
+      animation: arrowBounce 1.5s infinite !important;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
+    }
+
+    .down-arrow i:first-child {
+      margin-bottom: -14px !important;
+      animation-delay: 0s !important;
+    }
+
+    .down-arrow i:last-child {
+      animation-delay: 0.1s !important;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(6px);
+      }
+    }
+
+    .arrowlanding:hover .down-arrow i {
+      color: white !important;
+    }
+
+    /* Section Divider */
+    .section-divider {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, rgba(105, 179, 162, 0.6), transparent);
+      margin: 0;
+      box-shadow:
+        0 0 20px rgba(105, 179, 162, 0.4),
+        0 0 40px rgba(105, 179, 162, 0.2),
+        0 -10px 30px rgba(105, 179, 162, 0.1),
+        0 10px 30px rgba(105, 179, 162, 0.1);
+    }
+
+    body.dark-mode .section-divider {
+      background: linear-gradient(90deg, transparent, rgba(126, 232, 209, 0.5), transparent);
+      box-shadow:
+        0 0 25px rgba(126, 232, 209, 0.4),
+        0 0 50px rgba(126, 232, 209, 0.2),
+        0 -10px 30px rgba(126, 232, 209, 0.1),
+        0 10px 30px rgba(126, 232, 209, 0.1);
+    }
+
+    body.dark-mode .arrowlanding a,
+    body.dark-mode .arrowlanding a.js-scroll-trigger {
+      background: linear-gradient(135deg, #4a9a8a, #6dd8c1) !important;
+      border-color: rgba(255,255,255,0.8) !important;
+      box-shadow: 0 8px 30px rgba(126, 232, 209, 0.5), 0 0 0 4px rgba(126, 232, 209, 0.3) !important;
+    }
+
+    body.dark-mode .arrowlanding a:hover,
+    body.dark-mode .arrowlanding a.js-scroll-trigger:hover {
+      background: linear-gradient(135deg, #3d8577, #5cc8b1) !important;
+      box-shadow: 0 12px 40px rgba(126, 232, 209, 0.6), 0 0 0 6px rgba(126, 232, 209, 0.4) !important;
+    }
+
+    body.dark-mode .down-arrow i {
+      color: white !important;
+    }
+
     .btn-secondary {
       background: var(--fluent-surface) !important;
       border: 1px solid var(--fluent-border) !important;
@@ -2042,6 +2255,17 @@
     .progress-bar {
       border-radius: var(--fluent-radius-sm);
       transition: width var(--fluent-duration-slow) var(--fluent-easing);
+    }
+
+    /* Skill labels without percentage */
+    .skill-label {
+      margin-bottom: 6px;
+      font-weight: 500;
+      color: var(--fluent-text-primary);
+    }
+
+    body.dark-mode .skill-label {
+      color: #eaeaea;
     }
 
     /* Section headings - Fluent style */
@@ -2521,12 +2745,6 @@
 
     body.dark-mode .landing-intro {
       color: #8b949e;
-    }
-
-    body.dark-mode .arrowlanding,
-    body.dark-mode .arrowlanding a,
-    body.dark-mode .down-arrow {
-      color: #7ee8d1 !important;
     }
 
     body.dark-mode .social-buttons a {
@@ -3853,6 +4071,16 @@
     <div class="container">
       <h2 class="text-center mb-5" data-aos="fade-up" data-i18n="certifications.title">Certifications</h2>
 
+      <!-- Certification Category Filters -->
+      <div class="filter-buttons text-center mb-4" data-aos="fade-up">
+        <button class="btn filter-btn active" data-filter="data-engineering" onclick="filterCertifications('data-engineering')">Data Engineering</button>
+        <button class="btn filter-btn" data-filter="data-science" onclick="filterCertifications('data-science')">Data Science</button>
+        <button class="btn filter-btn" data-filter="data-analytics" onclick="filterCertifications('data-analytics')">Data Analytics</button>
+        <button class="btn filter-btn" data-filter="ai" onclick="filterCertifications('ai')">AI</button>
+        <button class="btn filter-btn" data-filter="software-engineering" onclick="filterCertifications('software-engineering')">Software Engineering</button>
+        <button class="btn filter-btn" data-filter="all" onclick="filterCertifications('all')">All</button>
+      </div>
+
       <!-- View Toggle -->
       <div class="view-toggle" data-aos="fade-up">
         <button class="btn active" data-view="grid" onclick="toggleView('certifications', 'grid')">
@@ -3867,7 +4095,19 @@
       <div class="grid-view active" id="certifications-grid">
       <div class="row expandable-items collapsed">
         <!-- Row 1 -->
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="50" data-category="data-engineering">
+          <div class="cert-card">
+            <div class="cert-logo databricks"><i class="fas fa-database"></i></div>
+            <div class="cert-info">
+              <h6>Cloud Native with Docker and Kubernetes Skill Track</h6>
+              <p class="cert-issuer">Databricks</p>
+              <p class="cert-date">Issued Jan 2026</p>
+              <div class="cert-skills"><span>Docker</span><span>Kubernetes</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="100" data-category="data-engineering">
           <div class="cert-card">
             <div class="cert-logo linkedin"><i class="fab fa-linkedin"></i></div>
             <div class="cert-info">
@@ -3879,7 +4119,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="150">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="150" data-category="data-analytics data-science">
           <div class="cert-card">
             <div class="cert-logo hkust"><i class="fas fa-university"></i></div>
             <div class="cert-info">
@@ -3891,7 +4131,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="200" data-category="ai">
           <div class="cert-card">
             <div class="cert-logo databricks"><i class="fas fa-database"></i></div>
             <div class="cert-info">
@@ -3902,7 +4142,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="250">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="250" data-category="data-engineering">
           <div class="cert-card">
             <div class="cert-logo datacamp"><i class="fas fa-chart-bar"></i></div>
             <div class="cert-info">
@@ -3913,7 +4153,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="300" data-category="data-analytics">
           <div class="cert-card">
             <div class="cert-logo datacamp"><i class="fas fa-chart-bar"></i></div>
             <div class="cert-info">
@@ -3925,7 +4165,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="350">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="350" data-category="data-analytics">
           <div class="cert-card">
             <div class="cert-logo datacamp"><i class="fas fa-chart-bar"></i></div>
             <div class="cert-info">
@@ -3937,7 +4177,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="400" data-category="ai data-science">
           <div class="cert-card">
             <div class="cert-logo datacamp"><i class="fas fa-chart-bar"></i></div>
             <div class="cert-info">
@@ -3949,7 +4189,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="450">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="450" data-category="data-science">
           <div class="cert-card">
             <div class="cert-logo datacamp"><i class="fas fa-chart-bar"></i></div>
             <div class="cert-info">
@@ -3961,7 +4201,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="500" data-category="data-science">
           <div class="cert-card">
             <div class="cert-logo coursera"><i class="fas fa-graduation-cap"></i></div>
             <div class="cert-info">
@@ -3973,7 +4213,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="550">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="550" data-category="data-engineering">
           <div class="cert-card">
             <div class="cert-logo edx"><i class="fas fa-cloud"></i></div>
             <div class="cert-info">
@@ -3985,7 +4225,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="600" data-category="software-engineering">
           <div class="cert-card">
             <div class="cert-logo udemy"><i class="fas fa-play-circle"></i></div>
             <div class="cert-info">
@@ -3997,7 +4237,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="650">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="650" data-category="software-engineering">
           <div class="cert-card">
             <div class="cert-logo edx"><i class="fas fa-tasks"></i></div>
             <div class="cert-info">
@@ -4009,7 +4249,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="700">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="700" data-category="data-science data-engineering">
           <div class="cert-card">
             <div class="cert-logo coursera"><i class="fas fa-graduation-cap"></i></div>
             <div class="cert-info">
@@ -4021,7 +4261,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="750">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="750" data-category="data-engineering">
           <div class="cert-card">
             <div class="cert-logo coursera"><i class="fas fa-graduation-cap"></i></div>
             <div class="cert-info">
@@ -4033,7 +4273,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="800">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="800" data-category="software-engineering">
           <div class="cert-card">
             <div class="cert-logo coursera"><i class="fas fa-graduation-cap"></i></div>
             <div class="cert-info">
@@ -4045,7 +4285,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="850">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="850" data-category="data-engineering">
           <div class="cert-card">
             <div class="cert-logo udemy"><i class="fas fa-play-circle"></i></div>
             <div class="cert-info">
@@ -4057,7 +4297,7 @@
           </div>
         </div>
 
-        <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="900">
+        <div class="col-md-6 col-lg-4 mb-4 cert-item" data-aos="fade-up" data-aos-delay="900" data-category="data-science software-engineering">
           <div class="cert-card">
             <div class="cert-logo coursera"><i class="fas fa-graduation-cap"></i></div>
             <div class="cert-info">
@@ -4083,6 +4323,16 @@
         <div class="timeline-container">
           <!-- 2026 -->
           <div class="timeline-item" data-aos="fade-right">
+            <div class="timeline-content">
+              <span class="timeline-date">Jan 2026</span>
+              <div class="timeline-icon"><i class="fas fa-database"></i></div>
+              <h4 class="timeline-title">Cloud Native with Docker and Kubernetes Skill Track</h4>
+              <p class="timeline-subtitle">Databricks</p>
+              <div class="timeline-description"><span class="badge badge-info">Docker</span><span class="badge badge-info">Kubernetes</span></div>
+            </div>
+          </div>
+
+          <div class="timeline-item" data-aos="fade-left">
             <div class="timeline-content">
               <span class="timeline-date">Jan 2026</span>
               <div class="timeline-icon"><i class="fab fa-linkedin"></i></div>
@@ -5509,7 +5759,12 @@
       // Initialize particles
       initParticles();
 
-      
+      // Apply default filters on page load
+      setTimeout(() => {
+        filterProjects('data-engineering');
+        filterExperience('2023-present');
+        filterCertifications('data-engineering');
+      }, 100);
 
     });
 
@@ -6510,6 +6765,187 @@ ${context}`;
       }
     }
 
+    // Filter projects by category
+    function filterProjects(category) {
+      const projectItems = document.querySelectorAll('.project-item');
+      const filterBtns = document.querySelectorAll('#projects .filter-btn');
+      const expandableItems = document.querySelector('#projects .expandable-items');
+      const expandToggle = document.querySelector('#projects .expand-toggle');
+
+      // Update button states
+      filterBtns.forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      let visibleCount = 0;
+
+      // Filter projects
+      projectItems.forEach(item => {
+        const categories = item.dataset.category || '';
+        if (category === 'all' || categories.includes(category)) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Show/hide expand toggle based on filter
+      if (category === 'all') {
+        // For 'All', show expand toggle and keep collapsed behavior
+        if (expandToggle) expandToggle.style.display = '';
+        if (expandableItems) {
+          expandableItems.classList.add('collapsed');
+          expandableItems.style.maxHeight = '';
+          const btnText = expandToggle?.querySelector('.btn-text');
+          if (btnText) btnText.textContent = 'Show More';
+        }
+      } else {
+        // For filtered views, hide expand toggle and show all visible items
+        if (expandToggle) expandToggle.style.display = 'none';
+        if (expandableItems) {
+          expandableItems.classList.remove('collapsed');
+          expandableItems.style.maxHeight = 'none';
+        }
+      }
+
+      // Refresh AOS
+      if (typeof AOS !== 'undefined') {
+        setTimeout(() => AOS.refresh(), 100);
+      }
+    }
+
+    // Filter experience by year range
+    function filterExperience(yearRange) {
+      const experienceItems = document.querySelectorAll('.experience-item');
+      const filterBtns = document.querySelectorAll('#experience .filter-btn');
+      const expandableItems = document.querySelector('#experience-grid .expandable-items');
+      const expandToggle = document.querySelector('#experience-grid .grid-expand');
+
+      // Update button states
+      filterBtns.forEach(btn => {
+        if (btn.dataset.filter === yearRange) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Define year ranges
+      const currentYear = new Date().getFullYear();
+      let startYear, endYear;
+
+      switch (yearRange) {
+        case 'all':
+          startYear = 0;
+          endYear = 9999;
+          break;
+        case '2023-present':
+          startYear = 2023;
+          endYear = currentYear + 1;
+          break;
+        case '2020-2022':
+          startYear = 2020;
+          endYear = 2022;
+          break;
+        case '2016-2019':
+          startYear = 2016;
+          endYear = 2019;
+          break;
+        default:
+          startYear = 0;
+          endYear = 9999;
+      }
+
+      // Filter experience items
+      experienceItems.forEach(item => {
+        const period = item.dataset.period || '';
+        const yearMatch = period.match(/\d{4}/);
+        const itemYear = yearMatch ? parseInt(yearMatch[0]) : 0;
+
+        if (yearRange === 'all' || (itemYear >= startYear && itemYear <= endYear)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Show/hide expand toggle based on filter
+      if (yearRange === 'all') {
+        if (expandToggle) expandToggle.style.display = '';
+        if (expandableItems) {
+          expandableItems.classList.add('collapsed');
+          expandableItems.style.maxHeight = '';
+          const btnText = expandToggle?.querySelector('.btn-text');
+          if (btnText) btnText.textContent = 'Show More';
+        }
+      } else {
+        if (expandToggle) expandToggle.style.display = 'none';
+        if (expandableItems) {
+          expandableItems.classList.remove('collapsed');
+          expandableItems.style.maxHeight = 'none';
+        }
+      }
+
+      // Refresh AOS
+      if (typeof AOS !== 'undefined') {
+        setTimeout(() => AOS.refresh(), 100);
+      }
+    }
+
+    // Filter certifications by category
+    function filterCertifications(category) {
+      const certItems = document.querySelectorAll('.cert-item');
+      const filterBtns = document.querySelectorAll('#certifications .filter-btn');
+      const expandableItems = document.querySelector('#certifications-grid .expandable-items');
+      const expandToggle = document.querySelector('#certifications-grid .grid-expand');
+
+      // Update button states
+      filterBtns.forEach(btn => {
+        if (btn.dataset.filter === category) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Filter certification items
+      certItems.forEach(item => {
+        const categories = item.dataset.category || '';
+        if (category === 'all' || categories.includes(category)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Show/hide expand toggle based on filter
+      if (category === 'all') {
+        if (expandToggle) expandToggle.style.display = '';
+        if (expandableItems) {
+          expandableItems.classList.add('collapsed');
+          expandableItems.style.maxHeight = '';
+          const btnText = expandToggle?.querySelector('.btn-text');
+          if (btnText) btnText.textContent = 'Show More';
+        }
+      } else {
+        if (expandToggle) expandToggle.style.display = 'none';
+        if (expandableItems) {
+          expandableItems.classList.remove('collapsed');
+          expandableItems.style.maxHeight = 'none';
+        }
+      }
+
+      // Refresh AOS
+      if (typeof AOS !== 'undefined') {
+        setTimeout(() => AOS.refresh(), 100);
+      }
+    }
+
     // Copy email to clipboard function
     function copyEmail() {
       const email = 'akashbaidya2@gmail.com';
@@ -7346,8 +7782,8 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.project-card').forEach(card => {
       card.addEventListener('click', function(e) {
-        // Don't open modal if clicking on GitHub link
-        if (e.target.closest('.project-github')) {
+        // Don't open modal if clicking on GitHub link or project link
+        if (e.target.closest('.project-github') || e.target.closest('.project-link')) {
           return;
         }
         openProjectModal(this);
