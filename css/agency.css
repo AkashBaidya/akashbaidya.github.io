@@ -543,7 +543,7 @@ header.masthead .intro-text .intro-heading {
 
 /* width of modal: different following the device: small (100%), medium(50%), large(30%); */
 .portfolio-modal .modal-dialog {
-  margin: 3rem;
+  margin: 3rem auto;
   max-width: 100vw;
   max-height: 95vh;
   overflow-y: auto;
