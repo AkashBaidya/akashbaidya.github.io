@@ -6496,7 +6496,7 @@ CURRENT ROLE:
 - Building RAG systems, LLM models, and optimizing API integrations
 
 PREVIOUS EXPERIENCE:
-- Portfolio & Quantitative Analyst at RWE Supply & Trading (Jan-Nov 2025)
+- Portfolio & Quantitative Analyst at RWE Supply & Trading (Jan-Oct 2025)
 - Data Scientist at IMSP, Munich (Jun 2024 - Jan 2025)
 - Research Assistant at TU Dortmund - Gene Expression Simulation (Apr 2023 - Nov 2024) - R Shiny, Statistical Genetics
 - Research Assistant at Forschungszentrum Borstel (Sep 2023 - May 2024)
@@ -6978,7 +6978,11 @@ ${context}`;
       const chatWindow = document.getElementById('chatbotWindow');
       chatWindow.classList.toggle('active');
       if (chatWindow.classList.contains('active')) {
-        document.getElementById('chatInput').focus();
+        if (!RAGUserDB.currentUser) {
+          showRAGRegistration();
+        } else {
+          document.getElementById('chatInput').focus();
+        }
       }
     }
 
@@ -7040,7 +7044,7 @@ ${context}`;
 
       const knowledge = {
         skills: "Akash is highly skilled in:\n\n**Programming:** Python (95%), R (85%), SQL (90%), JavaScript\n\n**AI/ML:** PyTorch, TensorFlow, Scikit-learn, LangChain, RAG systems, LLMs (GPT-4, Claude, Mistral)\n\n**Data Engineering:** Databricks, Dremio, Spark, Snowflake\n\n**Visualization:** Power BI, Tableau, Plotly, Matplotlib\n\n**Cloud & MLOps:** Azure, AWS, Docker, Kubernetes, MLflow",
-        experience: "**Current:** Solution Architect (AI) at RWE Renewables, Essen (Oct 2025 - Present)\n- Building RAG systems and LLM models\n- Optimizing API integrations with AI\n\n**Previous:**\n- Portfolio & Quantitative Analyst at RWEST (Jan-Nov 2025)\n- Data Scientist at IMSP, Munich (Jun 2024 - Jan 2025)\n- Research Assistant at TU Dortmund - Gene Expression Simulation (Apr 2023 - Nov 2024)\n- Research Assistant at Forschungszentrum Borstel (Sep 2023 - May 2024)\n- WHF Tutor at TU Dortmund - ML, Big Data, Statistical Learning (Oct 2021 - Mar 2023)\n- Research Assistant at E.ON RWTH Energy Research Center\n- Software Engineer at Code Surfer BD (Oct 2016 - Jan 2017)\n- 5+ years Python & full-stack development",
+        experience: "**Current:** Solution Architect (AI) at RWE Renewables, Essen (Oct 2025 - Present)\n- Building RAG systems and LLM models\n- Optimizing API integrations with AI\n\n**Previous:**\n- Portfolio & Quantitative Analyst at RWEST (Jan-Oct 2025)\n- Data Scientist at IMSP, Munich (Jun 2024 - Jan 2025)\n- Research Assistant at TU Dortmund - Gene Expression Simulation (Apr 2023 - Nov 2024)\n- Research Assistant at Forschungszentrum Borstel (Sep 2023 - May 2024)\n- WHF Tutor at TU Dortmund - ML, Big Data, Statistical Learning (Oct 2021 - Mar 2023)\n- Research Assistant at E.ON RWTH Energy Research Center\n- Software Engineer at Code Surfer BD (Oct 2016 - Jan 2017)\n- 5+ years Python & full-stack development",
         education: "**Master's in Data Science** from TU Dortmund (Nov 2020 - Dec 2025)\n- Thesis: Cluster Quality for Gene Expression Data\n- Teaching Assistant for Advanced Statistical Learning, Big Data Analytics\n\n**Bachelor's in Computer Science** from KUET, Bangladesh",
         services: "Akash offers:\n\n1. **RAG Systems** - Document intelligence, vector databases, semantic search\n2. **LLM Development** - Fine-tuning, prompt engineering, AI agents\n3. **Data Engineering** - ETL pipelines with Databricks/Dremio/Spark\n4. **ML & Analytics** - Predictive models, anomaly detection, Power BI dashboards",
         contact: "**Email:** akashbaidya2@gmail.com\n**LinkedIn:** linkedin.com/in/akashbaidya\n**GitHub:** github.com/AkashBaidya",
@@ -7272,33 +7276,44 @@ ${context}`;
         // Register/get user
         await RAGUserDB.getOrCreateUser(name, email, location);
         RAGUserDB.saveSessionUser();
-
-        // Log registration to Google Sheets
-        SheetLogger.logRegistration(RAGUserDB.currentUser);
-
-        // Hide registration, show chat
-        hideRAGRegistration();
-
-        // Update user info display
-        updateUserInfoDisplay();
-
-        // Add welcome message
-        const messages = document.getElementById('chatMessages');
-        const welcomeMsg = document.createElement('div');
-        welcomeMsg.className = 'chat-message bot ai-response';
-        const isReturning = RAGUserDB.currentUser.totalVisits > 1;
-        welcomeMsg.innerHTML = formatMessage(
-          isReturning
-            ? `**Welcome back, ${name}!** You have ${RAGUserDB.DAILY_LIMIT - RAGUserDB.currentUser.dailyQuestionCount} AI questions remaining today.`
-            : `**Welcome, ${name}!** You can ask up to ${RAGUserDB.DAILY_LIMIT} AI-powered questions per day. What would you like to know about Akash?`
-        );
-        messages.appendChild(welcomeMsg);
-        messages.scrollTop = messages.scrollHeight;
-
       } catch (error) {
-        console.error('Registration failed:', error);
-        alert('Registration failed. Please try again.');
+        // IndexedDB may fail in some environments - fall back to in-memory user
+        console.warn('IndexedDB unavailable, using in-memory user');
+        RAGUserDB.currentUser = {
+          id: 'user_' + Date.now(),
+          name: name.trim(),
+          email: email.toLowerCase().trim(),
+          location: location.trim(),
+          createdAt: new Date().toISOString(),
+          totalVisits: 1,
+          totalQuestions: 0,
+          dailyQuestionCount: 0,
+          lastQuestionDate: new Date().toDateString(),
+          questions: []
+        };
       }
+
+      // Log registration to Google Sheets
+      try { SheetLogger.logRegistration(RAGUserDB.currentUser); } catch(e) {}
+
+      // Hide registration, show chat
+      hideRAGRegistration();
+
+      // Update user info display
+      updateUserInfoDisplay();
+
+      // Add welcome message
+      const messages = document.getElementById('chatMessages');
+      const welcomeMsg = document.createElement('div');
+      welcomeMsg.className = 'chat-message bot ai-response';
+      const isReturning = RAGUserDB.currentUser.totalVisits > 1;
+      welcomeMsg.innerHTML = formatMessage(
+        isReturning
+          ? `**Welcome back, ${name}!** You have ${RAGUserDB.DAILY_LIMIT - RAGUserDB.currentUser.dailyQuestionCount} AI questions remaining today.`
+          : `**Welcome, ${name}!** You can ask up to ${RAGUserDB.DAILY_LIMIT} AI-powered questions per day. What would you like to know about Akash?`
+      );
+      messages.appendChild(welcomeMsg);
+      messages.scrollTop = messages.scrollHeight;
     }
 
     // Update user info display in settings panel
