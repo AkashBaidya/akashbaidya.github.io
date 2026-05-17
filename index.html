@@ -6190,150 +6190,10 @@
       }
     };
 
-    // Secure Key Manager with multi-layer protection
-    const SecureKeyManager = (function() {
-      // XOR-encrypted key fragments (each fragment is XOR'd with cipher)
-      const _f = [
-        [0x36, 0x04, 0x0e, 0x0d, 0x41, 0x2c, 0x2f, 0x1a, 0x35, 0x05, 0x03, 0x12], // gsk_5uZSZUbA
-        [0x65, 0x23, 0x0b, 0x3e, 0x05, 0x09, 0x47, 0x20, 0x0c, 0x06, 0x56, 0x32], // 4TnlqP2icV7a
-        [0x06, 0x30, 0x01, 0x2b, 0x16, 0x6a, 0x33, 0x10, 0x58, 0x60, 0x13, 0x1b], // WGdyb3FY70rH
-        [0x34, 0x25, 0x06, 0x21, 0x33, 0x03, 0x36, 0x21, 0x3f, 0x60, 0x12, 0x0a], // eRcsGZChP0sY
-        [0x1b, 0x1e, 0x54, 0x1a, 0x24, 0x29, 0x3e, 0x7b]                          // Ji1HPpK2
-      ];
-      // XOR cipher (randomized)
-      const _c = [0x51, 0x77, 0x65, 0x52, 0x74, 0x59, 0x75, 0x49, 0x6f, 0x50, 0x61, 0x53];
-
-      // Allowed domains (your GitHub Pages + local dev)
-      const _d = ['akashbaidya.github.io', 'localhost', '127.0.0.1', ''];
-
-      // Anti-tampering checksum (sum of all encrypted bytes)
-      const _cs = 2234;
-
-      let _cache = null;
-      let _lastCheck = 0;
-      let _violations = 0;
-
-      // Domain validation
-      function _vd() {
-        const h = window.location.hostname.toLowerCase();
-        return _d.some(d => h === d || h.endsWith('.' + d));
-      }
-
-      // Referrer validation
-      function _vr() {
-        const r = document.referrer;
-        if (!r) return true; // Direct access allowed
-        try {
-          const u = new URL(r);
-          return _d.some(d => u.hostname === d || u.hostname.endsWith('.' + d));
-        } catch { return true; }
-      }
-
-      // Basic anti-debugging (detect DevTools)
-      function _ad() {
-        const t1 = performance.now();
-        debugger;
-        const t2 = performance.now();
-        return (t2 - t1) < 100; // Should be instant if DevTools not open
-      }
-
-      // Verify integrity
-      function _vi() {
-        let sum = 0;
-        _f.forEach(arr => arr.forEach(v => sum += v));
-        return sum === _cs;
-      }
-
-      // Check if in iframe (potential malicious embedding)
-      function _if() {
-        try {
-          return window.self === window.top;
-        } catch (e) {
-          return false; // Blocked = likely cross-origin iframe
-        }
-      }
-
-      // Simple browser fingerprint for session binding
-      function _fp() {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        ctx.textBaseline = 'top';
-        ctx.font = '14px Arial';
-        ctx.fillText('fp', 2, 2);
-        return canvas.toDataURL().slice(-50);
-      }
-
-      // Decode with XOR
-      function _dec() {
-        if (!_vd() || !_vi()) {
-          _violations++;
-          return null;
-        }
-
-        let result = '';
-        _f.forEach(fragment => {
-          fragment.forEach((byte, i) => {
-            result += String.fromCharCode(byte ^ _c[i % _c.length]);
-          });
-        });
-        return result;
-      }
-
-      // Rate limit check (beyond regular limits)
-      function _rl() {
-        const now = Date.now();
-        if (now - _lastCheck < 500) {
-          _violations++;
-          return false;
-        }
-        _lastCheck = now;
-        return _violations < 10;
-      }
-
-      // Session fingerprint validation
-      let _sfp = null;
-      function _vfp() {
-        const current = _fp();
-        if (!_sfp) {
-          _sfp = current;
-          return true;
-        }
-        return _sfp === current;
-      }
-
-      return {
-        getKey: function() {
-          // Multi-layer security checks
-          if (!_rl()) return null;
-          if (!_vd()) return null;
-          if (!_vr()) return null;
-          if (!_if()) return null;
-          if (!_vfp()) return null;
-
-          // Use cached value if available
-          if (_cache && (Date.now() - _lastCheck < 300000)) {
-            return _cache;
-          }
-
-          _cache = _dec();
-          return _cache;
-        },
-
-        isAuthorized: function() {
-          return _vd() && _vr() && _if() && _violations < 10;
-        },
-
-        getViolations: function() {
-          return _violations;
-        }
-      };
-    })();
-
-    // Groq RAG Configuration
+    // Groq RAG Configuration — API key lives in Cloudflare Worker, not here
     const GROQ_CONFIG = {
-      get apiKey() { return SecureKeyManager.getKey(); },
       model: 'llama-3.3-70b-versatile',
-      endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+      endpoint: 'https://groq-proxy.akashbaidya.workers.dev',
       maxTokens: 500,
       temperature: 0.7,
       // Rate limits (free tier protection)
@@ -6625,21 +6485,8 @@ Assessment: "Active and competent in executing all assigned tasks. Professionall
       return contextParts.join('\n\n---\n\n');
     }
 
-    // Call Groq API for RAG-powered response
-    async function getGroqResponse(question, apiKey) {
-      // Check if security manager allows access
-      if (!SecureKeyManager.isAuthorized()) {
-        return {
-          response: "**AI unavailable** - This feature is only available on the official portfolio site.",
-          limitReached: true,
-          reason: 'unauthorized'
-        };
-      }
-
-      if (!apiKey) {
-        return { response: null, limitReached: false };
-      }
-
+    // Call Groq API via Cloudflare Worker proxy (key is stored server-side)
+    async function getGroqResponse(question) {
       // Check rate limits before making request
       const limitCheck = UsageTracker.canMakeRequest();
       if (!limitCheck.allowed) {
@@ -6660,10 +6507,7 @@ ${context}`;
       try {
         const response = await fetch(GROQ_CONFIG.endpoint, {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${apiKey}`
-          },
+          headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             model: GROQ_CONFIG.model,
             messages: [
@@ -6676,7 +6520,7 @@ ${context}`;
         });
 
         if (!response.ok) {
-          console.warn('Groq API error:', response.status);
+          console.warn('Groq proxy error:', response.status, await response.text());
           return { response: null, limitReached: false };
         }
 
@@ -7043,7 +6887,7 @@ ${context}`;
       const q = question.toLowerCase();
 
       const knowledge = {
-        skills: "Akash is highly skilled in:\n\n**Programming:** Python (95%), R (85%), SQL (90%), JavaScript\n\n**AI/ML:** PyTorch, TensorFlow, Scikit-learn, LangChain, RAG systems, LLMs (GPT-4, Claude, Mistral)\n\n**Data Engineering:** Databricks, Dremio, Spark, Snowflake\n\n**Visualization:** Power BI, Tableau, Plotly, Matplotlib\n\n**Cloud & MLOps:** Azure, AWS, Docker, Kubernetes, MLflow",
+        skills: "Akash is highly skilled in:\n\n**Programming:** Python (95%), R (85%), SQL (90%), JavaScript\n\n**AI/ML:** PyTorch, TensorFlow, Scikit-learn, LangChain, RAG systems, LLMs (GPT-4, Claude, Mistral)\n\n**Data Engineering:** Databricks, Dremio, Airflow, Spark, Snowflake\n\n**Visualization:** Power BI, Tableau, Plotly, Matplotlib\n\n**Cloud & MLOps:** Azure, AWS, Docker, Kubernetes, MLflow",
         experience: "**Current:** Solution Architect (AI) at RWE Renewables, Essen (Oct 2025 - Present)\n- Building RAG systems and LLM models\n- Optimizing API integrations with AI\n\n**Previous:**\n- Portfolio & Quantitative Analyst at RWEST (Jan-Oct 2025)\n- Data Scientist at IMSP, Munich (Jun 2024 - Jan 2025)\n- Research Assistant at TU Dortmund - Gene Expression Simulation (Apr 2023 - Nov 2024)\n- Research Assistant at Forschungszentrum Borstel (Sep 2023 - May 2024)\n- WHF Tutor at TU Dortmund - ML, Big Data, Statistical Learning (Oct 2021 - Mar 2023)\n- Research Assistant at E.ON RWTH Energy Research Center\n- Software Engineer at Code Surfer BD (Oct 2016 - Jan 2017)\n- 5+ years Python & full-stack development",
         education: "**Master's in Data Science** from TU Dortmund (Nov 2020 - Dec 2025)\n- Thesis: Cluster Quality for Gene Expression Data\n- Teaching Assistant for Advanced Statistical Learning, Big Data Analytics\n\n**Bachelor's in Computer Science** from KUET, Bangladesh",
         services: "Akash offers:\n\n1. **RAG Systems** - Document intelligence, vector databases, semantic search\n2. **LLM Development** - Fine-tuning, prompt engineering, AI agents\n3. **Data Engineering** - ETL pipelines with Databricks/Dremio/Spark\n4. **ML & Analytics** - Predictive models, anomaly detection, Power BI dashboards",
@@ -7055,30 +6899,50 @@ ${context}`;
         hire: "Akash is actively looking for:\n- **AI Engineer**\n- **Data Scientist**\n- **Data Engineer**\n- **Software Engineer**\n\nOpen to positions in Germany/EU including remote work.",
         certifications: "Akash holds certifications in:\n- **Docker & Kubernetes** (DataCamp, 2025)\n- **Azure Fundamentals** (DataCamp, 2024)\n- **Cluster Analysis in Data Mining** (Coursera/UIUC, 2021)\n- **Agile Scrum** (Coursera/UMD, 2019)",
         availability: "Akash is **immediately available** for new opportunities. He prefers full-time roles but is open to contract and consulting work.",
-        languages: "Akash speaks **English** (fluent), **German** (intermediate B1), and **Bengali** (native).",
+        spokenLanguages: "Akash speaks **English** (fluent), **German** (intermediate B1), and **Bengali** (native).",
         recommendations: "Akash has excellent professional recommendations:\n\n**RWE S&T:** \"Completed all tasks with care and accuracy. Work quality fully satisfactory.\"\n\n**IMSP Munich:** \"Work results consistently high quality. Completed all tasks to fullest satisfaction.\"\n\n**Prof. Inken Wohlers (Borstel):** \"Technical skills, reliability, professionalism and kindness.\"\n\n**Prof. Rahnenführer (TU Dortmund):** \"Friendly and motivated student who performed tasks to full satisfaction.\"\n\n**Prof. Groll (TU Dortmund):** \"Strong foundation in statistical methods. Clear communicator.\"\n\n**Prof. Müller (TU Dortmund):** \"Appreciation for theory and scientific methods, creativity, and a lust for learning.\"\n\n**Singer Bangladesh:** \"Great leadership skills, innovative technical skills, always motivated.\"\n\n**Ubitrix/Code Surfer:** \"Sincere, reliable, trustworthy, sociable, can efficiently lead a team.\""
       };
 
-      if (q.includes('skill') || q.includes('tech') || q.includes('know') || q.includes('stack') || q.includes('programming')) return knowledge.skills;
-      if (q.includes('experience') || q.includes('work') || q.includes('rwe') || q.includes('current') || q.includes('career')) return knowledge.experience;
-      if (q.includes('education') || q.includes('degree') || q.includes('study') || q.includes('university') || q.includes('master') || q.includes('bachelor')) return knowledge.education;
-      if (q.includes('service') || q.includes('offer') || q.includes('consult') || q.includes('freelance')) return knowledge.services;
-      if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin') || q.includes('github')) return knowledge.contact;
-      if (q.includes('project') || q.includes('portfolio') || q.includes('built') || q.includes('maldix') || q.includes('anomaly')) return knowledge.projects;
-      if (q.includes('location') || q.includes('where') || q.includes('based') || q.includes('live') || q.includes('dortmund') || q.includes('germany')) return knowledge.location;
-      if (q.includes('rag') || q.includes('retrieval') || q.includes('vector') || q.includes('langchain')) return knowledge.rag;
-      if (q.includes('llm') || q.includes('gpt') || q.includes('language model') || q.includes('claude') || q.includes('mistral')) return knowledge.llm;
-      if (q.includes('hire') || q.includes('job') || q.includes('position') || q.includes('opportunit') || q.includes('looking')) return knowledge.hire;
-      if (q.includes('certif') || q.includes('credential') || q.includes('ibm')) return knowledge.certifications;
-      if (q.includes('available') || q.includes('start') || q.includes('when') || q.includes('immediate')) return knowledge.availability;
-      if (q.includes('language') || q.includes('speak') || q.includes('german') || q.includes('english') || q.includes('bengali')) return knowledge.languages;
-      if (q.includes('recommend') || q.includes('reference') || q.includes('testimonial') || q.includes('review') || q.includes('feedback') || q.includes('what do people say') || q.includes('work certificate')) return knowledge.recommendations;
+      // Known skills for specific lookup
+      const knownSkills = ['python', 'r', 'sql', 'javascript', 'pytorch', 'tensorflow', 'scikit-learn', 'scikit', 'langchain', 'llamaindex', 'databricks', 'dremio', 'airflow', 'spark', 'snowflake', 'power bi', 'tableau', 'plotly', 'matplotlib', 'azure', 'aws', 'docker', 'kubernetes', 'mlflow', 'llm', 'rag', 'django', 'android', 'git', 'linux'];
+      const unknownSkills = ['java', 'c++', 'c#', '.net', 'ruby', 'golang', 'go', 'swift', 'kotlin', 'php', 'scala', 'rust', 'perl', 'matlab', 'excel vba', 'sas', 'cobol', 'typescript'];
+
+      // Detect "does he know X" / "can he do X" / "does he use X" type questions
+      const isSkillQuery = q.match(/\b(know|use|work with|experience with|familiar with|can he|does he|has he)\b/);
+      if (isSkillQuery) {
+        for (const skill of unknownSkills) {
+          if (q.includes(skill)) {
+            return `**${skill.charAt(0).toUpperCase() + skill.slice(1)}** is not listed in Akash's skill set. His core languages are **Python**, **R**, **SQL**, and **JavaScript**, with strong expertise in AI/ML and Data Engineering. Would you like to know more about his actual skills?`;
+          }
+        }
+        for (const skill of knownSkills) {
+          if (q.includes(skill)) {
+            return `Yes! **${skill.charAt(0).toUpperCase() + skill.slice(1)}** is part of Akash's skill set. ${knowledge.skills}`;
+          }
+        }
+      }
+
+      // General keyword routing
       if (q.includes('hello') || q.includes('hi') || q.includes('hey')) return "Hello! I'm Akash's AI assistant. How can I help you? Ask about skills, experience, projects, services, recommendations, or availability!";
       if (q.includes('thank') || q.includes('appreciate')) return "You're welcome! Feel free to ask more questions!";
       if (q.includes('bye') || q.includes('goodbye')) return "Goodbye! Have a great day!";
+      if (q.includes('rag') || q.includes('retrieval') || q.includes('vector') || q.includes('langchain')) return knowledge.rag;
+      if (q.includes('llm') || q.includes('gpt') || q.includes('language model') || q.includes('mistral')) return knowledge.llm;
+      if (q.includes('recommend') || q.includes('reference') || q.includes('testimonial') || q.includes('review') || q.includes('feedback') || q.includes('work certificate')) return knowledge.recommendations;
+      if (q.includes('certif') || q.includes('credential')) return knowledge.certifications;
+      if (q.includes('available') || q.includes('immediate') || q.includes('open to work') || q.includes('looking for job')) return knowledge.availability;
+      if (q.includes('hire') || q.includes('job') || q.includes('position') || q.includes('opportunit')) return knowledge.hire;
+      if (q.includes('service') || q.includes('offer') || q.includes('consult') || q.includes('freelance')) return knowledge.services;
+      if (q.includes('contact') || q.includes('email') || q.includes('reach') || q.includes('linkedin') || q.includes('github')) return knowledge.contact;
+      if (q.includes('location') || q.includes('where') || q.includes('based') || q.includes('live') || q.includes('dortmund')) return knowledge.location;
+      if (q.includes('project') || q.includes('portfolio') || q.includes('built') || q.includes('maldix') || q.includes('anomaly')) return knowledge.projects;
+      if (q.includes('education') || q.includes('degree') || q.includes('study') || q.includes('university') || q.includes('master') || q.includes('bachelor')) return knowledge.education;
+      if (q.includes('experience') || q.includes('rwe') || q.includes('career') || q.includes('worked')) return knowledge.experience;
+      if (q.includes('speak') || q.includes('bengali') || q.includes('fluent') || (q.includes('language') && !q.includes('programming'))) return knowledge.spokenLanguages;
+      if (q.includes('skill') || q.includes('tech') || q.includes('stack') || q.includes('programming') || q.includes('tool')) return knowledge.skills;
+      if (q.includes('current') || q.includes('work') || q.includes('job') || q.includes('doing')) return knowledge.experience;
 
-      // Admit when we don't know - but offer related info
-      return "**I'm not sure about that exact topic**, but I can help you with:\n\n- **Skills** - Python, AI/ML, Data Engineering\n- **Experience** - RWE, RWEST, IMSP roles\n- **Projects** - NLP pipelines, Anomaly Detection\n- **Services** - RAG Systems, LLM Development\n- **Education** - Data Science, TU Dortmund\n- **Recommendations** - Professional testimonials\n- **Certifications** - Docker, Azure, ML courses\n- **Availability** - Open to opportunities\n\nFor specific questions, please reach out directly to **Akash at akashbaidya2@gmail.com**";
+      return "**I'm not sure about that exact topic**, but I can help you with:\n\n- **Skills** - Python, AI/ML, Data Engineering\n- **Experience** - RWE, RWEST, IMSP roles\n- **Projects** - NLP pipelines, Anomaly Detection\n- **Services** - RAG Systems, LLM Development\n- **Education** - Data Science, TU Dortmund\n- **Recommendations** - Professional testimonials\n- **Availability** - Open to opportunities\n\nFor specific questions, contact **akashbaidya2@gmail.com**";
     }
 
     // Format message with markdown-like syntax
@@ -7147,29 +7011,25 @@ ${context}`;
         return;
       }
 
-      // Try AI response first if API key is set
-      const apiKey = GROQ_CONFIG.apiKey; // Get key ONCE and reuse to avoid rate limit
+      // Try AI response first
+      try {
+        const result = await getGroqResponse(question);
 
-      if (apiKey) {
-        try {
-          const result = await getGroqResponse(question, apiKey);
-
-          if (result.limitReached) {
-            // Show limit message but still try to answer with keyword matching
-            answer = result.response;
-            isLimitWarning = true;
-          } else if (result.response) {
-            answer = result.response;
-            isAI = true;
-            // Record the question in user's history (only for successful AI responses)
-            await RAGUserDB.recordQuestion(question);
-            RAGUserDB.saveSessionUser();
-            // Log question to Google Sheets
-            SheetLogger.logQuestion(RAGUserDB.currentUser, question);
-          }
-        } catch (e) {
-          console.warn('AI response failed, using fallback');
+        if (result.limitReached) {
+          // Show limit message but still try to answer with keyword matching
+          answer = result.response;
+          isLimitWarning = true;
+        } else if (result.response) {
+          answer = result.response;
+          isAI = true;
+          // Record the question in user's history (only for successful AI responses)
+          await RAGUserDB.recordQuestion(question);
+          RAGUserDB.saveSessionUser();
+          // Log question to Google Sheets
+          SheetLogger.logQuestion(RAGUserDB.currentUser, question);
         }
+      } catch (e) {
+        console.warn('AI response failed, using fallback');
       }
 
       // Fall back to keyword matching if AI didn't respond (and not a limit warning)
